@@ -235,15 +235,17 @@ a.card, a.card:hover { color: inherit; }
 .subhead { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
 .subhead:first-child { margin-top: 0; }
 .person { text-align: center; padding: 22px 16px 16px; }
-.avatar { width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 12px; background: #fff; border: 3px solid var(--tint); display: flex; align-items: center; justify-content: center; font: 800 30px var(--font-head); color: var(--accent); overflow: hidden; }
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
-.person h3 { font-size: 16px; margin-bottom: 2px; }
-.person .pos { font: 600 12px var(--font-head); letter-spacing: .05em; text-transform: uppercase; color: var(--accent-ink); }
-.person .topic { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+.avatar { width: 132px; aspect-ratio: 3 / 4; border-radius: var(--radius); margin: 0 auto 14px; background: var(--tint); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font: 800 36px var(--font-head); color: var(--accent); overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.person h3 { font-size: 17px; margin-bottom: 0; }
+.person .alt-name { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.person .pos { font: 600 12px var(--font-head); letter-spacing: .05em; text-transform: uppercase; color: var(--accent-ink); margin-top: 4px; }
+.person .edu { list-style: none; padding: 10px 0 0; margin: 10px 0 0; border-top: 1px solid var(--line); font-size: 13px; line-height: 1.5; color: var(--ink-2); text-align: left; }
+.person .edu li + li { margin-top: 3px; }
+.person .work { font-size: 13px; color: var(--ink-2); margin-top: 6px; text-align: left; font-weight: 600; }
+.person .topic { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: left; }
+.person .edu + .topic, .person .work + .topic { padding-top: 6px; border-top: 1px dashed var(--line); }
 .empty-note { padding: 20px; border: 1px dashed var(--line-2); text-align: center; color: var(--muted); border-radius: var(--radius); }
-.alumni-card { padding: 16px 18px; border-top: 1px solid var(--line); border-left: 4px solid var(--accent); }
-.alumni-card b { display: block; font-family: var(--font-head); font-size: 15.5px; }
-.alumni-card span { color: var(--muted); font-size: 14px; }
 
 /* ---------- research ---------- */
 .research-area { padding: 36px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 90px; }

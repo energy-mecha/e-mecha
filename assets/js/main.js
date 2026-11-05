@@ -238,17 +238,23 @@
         <ul class="timeline">${tl(p.service)}</ul>
         <p><a class="more-link" href="awards.html">Awards &amp; Honors</a></p>
       </div>`;
+    // 한국어 화면: 한글 이름 + 영문 이름, 영어 화면: 영문 이름 + 한글 이름 (영문 이름이 없으면 한 줄)
+    const nameHTML = (n) => {
+      const ko = esc(n.ko ?? n), en = esc(n.en ?? n.ko ?? n);
+      return en === ko ? `<h3>${ko}</h3>` : `<h3>${bi(ko, en)}</h3><div class="alt-name">${bi(en, ko)}</div>`;
+    };
     const people = (list) => list.length
       ? `<div class="grid c4">${list.map((m) => `<div class="card person">
-          <div class="avatar">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(plain(m.name))}">` : initial(m.name)}</div>
-          <h3>${T(m.name)}</h3>${m.nameEn ? `<div class="topic">${esc(m.nameEn)}</div>` : ""}
-          <div class="pos">${T(m.pos)}</div>${m.topic ? `<div class="topic">${T(m.topic)}</div>` : ""}</div>`).join("")}</div>`
+          <div class="avatar">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(plain(m.name))}" loading="lazy">` : initial(m.name)}</div>
+          ${nameHTML(m.name)}
+          <div class="pos">${T(m.pos)}</div>
+          ${m.edu?.length ? `<ul class="edu">${m.edu.map((e) => `<li>${T(e)}</li>`).join("")}</ul>` : ""}
+          ${m.work ? `<div class="work">${T(m.work)}</div>` : ""}
+          ${m.topic ? `<div class="topic">${T(m.topic)}</div>` : ""}</div>`).join("")}</div>`
       : `<div class="empty-note">${bi("구성원 정보 업데이트 예정", "Member information coming soon")}</div>`;
-    $("#rp").innerHTML = people(L.members.researchProfessor);
-    $("#phd").innerHTML = people(L.members.phd);
-    $("#ms").innerHTML = people(L.members.ms);
+    $("#grad").innerHTML = people(L.members.grad || []);
     $("#ug").innerHTML = people(L.members.undergrad || []);
-    $("#alumni").innerHTML = L.alumni.map((a) => `<div class="card alumni-card"><b>${T(a.title)}</b><span>${T(a.note)}</span></div>`).join("");
+    $("#alumni").innerHTML = people(L.alumni);
     $("#contact-addr").innerHTML = T(c.address);
   }
 

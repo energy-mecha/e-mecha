@@ -5,6 +5,21 @@
    - 다국어: { ko: "한국어", en: "English" } 형태로 적으면 언어 전환 시 바뀝니다.
      (en 을 생략하거나 문자열만 적으면 두 언어 모두 같은 글이 표시됩니다.)
    ========================================================= */
+
+/* 구성원 정보에 반복해서 쓰는 값 */
+const SCNU_EE = { ko: "국립순천대학교 전기공학과", en: "Electrical Engineering, Sunchon National University" };
+const SCNU_EE_STUDENT = { ko: "재학 : 국립순천대학교 전기공학과", en: "Electrical Engineering, Sunchon National University" };
+const EDU = (ko, en, school) => ({ ko: `${ko} : ${school.ko}`, en: `${en}, ${school.en}` });
+const POS = {
+  phd: { ko: "박사과정", en: "Ph.D. Student" },
+  int: { ko: "석·박사 통합과정", en: "Integrated M.S. & Ph.D. Student" },
+  ug: { ko: "학부연구생", en: "Undergraduate Researcher" },
+};
+const TOPIC = {
+  pe: { ko: "전력전자, DC-DC 컨버터", en: "Power electronics, DC-DC converters" },
+  dg: { ko: "분산형전원(태양광)", en: "Distributed generation (PV)" },
+};
+
 window.LAB = {
   name: "Energy Mechatronics Lab.",
   nameKo: "에너지메카트로닉스연구실",
@@ -51,38 +66,65 @@ window.LAB = {
   },
 
   /* ---------------- 구성원 ----------------
-     예) { name: "홍길동", nameEn: "Gil-dong Hong", pos: "Ph.D. Student", topic: { ko: "DAB 컨버터", en: "DAB converters" }, photo: "assets/img/members/hong.jpg" }
-     photo 를 비우면 이름 첫 글자로 표시됩니다. */
+     예) { name: { ko: "홍길동", en: "Gil-dong Hong" }, pos: POS.phd, photo: "assets/img/members/hong.jpg",
+           edu: [EDU("공학사", "B.S.", SCNU_EE)], work: { ko: "㈜회사 (2020년 ~ 현재)", en: "Company (2020–present)" },
+           topic: { ko: "전력전자", en: "Power electronics" } }
+     photo 를 비우면 이름 첫 글자로 표시됩니다. edu · work · topic 은 비워도 됩니다. */
   members: {
-    researchProfessor: [
-      { name: { ko: "학술연구교수", en: "Research Professor" }, pos: "Research Professor", topic: "" },
+    grad: [
+      { name: { ko: "최철웅", en: "Cheol-Woong Choi" }, pos: POS.phd, photo: "assets/img/members/choi-cheolwoong.jpg",
+        edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE)], topic: TOPIC.pe },
+      { name: { ko: "정태규", en: "Tae-Gyu Jung" }, pos: POS.int, photo: "assets/img/members/jung-taegyu.jpg",
+        edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE)], topic: TOPIC.pe },
+      { name: { ko: "이환수", en: "Hwan-Su Lee" }, pos: POS.phd, photo: "assets/img/members/lee-hwansu.jpg",
+        edu: [EDU("공학사", "B.S.", { ko: "국립순천대학교 전기제어공학과", en: "Electrical Control Engineering, Sunchon National University" }), EDU("공학석사", "M.S.", SCNU_EE)],
+        work: { ko: "㈜에니트", en: "ENIT Co., Ltd." },
+        topic: { ko: "고주파 변압기, 리액터", en: "High-frequency transformers, reactors" } },
+      { name: { ko: "박정희", en: "Jeong-Hee Park" }, pos: POS.int, photo: "assets/img/members/park-jeonghee.jpg",
+        edu: [EDU("공학사", "B.S.", SCNU_EE)],
+        work: { ko: "㈜엘시스 (2016년 ~ 현재)", en: "ELSYS Co., Ltd. (2016–present)" },
+        topic: { ko: "마이크로그리드, 전력거래", en: "Microgrids, power trading" } },
+      { name: { ko: "장국태", en: "Kuk-Tai Jang" }, pos: POS.int, photo: "assets/img/members/jang-kuktai.jpg",
+        edu: [EDU("공학사", "B.S.", { ko: "금오공과대학교 컴퓨터공학과", en: "Computer Engineering, Kumoh National Institute of Technology" })],
+        work: { ko: "㈜알파닉스 (2011년 ~ 현재)", en: "Alphanix Co., Ltd. (2011–present)" },
+        topic: { ko: "신재생에너지, 신호처리, AI", en: "Renewable energy, signal processing, AI" } },
+      { name: { ko: "여승엽", en: "Seung-Yeop Yeo" }, pos: POS.int, photo: "assets/img/members/yeo-seungyeop.jpg",
+        edu: [EDU("공학사", "B.S.", { ko: "전남대학교 기계IT융합공학과", en: "Mechanical & IT Convergence Engineering, Chonnam National University" })],
+        work: { ko: "㈜더블유피 (2021년 ~ 현재)", en: "WP Co., Ltd. (2021–present)" },
+        topic: TOPIC.dg },
+      { name: { ko: "윤석희", en: "윤석희" }, pos: POS.int,
+        work: { ko: "㈜더블유피", en: "WP Co., Ltd." },
+        topic: TOPIC.dg },
     ],
-    phd: [
-      { name: { ko: "박사과정 1", en: "Ph.D. Student 1" }, pos: "Ph.D. Student", topic: "" },
-      { name: { ko: "박사과정 2", en: "Ph.D. Student 2" }, pos: "Ph.D. Student", topic: "" },
-      { name: { ko: "박사과정 3", en: "Ph.D. Student 3" }, pos: "Ph.D. Student", topic: "" },
-      { name: { ko: "박사과정 4", en: "Ph.D. Student 4" }, pos: "Ph.D. Student", topic: "" },
-      { name: { ko: "박사과정 5", en: "Ph.D. Student 5" }, pos: "Ph.D. Student (Part-time)", topic: "" },
-    ],
-    ms: [
-      { name: { ko: "석사과정 1", en: "M.S. Student 1" }, pos: "M.S. Student", topic: "" },
-      { name: { ko: "석사과정 2", en: "M.S. Student 2" }, pos: "M.S. Student", topic: "" },
-      { name: { ko: "석사과정 3", en: "M.S. Student 3" }, pos: "M.S. Student", topic: "" },
-    ],
-    /* 학부연구생 — 예) { name: "홍길동", nameEn: "Gil-dong Hong", pos: "Undergraduate Researcher", topic: "" }
-       비워두면 "구성원 정보 업데이트 예정" 으로 표시됩니다. */
     undergrad: [
-      { name: { ko: "학부연구생 1", en: "Undergraduate Student 1" }, pos: "Undergraduate Student", topic: "" },
-      { name: { ko: "학부연구생 2", en: "Undergraduate Student 2" }, pos: "Undergraduate Student", topic: "" },
-      { name: { ko: "학부연구생 3", en: "Undergraduate Student 3" }, pos: "Undergraduate Student", topic: "" },
+      { name: { ko: "진찬수", en: "Chan-Su Jin" }, pos: POS.ug, photo: "assets/img/members/jin-chansu.jpg", edu: [SCNU_EE_STUDENT], topic: TOPIC.pe },
+      { name: { ko: "김민준", en: "Min-Jun Kim" }, pos: POS.ug, photo: "assets/img/members/kim-minjun.jpg", edu: [SCNU_EE_STUDENT], topic: TOPIC.pe },
+      { name: { ko: "서민재", en: "Min-Jae Seo" }, pos: POS.ug, photo: "assets/img/members/seo-minjae.jpg", edu: [SCNU_EE_STUDENT], topic: TOPIC.pe },
+      { name: { ko: "김준헌", en: "Jun-Heon Kim" }, pos: POS.ug, photo: "assets/img/members/kim-junheon.jpg", edu: [SCNU_EE_STUDENT], topic: TOPIC.pe },
     ],
   },
 
+  /* 졸업생 — 구성원과 같은 형식, pos 에 졸업 연도/구분 */
   alumni: [
-    { title: { ko: "국립강릉원주대학교 전기공학과 교수 임용", en: "Appointed Professor, Dept. of Electrical Engineering, Gangneung-Wonju National University" }, note: "2024" },
-    { title: { ko: "순천제일대학교 전기자동화과 교수 임용", en: "Appointed Professor, Dept. of Electrical Automation, Suncheon Jeil College" }, note: "2025" },
-    { title: { ko: "㈜에니트 창업", en: "Founded ENIT Co., Ltd." }, note: { ko: "2025.08 졸업", en: "Graduated 2025.08" } },
-    { title: { ko: "㈜티엠씨솔루션즈 창업", en: "Founded TMC Solutions Co., Ltd." }, note: { ko: "2026.02 졸업", en: "Graduated 2026.02" } },
+    { name: { ko: "기송도", en: "기송도" }, pos: { ko: "Ph.D. · 2026년 졸업", en: "Ph.D. · 2026" },
+      edu: [EDU("공학박사", "Ph.D.", SCNU_EE)],
+      work: { ko: "㈜에니트 대표이사", en: "CEO, ENIT Co., Ltd." } },
+    { name: { ko: "조석환", en: "Seok-Hwan Cho" }, pos: { ko: "Ph.D. · 2026년 졸업", en: "Ph.D. · 2026" }, photo: "assets/img/members/cho-seokhwan.jpg",
+      edu: [EDU("공학사", "B.S.", { ko: "국립순천대학교 전자공학과", en: "Electronic Engineering, Sunchon National University" }), EDU("공학박사", "Ph.D.", SCNU_EE)],
+      work: { ko: "㈜티엠씨솔루션즈 대표이사 (2022년 ~ 현재)", en: "CEO, TMC Solutions Co., Ltd. (2022–present)" },
+      topic: { ko: "신재생에너지, 전력전자", en: "Renewable energy, power electronics" } },
+    { name: { ko: "고재섭", en: "Jae-Sub Ko" }, pos: { ko: "연구교수 (2020 ~ 2025)", en: "Research Professor (2020–2025)" }, photo: "assets/img/members/ko-jaesub.jpg",
+      edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE), EDU("공학박사", "Ph.D.", SCNU_EE)],
+      work: { ko: "국립강원대학교 전기공학과 교수 (2025년 ~ 현재)", en: "Professor, Electrical Engineering, Kangwon National University (2025–present)" },
+      topic: { ko: "신재생에너지, 전력전자, 에너지변환기기", en: "Renewable energy, power electronics, energy conversion devices" } },
+    { name: { ko: "이승훈", en: "Seung-Hoon Lee" }, pos: { ko: "M.S. · 2024년 졸업", en: "M.S. · 2024" },
+      edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE)],
+      work: { ko: "㈜셀시스템 책임연구원 (2024년 ~ 현재)", en: "Principal Researcher, Cell System Co., Ltd. (2024–present)" },
+      topic: { ko: "신재생에너지, EMS", en: "Renewable energy, EMS" } },
+    { name: { ko: "박용운", en: "Young-Un Park" }, pos: { ko: "Ph.D. · 2019년 졸업", en: "Ph.D. · 2019" }, photo: "assets/img/members/park-youngun.jpg",
+      edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE), EDU("공학박사", "Ph.D.", SCNU_EE)],
+      work: { ko: "순천제일대학교 전기자동화과 교수 (2025년 ~ 현재)", en: "Professor, Electrical Automation, Suncheon Jeil College (2025–present)" },
+      topic: { ko: "마이크로그리드 및 전기기기", en: "Microgrids and electric machines" } },
   ],
 
   /* ---------------- 강의 ---------------- */
