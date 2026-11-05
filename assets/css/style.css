@@ -210,7 +210,7 @@ a.card, a.card:hover { color: inherit; }
 .chip.on { background: var(--ink); border-color: var(--ink); color: var(--accent-2); }
 
 /* join → dark hiring card */
-.join { background: var(--ink); color: var(--on-dark); border-radius: var(--radius); margin-top: 36px; padding: 0 !important; position: relative; overflow: hidden; }
+.join { background: radial-gradient(60% 120% at 100% 0%, rgba(226,87,93,.38), transparent 70%), linear-gradient(115deg, var(--ink) 35%, #3a1517 100%), var(--ink); color: var(--on-dark); border-radius: var(--radius); margin-top: 36px; padding: 0 !important; position: relative; overflow: hidden; }
 .join::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); }
 .join .container { padding: 28px 28px 26px !important; }
 .join h2, .join h3 { color: #fff; }
@@ -311,7 +311,7 @@ a.card, a.card:hover { color: inherit; }
 .lightbox img { max-height: 92vh; max-width: 96vw; background: #fff; padding: 8px; border-radius: 6px; }
 
 /* ---------- footer ---------- */
-.site-footer { background: var(--ink); color: #a9a59b; font-size: 14px; padding: 0 0 22px; }
+.site-footer { background: radial-gradient(45% 140% at 90% 0%, rgba(226,87,93,.32), transparent 70%), linear-gradient(100deg, var(--ink) 35%, #3a1517 100%), var(--ink); color: #a9a59b; font-size: 14px; padding: 0 0 22px; }
 .site-footer::before { content: ""; display: block; height: 3px; background: var(--grad); margin-bottom: 44px; }
 .site-footer h3 { color: #fff; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
 .site-footer a { color: var(--accent-2); }
