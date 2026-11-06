@@ -8,7 +8,8 @@
 필요 패키지: openpyxl  (pip install openpyxl)
 
 엑셀 파일 이름에 아래 키워드가 들어 있으면 자동으로 인식합니다.
-    저널실적, 국내외 학술대회, 특허등록, 연구과제참여
+    저널실적, 학술대회, 특허등록, 연구과제참여
+학술대회 파일은 여러 개(예: 국내외학술대회_2026년.xlsx)를 함께 두면 모두 합쳐집니다.
 """
 import glob
 import json
@@ -27,11 +28,16 @@ SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(ROOT)
 OUT = os.path.join(ROOT, "assets", "js", "data.js")
 
 
+def find_all(keyword):
+    files = sorted(f for f in glob.glob(os.path.join(SRC, "*.xlsx"))
+                   if keyword in os.path.basename(f) and not os.path.basename(f).startswith("~$"))
+    if not files:
+        raise SystemExit(f"'{keyword}' 엑셀 파일을 {SRC} 에서 찾을 수 없습니다.")
+    return files
+
+
 def find(keyword):
-    for f in glob.glob(os.path.join(SRC, "*.xlsx")):
-        if keyword in os.path.basename(f):
-            return f
-    raise SystemExit(f"'{keyword}' 엑셀 파일을 {SRC} 에서 찾을 수 없습니다.")
+    return find_all(keyword)[0]
 
 
 def rows(path):
@@ -76,9 +82,15 @@ for r in rows(find("저널실적")):
     })
 
 # ---------------- 학술대회 ----------------
+# '학술대회'가 들어간 엑셀이 여러 개면(예: 연도별 추가 파일) 모두 합치고, 같은 업적번호는 한 번만 넣음
 conferences = []
-for r in rows(find("학술대회")):
+seen = set()
+for r in (r for f in find_all("학술대회") for r in rows(f)):
     title = clean(r.get("논문명"))
+    key = clean(r.get("업적번호")) or (title, ym(r.get("발표일자")))
+    if key in seen:
+        continue
+    seen.add(key)
     # 헤더가 '학술대회\n구분' 처럼 줄바꿈을 포함할 수 있어 공백을 제거하고 찾음
     kind = next((clean(v) for k, v in r.items() if re.sub(r"\s", "", k) == "학술대회구분"), "")
     # 국외 학술대회이거나 논문 제목에 한글이 없으면(영문 논문) International 로 분류

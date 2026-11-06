@@ -1,6 +1,6 @@
 /* 자동 생성 파일 — 직접 수정하지 말고 tools/build_data.py 를 실행하세요. */
 window.LAB_DATA = {
- "updated": "2026.10.28",
+ "updated": "2026.11.06",
  "journals": [
   {
    "date": "2026.02",
@@ -445,6 +445,60 @@ window.LAB_DATA = {
   }
  ],
  "conferences": [
+  {
+   "date": "2026.10",
+   "title": "풀브릿지 컨버터의 경부하 손실 저감을 위한 동기정류기 제어",
+   "venue": "2026년도 대한전기학회 전기기기 및 에너지변환시스템부문회 추계학술대회",
+   "scope": "dom"
+  },
+  {
+   "date": "2026.10",
+   "title": "벅컨버터의 전압을 이용한 PV 시스템 전류 계산",
+   "venue": "2026년도 대한전기학회 전기기기 및 에너지변환시스템부문회 추계학술대회",
+   "scope": "dom"
+  },
+  {
+   "date": "2026.10",
+   "title": "SiC MOSFET의 동작 특성을 고려한 DAB 컨버터의 데드타임 설계",
+   "venue": "2026년도 대한전기학회 전기기기 및 에너지변환시스템부문회 추계학술대회",
+   "scope": "dom"
+  },
+  {
+   "date": "2026.10",
+   "title": "Energy and Cost Analysis of Urban Air Mobility Logistics Based on Ferry Waypoint Data in South Korean Island Regions",
+   "venue": "IEEE ECCE 2026",
+   "scope": "intl"
+  },
+  {
+   "date": "2026.10",
+   "title": "Analysis of the Effect of the Input Capacitor in Power Converters on MPPT Control of Photovoltaic Systems",
+   "venue": "IEEE ECCE 2026",
+   "scope": "intl"
+  },
+  {
+   "date": "2026.10",
+   "title": "A Switching Control Technique for Improving Light Load Efficiency in Phase-Shift Full-Bridge Converter Considering Synchronous Rectifier Operation",
+   "venue": "IEEE ECCE 2026",
+   "scope": "intl"
+  },
+  {
+   "date": "2026.07",
+   "title": "풀브릿지 컨버터의 경부하 손실 저감을 위한 제어 기법",
+   "venue": "2026년 대한전기학회 하계학술대회",
+   "scope": "dom"
+  },
+  {
+   "date": "2026.07",
+   "title": "SiC MOSFET 유효 출력 커패시턴스를 이용한 DAB 컨버터 스위칭 전압 변화 지연 특성 분석",
+   "venue": "2026년 대한전기학회 하계학술대회",
+   "scope": "dom"
+  },
+  {
+   "date": "2026.07",
+   "title": "PV 시스템 MPPT 제어에 전력변환기 입력커패시터가 미치는 영향 분석",
+   "venue": "2026년 대한전기학회 하계학술대회",
+   "scope": "dom"
+  },
   {
    "date": "2025.11",
    "title": "SiC MOSFET 동작 특성을 고려한 DAB 컨버터의 누설인덕턴스 추정 방법",
