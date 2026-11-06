@@ -237,6 +237,10 @@ a.card, a.card:hover { color: inherit; }
 .person { text-align: center; padding: 22px 16px 16px; }
 .avatar { width: 132px; aspect-ratio: 3 / 4; border-radius: var(--radius); margin: 0 auto 14px; background: var(--tint); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font: 800 36px var(--font-head); color: var(--accent); overflow: hidden; }
 .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+/* 사진이 없을 때: 연구실 로고(푸터와 같은 모양) */
+.avatar.no-photo { flex-direction: column; gap: 12px; padding: 12px; text-align: center; border-color: transparent; background: radial-gradient(90% 60% at 100% 0%, rgba(226,87,93,.4), transparent 70%), linear-gradient(160deg, var(--ink) 40%, #3a1517 100%), var(--ink); }
+.avatar.no-photo img { width: auto; height: 44px; object-fit: contain; padding: 4px 5px; border-radius: 6px; background: #fff; }
+.avatar.no-photo b { color: #fff; font: 800 14px/1.25 var(--font-head); }
 .person h3 { font-size: 17px; margin-bottom: 0; }
 .person .alt-name { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
 .person .pos { font: 600 12px var(--font-head); letter-spacing: .05em; text-transform: uppercase; color: var(--accent-ink); margin-top: 4px; }

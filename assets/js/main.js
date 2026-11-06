@@ -185,7 +185,6 @@
 
   /* ---------- helpers ---------- */
   const TAG = { publication: "Publication", award: "Award", people: "People", grant: "Grant", patent: "Patent" };
-  const initial = (n) => esc((plain(n) || "?").trim().charAt(0));
 
   function renderNews(el, limit) {
     if (!el) return;
@@ -245,7 +244,9 @@
     };
     const people = (list) => list.length
       ? `<div class="grid c4">${list.map((m) => `<div class="card person">
-          <div class="avatar">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(plain(m.name))}" loading="lazy">` : initial(m.name)}</div>
+          ${m.photo
+            ? `<div class="avatar"><img src="${esc(m.photo)}" alt="${esc(plain(m.name))}" loading="lazy"></div>`
+            : `<div class="avatar no-photo" role="img" aria-label="${esc(L.name)}"><img src="assets/img/emblem.png" alt=""><b>${esc(L.name)}</b></div>`}
           ${nameHTML(m.name)}
           <div class="pos">${T(m.pos)}</div>
           ${m.edu?.length ? `<ul class="edu">${m.edu.map((e) => `<li>${T(e)}</li>`).join("")}</ul>` : ""}
@@ -254,7 +255,7 @@
       : `<div class="empty-note">${bi("구성원 정보 업데이트 예정", "Member information coming soon")}</div>`;
     $("#grad").innerHTML = people(L.members.grad || []);
     $("#ug").innerHTML = people(L.members.undergrad || []);
-    $("#alumni").innerHTML = people(L.alumni);
+    $("#alumni").innerHTML = people([...L.alumni].sort((a, b) => (b.year || 0) - (a.year || 0)));
     $("#contact-addr").innerHTML = T(c.address);
   }
 
