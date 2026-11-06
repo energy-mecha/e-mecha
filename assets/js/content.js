@@ -43,7 +43,7 @@ window.LAB = {
   pi: {
     name: "김대경",
     nameEn: "Dae-kyong Kim, Ph.D.",
-    title: { ko: "Senior Member of the IEEE · 국립순천대학교 전기공학과 교수", en: "Senior Member of the IEEE · Professor, Dept. of Electrical Engineering, Sunchon National University" },
+    title: { ko: "국립순천대학교 전기공학과 교수 · Senior Member of the IEEE", en: "Professor, Dept. of Electrical Engineering, Sunchon National University · Senior Member of the IEEE" },
     photo: "assets/img/prof-kim.jpg",
     interests: [
       { ko: "Energy Grid용 DC-DC 컨버터(DAB) 설계 및 고장진단/예측 기술", en: "Design, fault diagnosis and prognosis of DC-DC converters (DAB) for energy grids" },
