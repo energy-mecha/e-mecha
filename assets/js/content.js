@@ -75,7 +75,7 @@ window.LAB = {
       { name: { ko: "최철웅", en: "Cheol-Woong Choi" }, pos: POS.phd, photo: "assets/img/members/choi-cheolwoong.jpg",
         edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE)], topic: TOPIC.pe },
       { name: { ko: "정태규", en: "Tae-Gyu Jung" }, pos: POS.int, photo: "assets/img/members/jung-taegyu.jpg",
-        edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE)], topic: TOPIC.pe },
+        edu: [EDU("공학사", "B.S.", SCNU_EE)], topic: TOPIC.pe },
       { name: { ko: "이환수", en: "Hwan-Su Lee" }, pos: POS.phd, photo: "assets/img/members/lee-hwansu.jpg",
         edu: [EDU("공학사", "B.S.", { ko: "국립순천대학교 전기제어공학과", en: "Electrical Control Engineering, Sunchon National University" }), EDU("공학석사", "M.S.", SCNU_EE)],
         work: { ko: "㈜에니트", en: "ENIT Co., Ltd." },
