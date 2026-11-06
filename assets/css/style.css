@@ -417,6 +417,7 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
 .pf-no { font: 600 12.5px var(--font-head); color: var(--muted); }
 .tag.trl { background: var(--accent); color: #fff; }
 .pt-view { display: flex; gap: 6px; }
+.pt-view[hidden] { display: none; }
 .field-group h3 { display: flex; align-items: center; gap: 8px; font-size: 18px; margin: 28px 0 2px; }
 .field-group h3 .cnt { font: 700 12px var(--font-head); background: var(--tint); color: var(--accent-ink); border-radius: 999px; padding: 1px 9px; }
 .field-group h4 { font-size: 14px; color: var(--accent-ink); margin: 14px 0 0; padding-left: 10px; border-left: 3px solid var(--accent); }

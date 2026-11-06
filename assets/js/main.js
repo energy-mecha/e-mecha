@@ -310,18 +310,18 @@
   /* ---------- PUBLICATIONS ---------- */
   if (page === "publications") {
     const CATS = {
+      pt: { label: "Patents", items: D.patents },
       ij: { label: "International Journals", items: D.journals.filter((j) => j.scope === "intl") },
       dj: { label: "Domestic Journals", items: D.journals.filter((j) => j.scope === "dom") },
       ic: { label: "International Conferences", items: D.conferences.filter((j) => j.scope === "intl") },
       dc: { label: "Domestic Conferences", items: D.conferences.filter((j) => j.scope === "dom") },
-      pt: { label: "Patents", items: D.patents },
     };
     const year = (it) => (it.date || it.regDate || "").slice(0, 4);
     const tabsEl = $("#pub-tabs"), listEl = $("#pub-list"), q = $("#pub-q"), ySel = $("#pub-year"), countEl = $("#pub-count");
     const viewEl = $("#pt-view"), ptTop = $("#pt-top"), ptBottom = $("#pt-bottom");
-    let cat = (location.hash || "#ij").slice(1);
+    let cat = (location.hash || "#pt").slice(1);   // 기본 탭: Patents
     if (cat === "portfolio") cat = "pt";
-    if (!CATS[cat]) cat = "ij";
+    if (!CATS[cat]) cat = "pt";
     let ptView = "field";   // 특허 탭: "field"(기술분야별) | "year"(연도별)
     const reg7 = (it) => (/^10-(\d{7})/.exec(it.regNo || "") || [])[1] || "";
 
