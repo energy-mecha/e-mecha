@@ -8,7 +8,7 @@
 | `index.html` | Home — 연구실 소개, 실적 요약, 연구분야, 뉴스, Join Us |
 | `members.html` | 지도교수, 구성원, 졸업생, 연락처 |
 | `research.html` | 연구분야 상세(DAB, P2H, PV 단선 검출, DC 아크, 인재양성), 보유장비 |
-| `publications.html` | 국제/국내 저널, 국제/국내 학술대회, 특허 (탭 · 검색 · 연도 필터) |
+| `publications.html` | 국제/국내 저널, 국제/국내 학술대회, 특허 (탭 · 검색 · 연도 필터) — 특허 탭: 대표 특허기술 카드 · 연도별/기술분야별 보기(분류는 `content.js` 의 `patentFields`) · 협력 안내 |
 | `projects.html` | 진행/완료 연구과제 |
 | `teaching.html` | 담당 교과목 (목록은 `content.js` 의 `teaching`) |
 | `capstone.html` | 종합설계(캡스톤디자인) 과제 — 영상·수상 (`content.js` 의 `capstone`) |
@@ -17,12 +17,13 @@
 | `assets/js/data.js` | **자동 생성**: 엑셀 실적 → 논문/학회/특허/과제 |
 
 ## 내용 업데이트
-- 뉴스 · 구성원 · 연락처: `assets/js/content.js` 수정
+- 뉴스 · 구성원 · 연락처: `assets/js/content.js` 수정 (뉴스 항목에 `link: "주소"` 를 넣으면 제목이 링크가 됩니다)
 - 논문 · 학회 · 특허 · 과제: 엑셀 파일을 갱신한 뒤
   ```
   python tools/build_data.py <엑셀 폴더 경로>
   ```
 - 구성원 사진: `assets/img/members/` 에 넣고 `content.js` 의 `photo` 에 경로 지정
+- 전략기술포트폴리오 PDF(특허 탭 「대표 특허기술」 링크): `assets/files/emecha-tech-portfolio-v2.2.pdf`. 새 버전을 올릴 때는 파일을 넣고 `publications.html` 의 PDF 링크 3곳(제목·보기·다운로드)의 파일명을 바꿉니다.
 
 ## 언어 (영어 기본 / 한국어 선택)
 - 상단 오른쪽 `EN | 한국어` 버튼으로 전환하며, 마지막 선택은 브라우저에 기억됩니다. 주소에 `?lang=ko` 를 붙이면 한국어로 열립니다.

@@ -242,6 +242,7 @@ window.LAB = {
   /* ---------------- 뉴스 ----------------
      type: publication | award | people | grant | patent */
   news: [
+    { date: "2026.11", type: "patent", link: "publications.html#pt", text: { ko: "「국립순천대학교 에너지메카트로닉스연구실 전략기술포트폴리오」 발간 — 스마트 전력변환 · 신재생 고장진단 대표 특허기술 8건과 등록특허 38건을 소개합니다 (PDF 보기·다운로드)", en: "Published the lab's Strategic Technology Portfolio — 8 flagship patented technologies and all 38 registered patents in smart power conversion and renewable-energy fault diagnosis (view or download the PDF)" } },
     { date: "2026.10", type: "patent", text: { ko: "특허 3건 등록: 색온도를 이용한 DC 아크 검출 및 전원 차단장치, SiC-MOSFET 기생 커패시턴스를 고려한 DAB 변환기 보상 시스템, 태양광 모듈 MPPT 직병렬연결 방법", en: "Three patents registered: DC arc detection and power cut-off using color temperature, a DAB converter compensation system considering SiC-MOSFET parasitic capacitance, and a PV series-parallel connection method for MPPT" } },
     { date: "2026.10", type: "publication", text: { ko: "IEEE ECCE 2026 논문 3편 발표 (PSFB 경부하 효율 향상, PV MPPT 입력 커패시터 영향, 도서지역 UAM 물류 에너지·비용 분석)", en: "Three papers presented at IEEE ECCE 2026 (PSFB light-load efficiency, input-capacitor effect on PV MPPT, and UAM logistics energy and cost analysis for island regions)" } },
     { date: "2026.10", type: "publication", text: { ko: "대한전기학회 전기기기 및 에너지변환시스템부문회 추계학술대회 논문 3편 발표 (DAB 데드타임 설계, 동기정류기 제어 등)", en: "Three papers presented at the KIEE EMECS Autumn Conference (DAB dead-time design, synchronous rectifier control, and more)" } },
@@ -315,4 +316,31 @@ window.LAB = {
     "교육부": "Ministry of Education",
     "산업통상자원부": "MOTIE",
   },
+
+  /* 특허 탭의 「기술분야별」 보기: 등록번호 앞 7자리로 분류합니다.
+     새 특허가 생기면 알맞은 세부기술의 목록에 번호를 추가하세요. (없으면 「미분류」로 표시) */
+  patentFields: [
+    { name: { ko: "전력변환", en: "Power Conversion" }, subs: [
+      { name: { ko: "DAB 위상각 보상 제어", en: "DAB phase-shift compensation" }, nos: ["2745924", "3033031"] },
+      { name: { ko: "DAB 파라미터 추정·제어", en: "DAB parameter estimation" }, nos: ["2815838", "2902142", "3018949"] },
+      { name: { ko: "다중포트(TAB) 컨버터", en: "Multi-port (TAB) converter" }, nos: ["2732670"] },
+    ] },
+    { name: { ko: "자성부품", en: "Magnetics" }, subs: [
+      { name: { ko: "가변 누설인덕턴스 변압기", en: "Variable-leakage transformer" }, nos: ["2790915", "2954804", "2455751", "2455726"] },
+      { name: { ko: "변압기 구조·해석", en: "Transformer structure & analysis" }, nos: ["2497961", "2497969", "2131584", "2139004", "2136026"] },
+    ] },
+    { name: { ko: "태양광 운전·진단", en: "PV Operation & Diagnostics" }, subs: [
+      { name: { ko: "PV 단선 위치 검출", en: "PV disconnection location" }, nos: ["2480168", "2508632", "2518017", "2518018", "2898838"] },
+      { name: { ko: "PV 직병렬 재구성 MPPT", en: "Reconfigurable PV MPPT" }, nos: ["2626309", "3038569"] },
+    ] },
+    { name: { ko: "전기안전", en: "Electrical Safety" }, subs: [
+      { name: { ko: "DC 아크 검출·차단", en: "DC arc detection" }, nos: ["3038560"] },
+      { name: { ko: "가돌리늄 Fail-safe 화재감시", en: "Gadolinium fail-safe fire monitoring" }, nos: ["2915006", "2934326"] },
+    ] },
+    { name: { ko: "융합응용", en: "Convergence Applications" }, subs: [
+      { name: { ko: "스마트팜·식품", en: "Smart farm & food" }, nos: ["1586544", "2992641", "2483166", "2545886", "2545890"] },
+      { name: { ko: "농기계 안전", en: "Farm-machinery safety" }, nos: ["2460083", "2494578"] },
+      { name: { ko: "생활가전·기타", en: "Home appliances & others" }, nos: ["2213544", "2213537", "2213550", "2040390", "2658718", "2654599"] },
+    ] },
+  ],
 };

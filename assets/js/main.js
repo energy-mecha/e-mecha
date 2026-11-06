@@ -192,7 +192,7 @@
     let cur = "all";
     const draw = () => {
       const items = L.news.filter((n) => cur === "all" || n.type === cur).slice(0, limit || 999);
-      el.innerHTML = items.map((n) => `<li><span class="news-date">${esc(n.date)}</span><span class="tag ${n.type}">${TAG[n.type]}</span><span>${T(n.text)}</span></li>`).join("");
+      el.innerHTML = items.map((n) => `<li><span class="news-date">${esc(n.date)}</span><span class="tag ${n.type}">${TAG[n.type]}</span><span>${n.link ? `<a href="${esc(n.link)}">${T(n.text)}</a>` : T(n.text)}</span></li>`).join("");
     };
     if (filterEl) {
       const types = ["all", ...Object.keys(TAG)];
@@ -318,8 +318,12 @@
     };
     const year = (it) => (it.date || it.regDate || "").slice(0, 4);
     const tabsEl = $("#pub-tabs"), listEl = $("#pub-list"), q = $("#pub-q"), ySel = $("#pub-year"), countEl = $("#pub-count");
+    const viewEl = $("#pt-view"), ptTop = $("#pt-top"), ptBottom = $("#pt-bottom");
     let cat = (location.hash || "#ij").slice(1);
+    if (cat === "portfolio") cat = "pt";
     if (!CATS[cat]) cat = "ij";
+    let ptView = "field";   // 특허 탭: "field"(기술분야별) | "year"(연도별)
+    const reg7 = (it) => (/^10-(\d{7})/.exec(it.regNo || "") || [])[1] || "";
 
     tabsEl.innerHTML = Object.entries(CATS).map(([k, v]) => `<button class="tab" data-k="${k}">${v.label}<span class="cnt">${v.items.length}</span></button>`).join("");
 
@@ -352,14 +356,43 @@
         (!kw || [it.title, it.title_en, it.venue].join(" ").toLowerCase().includes(kw)));
       countEl.textContent = ko ? `${filtered.length}건` : `${filtered.length} ${filtered.length === 1 ? "item" : "items"}`;
       let n = filtered.length, html = "";
-      const groups = {};
-      filtered.forEach((it) => (groups[year(it)] ||= []).push(it));
-      Object.keys(groups).sort().reverse().forEach((y) => {
-        html += `<div class="year-group"><h3>${y}</h3><ol class="pub-list">${groups[y].map((it) => itemHTML(it, n--)).join("")}</ol></div>`;
-      });
+      const isPt = cat === "pt";
+      [ptTop, ptBottom, viewEl].forEach((el) => el && (el.hidden = !isPt));
+      if (viewEl) viewEl.querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c.dataset.v === ptView));
+      if (isPt && ptView === "field") {
+        // 기술분야별: content.js 의 patentFields 순서대로 대분류 → 세부기술
+        const byNo = new Map(filtered.map((it) => [reg7(it), it]));
+        const used = new Set();
+        let k = 1;
+        (L.patentFields || []).forEach((g) => {
+          const subs = g.subs.map((sg) => ({ sg, items: sg.nos.map((no) => byNo.get(no)).filter(Boolean) })).filter((x) => x.items.length);
+          if (!subs.length) return;
+          const cnt = subs.reduce((a, x) => a + x.items.length, 0);
+          html += `<div class="field-group"><h3>${T(g.name)} <span class="cnt">${cnt}</span></h3>`;
+          subs.forEach(({ sg, items }) => {
+            items.forEach((it) => used.add(reg7(it)));
+            html += `<h4>${T(sg.name)}</h4><ol class="pub-list">${items.map((it) => itemHTML(it, k++)).join("")}</ol>`;
+          });
+          html += `</div>`;
+        });
+        const rest = filtered.filter((it) => !used.has(reg7(it)));
+        if (rest.length) html += `<div class="field-group"><h3>${bi("미분류", "Unclassified")} <span class="cnt">${rest.length}</span></h3><ol class="pub-list">${rest.map((it) => itemHTML(it, k++)).join("")}</ol></div>`;
+      } else {
+        const groups = {};
+        filtered.forEach((it) => (groups[year(it)] ||= []).push(it));
+        Object.keys(groups).sort().reverse().forEach((y) => {
+          html += `<div class="year-group"><h3>${y}</h3><ol class="pub-list">${groups[y].map((it) => itemHTML(it, n--)).join("")}</ol></div>`;
+        });
+      }
       listEl.innerHTML = html || `<div class="empty-note">${bi("검색 결과가 없습니다.", "No results found.")}</div>`;
       tabsEl.querySelectorAll(".tab").forEach((t) => t.classList.toggle("on", t.dataset.k === cat));
     };
+    if (viewEl) viewEl.addEventListener("click", (e) => {
+      const c = e.target.closest(".chip");
+      if (!c) return;
+      ptView = c.dataset.v;
+      draw();
+    });
     tabsEl.addEventListener("click", (e) => {
       const t = e.target.closest(".tab");
       if (!t) return;

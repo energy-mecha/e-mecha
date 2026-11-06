@@ -16,21 +16,127 @@
   <div class="page-banner"><div class="container">
     <div class="crumb"><a href="index.html">Home</a> / Publications</div>
     <h1>Publications</h1>
-    <p><span lang="ko">국제 · 국내 저널, 학술대회 논문 및 등록 특허</span><span lang="en">International and domestic journal papers, conference papers, and registered patents</span></p>
+    <p><span lang="ko">국제 · 국내 저널, 학술대회 논문 및 등록 특허(대표 특허기술 · 기술분야별 목록)</span><span lang="en">International and domestic journal papers, conference papers, and registered patents</span></p>
   </div></div>
 
   <section class="block" style="padding-top:44px">
     <div class="container">
       <div class="tabs" id="pub-tabs" role="tablist"></div>
+      <div id="pt-top" class="pt-extra" hidden>
+        <h2 class="section-title" style="margin-top:8px"><a class="pf-title-link" href="assets/files/emecha-tech-portfolio-v2.2.pdf" target="_blank" rel="noopener" title="PDF"><span lang="ko">대표 특허기술</span><span lang="en">Flagship Technologies</span> <span class="pf-pdf-ico" aria-hidden="true">PDF ↗</span></a></h2>
+        <p class="section-desc"><span lang="ko">스마트 전력변환 · 신재생 고장진단 분야의 대표 특허기술입니다. TRL은 연구실 자체 평가 기준입니다. (그림을 클릭하면 확대됩니다)</span><span lang="en">Flagship patented technologies in smart power conversion and renewable-energy fault diagnosis. TRL is the lab's own assessment. (Click a figure to enlarge.)</span></p>
+        <div class="btn-row pf-pdf-row">
+          <a class="btn" href="assets/files/emecha-tech-portfolio-v2.2.pdf" target="_blank" rel="noopener"><span lang="ko">전략기술포트폴리오 보기 (PDF)</span><span lang="en">View Technology Portfolio (PDF)</span></a>
+          <a class="btn outline" href="assets/files/emecha-tech-portfolio-v2.2.pdf" download="국립순천대 에너지메카트로닉스연구실 전략기술포트폴리오_v2.2.pdf"><span lang="ko">다운로드</span><span lang="en">Download</span> <span class="pf-size">1.6 MB · 34p</span></a>
+        </div>
+      <div class="grid c4 pf-grid">
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/dab-setup.jpg" alt="DAB converter experimental setup"></figure>
+          <div class="body">
+            <div class="num">TECH 01 · <span lang="ko">전력변환</span><span lang="en">POWER CONVERSION</span></div>
+            <h3><span lang="ko">DAB 컨버터 위상각 보상 제어</span><span lang="en">Phase-Shift Compensation for DAB Converters</span></h3>
+            <p><span lang="ko">SiC MOSFET 기생 커패시턴스·다이오드 전압을 반영해 데드타임 위상 오차를 보상합니다. 출력전압 정확도 93.17% → 97.16%.</span><span lang="en">Compensates the dead-time phase error caused by SiC MOSFET parasitic capacitance and diode voltage. Output-voltage accuracy 93.17% → 97.16%.</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 4</span><span class="pf-no">10-2745924 · 10-3033031</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/leak-flow.png" alt="Online leakage-inductance calculation flowchart"></figure>
+          <div class="body">
+            <div class="num">TECH 02 · <span lang="ko">전력변환·진단</span><span lang="en">CONVERSION &amp; DIAGNOSTICS</span></div>
+            <h3><span lang="ko">DAB 파라미터 온라인 추정·제어</span><span lang="en">Online Parameter Estimation for DAB</span></h3>
+            <p><span lang="ko">운전 중 전류 변화로 누설인덕턴스·변압비를 계측장비 없이 계산해 제어 보정과 고장 예측에 활용합니다. 연구실 창업기업 공동 등록.</span><span lang="en">Calculates leakage inductance and turns ratio from current changes during operation, without extra instruments, for control correction and prognosis. Co-owned with a lab spin-off.</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 4</span><span class="pf-no">10-2815838 · 10-2902142 · 10-3018949</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/vit-proto.jpg" alt="Variable-inductance transformer prototype"></figure>
+          <div class="body">
+            <div class="num">TECH 03 · <span lang="ko">자성부품</span><span lang="en">MAGNETICS</span></div>
+            <h3><span lang="ko">가변 누설인덕턴스 고주파 변압기</span><span lang="en">Variable-Leakage-Inductance HF Transformer</span></h3>
+            <p><span lang="ko">코어 삽입 위치·무버 각도로 누설인덕턴스를 연속 가변(약 97 → 29 μH)해, 하나의 변압기로 출력 범위를 약 40 → 260 W로 넓힙니다.</span><span lang="en">Tunes leakage inductance continuously (≈97 → 29 μH) by core insertion or a rotating mover, widening the output range (≈40 → 260 W) with one transformer.</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 4</span><span class="pf-no">10-2790915 · 10-2954804 <span lang="ko">외</span><span lang="en">and more</span></span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/pf-tab-backflow.png" alt="SPS versus DPS backflow power"></figure>
+          <div class="body">
+            <div class="num">TECH 04 · <span lang="ko">전력변환</span><span lang="en">POWER CONVERSION</span></div>
+            <h3><span lang="ko">3포트 TAB DC-DC 컨버터</span><span lang="en">Three-Port TAB DC-DC Converter</span></h3>
+            <p><span lang="ko">PV·배터리·부하를 3권선 변압기 하나로 연결하고, DPS 제어로 역류 전력을 SPS 대비 약 58% 줄입니다(개념 시뮬레이션).</span><span lang="en">Connects PV, battery and load through one three-winding transformer; DPS control cuts backflow power by about 58% versus SPS (concept simulation).</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 3</span><span class="pf-no">10-2732670</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/pf-arc-cct.png" alt="Color-temperature arc detection concept"></figure>
+          <div class="body">
+            <div class="num">TECH 05 · <span lang="ko">전기안전</span><span lang="en">ELECTRICAL SAFETY</span></div>
+            <h3><span lang="ko">색온도 기반 DC 아크 검출·차단</span><span lang="en">Color-Temperature DC Arc Detection</span></h3>
+            <p><span lang="ko">아크 발광의 색온도와 전류·전압·온도를 함께 분석해 오동작 없이 아크를 판별하고 즉시 차단합니다.</span><span lang="en">Combines the color temperature of arc light with current, voltage and temperature to identify arcs without nuisance trips and cut power at once.</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 3</span><span class="pf-no">10-3038560</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/pvdc-principle.png" alt="PV disconnection location system"></figure>
+          <div class="body">
+            <div class="num">TECH 06 · <span lang="ko">고장진단</span><span lang="en">FAULT DIAGNOSIS</span></div>
+            <h3><span lang="ko">PV 스트링 단선 위치 검출</span><span lang="en">PV String Disconnection Locator</span></h3>
+            <p><span lang="ko">모듈-대지 기생 커패시턴스(Cp-g, Cn-g)를 측정해 단선된 모듈 위치를 현장에서 즉시 산출합니다. 휴대형·인버터 결합형 제품군, 기술이전.</span><span lang="en">Finds the disconnected module on site by measuring module-to-ground parasitic capacitance. Portable and inverter-integrated versions; licensed to industry.</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 5</span><span class="pf-no">10-2480168 <span lang="ko">외 4건</span><span lang="en">+4 more</span></span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/p2h-testbed.jpg" alt="P2H testbed"></figure>
+          <div class="body">
+            <div class="num">TECH 07 · <span lang="ko">신재생에너지</span><span lang="en">RENEWABLES</span></div>
+            <h3><span lang="ko">PV 직병렬 재구성 MPPT</span><span lang="en">Reconfigurable PV Array MPPT</span></h3>
+            <p><span lang="ko">일사량·부하·컨버터 토폴로지에 따라 PV 모듈의 직병렬 연결을 자동 전환합니다. 3 kW급 P2H 실증, 기술이전.</span><span lang="en">Switches PV modules between series and parallel by irradiance, load and converter topology. Validated on a 3 kW P2H testbed; licensed to industry.</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 5</span><span class="pf-no">10-2626309 · 10-3038569</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <figure class="thumb fig"><img src="assets/img/pf-gd-mt.png" alt="Gadolinium magnetization versus temperature"></figure>
+          <div class="body">
+            <div class="num">TECH 08 · <span lang="ko">화재안전</span><span lang="en">FIRE SAFETY</span></div>
+            <h3><span lang="ko">가돌리늄 리드스위치 Fail-safe 화재감시</span><span lang="en">Gadolinium Fail-safe Fire Monitoring</span></h3>
+            <p><span lang="ko">약 20 °C 퀴리온도에서 자성이 바뀌는 가돌리늄으로, 과열 시 전원·제어 신호 없이 회로를 여는 ESS 이중 안전장치입니다.</span><span lang="en">Uses gadolinium's ≈20 °C Curie transition to open the circuit on overheating with no power or control signal — a fail-safe for ESS.</span></p>
+            <div class="pf-meta"><span class="tag trl">TRL 3</span><span class="pf-no">10-2915006 · 10-2934326</span></div>
+          </div>
+        </article>
+
+      </div>
+        <h2 class="section-title" style="margin-top:34px"><span lang="ko">등록특허 목록</span><span lang="en">Registered Patents</span></h2>
+      </div>
       <div class="toolbar">
         <label class="sr-only" for="pub-q">Search</label>
         <input id="pub-q" type="search">
         <label class="sr-only" for="pub-year">Year</label>
         <select id="pub-year"></select>
+        <div class="pt-view" id="pt-view" hidden role="group" aria-label="View">
+          <button class="chip" type="button" data-v="year"><span lang="ko">연도별</span><span lang="en">By year</span></button>
+          <button class="chip" type="button" data-v="field"><span lang="ko">기술분야별</span><span lang="en">By field</span></button>
+        </div>
         <span class="result" id="pub-count"></span>
       </div>
       <div id="pub-list"></div>
       <p class="updated" id="pub-updated"></p>
+      <div id="pt-bottom" class="pt-extra" hidden>
+        <h2 class="section-title" style="margin-top:34px"><span lang="ko">협력 안내</span><span lang="en">Work With Us</span></h2>
+      <div class="grid c4">
+        <div class="stat pf-coop"><b>01</b><span lang="ko">기술이전 · 사업화<br>보유 특허 실시권 협의</span><span lang="en">Licensing &amp; commercialization of patents</span></div>
+        <div class="stat pf-coop"><b>02</b><span lang="ko">공동 R&amp;D<br>국가과제 공동 기획</span><span lang="en">Joint R&amp;D and national project planning</span></div>
+        <div class="stat pf-coop"><b>03</b><span lang="ko">수탁연구<br>DAB·변압기 설계, PV·DC 진단</span><span lang="en">Contract research: DAB, transformers, PV/DC diagnostics</span></div>
+        <div class="stat pf-coop"><b>04</b><span lang="ko">기업지원 · 기술지도<br>시작품 시험 · 장비 활용</span><span lang="en">Technical consulting, prototype testing, equipment use</span></div>
+      </div>
+      <p style="margin-top:18px"><span lang="ko">문의: 김대경 교수</span><span lang="en">Contact: Prof. Dae-kyong Kim</span> · <a href="mailto:dkkim@scnu.ac.kr">dkkim@scnu.ac.kr</a> · 061-750-3546</p>
+      </div>
     </div>
   </section>
 </main>
