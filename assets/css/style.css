@@ -298,6 +298,17 @@ a.card, a.card:hover { color: inherit; }
 .badge.solid { background: var(--accent); color: #fff; }
 .badge.gray { background: var(--line); color: var(--muted); }
 .pub-meta.transfer { color: var(--accent-ink); font-weight: 700; }
+/* 기술이전(특허양도) 배지 — 글자가 흰색에서 검정색으로 왼쪽부터 퍼졌다가 다시 흰색으로 돌아옴 */
+.badge.transfer-badge { margin: 4px 0 0; padding: 3px 11px; font-size: 12px; background: var(--accent); color: #fff; }
+.badge.transfer-badge .tb-text {
+  background: linear-gradient(90deg, #000 0 45%, #fff 55% 100%) 100% 0 / 220% 100% no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  animation: transfer-sweep 2.4s ease-in-out infinite alternate;
+}
+@keyframes transfer-sweep { from { background-position: 100% 0; } to { background-position: 0 0; } }
+/* '동작 줄이기' 설정 사용자에게는 같은 효과를 더 천천히 */
+@media (prefers-reduced-motion: reduce) { .badge.transfer-badge .tb-text { animation-duration: 4s; } }
 .updated { font-size: 12.5px; color: var(--muted); margin-top: 22px; }
 
 /* ---------- projects ---------- */
