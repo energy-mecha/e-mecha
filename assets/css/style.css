@@ -287,6 +287,10 @@ a.card, a.card:hover { color: inherit; }
 .pub { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 11px 0; border-bottom: 1px solid var(--line); }
 .pub::before { content: "[" attr(data-n) "]"; font: 700 13px var(--font-head); color: var(--muted); padding-top: 2px; }
 .pub-title { font-weight: 600; font-size: 15px; line-height: 1.5; }
+.pub-title a { color: inherit; }
+.pub-title a:hover { color: var(--accent-ink); }
+.badge.link { background: var(--accent); color: #fff; text-decoration: none; }
+.badge.link:hover { background: var(--accent-ink); color: #fff; text-decoration: none; }
 .pub-meta { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
 .pub-meta i { color: var(--accent-ink); }
 #recent-pubs { border-top: 0 !important; }

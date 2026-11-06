@@ -326,9 +326,13 @@
     const itemHTML = (it, n) => {
       if (cat === "pt") {
         const ko = esc(it.title), en = it.title_en ? esc(it.title_en) : ko;
-        return `<li class="pub" data-n="${n}"><div><div class="pub-title">${bi(ko, en)}</div>
+        // KIPRIS 상세 페이지: 특허청 DOI(10.8080/출원번호 13자리)가 KIPRIS 로 연결됨
+        const appDigits = String(it.appNo || "").replace(/\D/g, "");
+        const kipris = appDigits.length === 13 ? `https://doi.org/10.8080/${appDigits}` : "";
+        const ext = (inner) => kipris ? `<a href="${kipris}" target="_blank" rel="noopener">${inner}</a>` : inner;
+        return `<li class="pub" data-n="${n}"><div><div class="pub-title">${ext(bi(ko, en))}</div>
           ${it.title_en ? `<div class="pub-meta"><i>${bi(en, ko)}</i></div>` : ""}
-          <div class="pub-meta">${bi("등록번호", "Reg. No.")} ${esc(it.regNo)} (${esc(it.regDate)}) · ${bi("출원", "Appl.")} ${esc(it.appNo)} (${esc(it.appDate)})<span class="badge">KR</span></div>
+          <div class="pub-meta">${bi("등록번호", "Reg. No.")} ${esc(it.regNo)} (${esc(it.regDate)}) · ${bi("출원", "Appl.")} ${esc(it.appNo)} (${esc(it.appDate)})<span class="badge">KR</span>${kipris ? `<a class="badge link" href="${kipris}" target="_blank" rel="noopener" title="KIPRIS">KIPRIS ↗</a>` : ""}</div>
           ${it.transfer ? `<div class="pub-meta transfer">${bi(`기술이전(특허양도) - ${esc(it.transfer.ko)}`, `Technology transfer (patent assignment) - ${esc(it.transfer.en)}`)}</div>` : ""}
           ${it.joint ? `<div class="pub-meta transfer">${bi(`공동특허 - ${esc(it.joint.ko)}`, `Joint patent - ${esc(it.joint.en)}`)}</div>` : ""}</div></li>`;
       }
