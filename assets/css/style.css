@@ -288,6 +288,8 @@ a.card, a.card:hover { color: inherit; }
 .pub::before { content: "[" attr(data-n) "]"; font: 700 13px var(--font-head); color: var(--muted); padding-top: 2px; }
 .pub-title { font-weight: 600; font-size: 15px; line-height: 1.5; }
 .pub-title a { color: inherit; }
+/* 본문 링크 밑줄(main li a)을 특허 제목·KIPRIS 배지에서는 뺌 */
+main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-decoration: none; }
 .pub-title a:hover { color: var(--accent-ink); }
 .badge.link { background: var(--accent); color: #fff; text-decoration: none; }
 .badge.link:hover { background: var(--accent-ink); color: #fff; text-decoration: none; }
@@ -298,10 +300,10 @@ a.card, a.card:hover { color: inherit; }
 .badge.solid { background: var(--accent); color: #fff; }
 .badge.gray { background: var(--line); color: var(--muted); }
 .pub-meta.transfer { color: var(--accent-ink); font-weight: 700; }
-/* 기술이전(특허양도) 배지 — 글자가 흰색에서 검정색으로 왼쪽부터 퍼졌다가 다시 흰색으로 돌아옴 */
+/* 기술이전(특허양도) 배지 — 글자가 흰색에서 회색으로 왼쪽부터 퍼졌다가 다시 흰색으로 돌아옴 */
 .badge.transfer-badge { margin: 4px 0 0; padding: 3px 11px; font-size: 12px; background: var(--accent); color: #fff; }
 .badge.transfer-badge .tb-text {
-  background: linear-gradient(90deg, #000 0 45%, #fff 55% 100%) 100% 0 / 220% 100% no-repeat;
+  background: linear-gradient(90deg, #9a9a9a 0 45%, #fff 55% 100%) 100% 0 / 220% 100% no-repeat;
   -webkit-background-clip: text; background-clip: text;
   color: transparent; -webkit-text-fill-color: transparent;
   animation: transfer-sweep 2.4s ease-in-out infinite alternate;
