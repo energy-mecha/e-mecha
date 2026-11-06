@@ -242,6 +242,10 @@ window.LAB = {
   /* ---------------- 뉴스 ----------------
      type: publication | award | people | grant | patent */
   news: [
+    { date: "2026.10", type: "publication", text: { ko: "IEEE ECCE 2026 논문 3편 발표 (PSFB 경부하 효율 향상, PV MPPT 입력 커패시터 영향, 도서지역 UAM 물류 에너지·비용 분석)", en: "Three papers presented at IEEE ECCE 2026 (PSFB light-load efficiency, input-capacitor effect on PV MPPT, and UAM logistics energy and cost analysis for island regions)" } },
+    { date: "2026.10", type: "publication", text: { ko: "대한전기학회 전기기기 및 에너지변환시스템부문회 추계학술대회 논문 3편 발표 (DAB 데드타임 설계, 동기정류기 제어 등)", en: "Three papers presented at the KIEE EMECS Autumn Conference (DAB dead-time design, synchronous rectifier control, and more)" } },
+    { date: "2026.07", type: "publication", text: { ko: "대한전기학회 하계학술대회 논문 3편 발표 (SiC MOSFET 유효 출력 커패시턴스, PV MPPT 입력커패시터 영향 등)", en: "Three papers presented at the KIEE Summer Conference (SiC MOSFET effective output capacitance, input-capacitor effect on PV MPPT, and more)" } },
+    { date: "2026.02", type: "publication", text: { ko: "한국전자통신학회논문지(KCI) 논문 3편 게재 (SVG 무효전력 보상, 도서지역 UAM 시뮬레이션, PSFB 동기정류기)", en: "Three papers published in the Journal of the Korea Institute of Electronic Communication Sciences (KCI): SVG reactive power compensation, island UAM simulation, and PSFB synchronous rectification" } },
     { date: "2026.02", type: "people", text: { ko: "㈜티엠씨솔루션즈 창업 박사 졸업 — 연구실 출신 두 번째 창업", en: "Ph.D. graduate founded TMC Solutions Co., Ltd. — the lab's second startup" } },
     { date: "2026.02", type: "patent", text: { ko: "특허 등록: 가돌리늄 보조 개폐 장치를 포함하는 화재 감시 시스템", en: "Patent registered: Fire monitoring system with a gadolinium-based auxiliary switching device" } },
     { date: "2026.01", type: "patent", text: { ko: "특허 등록: 온도 변화에 따라 자기적 특성이 변하는 가돌리늄을 이용한 리드스위치", en: "Patent registered: Reed switch using gadolinium whose magnetic properties change with temperature" } },
