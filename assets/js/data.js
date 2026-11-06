@@ -1618,12 +1618,77 @@ window.LAB_DATA = {
  ],
  "patents": [
   {
+   "title": "색온도를 이용한 DC 아크 검출 및 전원 차단장치 및 방법",
+   "title_en": "DC arc detection and power blocking device and method using color temperature",
+   "appDate": "2025.06.12",
+   "appNo": "10-2025-0077236",
+   "regDate": "2026.10.22",
+   "regNo": "10-3038560-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
+   "title": "태양광 모듈의 MPPT 제어를 위해 일사량, 부하, 및 컨버터 토폴로지를 고려한 알고리즘을 이용한 태양광 직병렬연결 방법",
+   "title_en": "Photovoltaic series and parallel connection method using an algorithm considering solar radiation, load, and converter topology for MPPT control of photovoltaic modules",
+   "appDate": "2023.09.14",
+   "appNo": "10-2023-0122154",
+   "regDate": "2026.10.22",
+   "regNo": "10-3038569-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
+   "title": "SiC-Mosfet의 기생 커패시턴스 및 다이오드 전방 전압을 고려한 DAB 변환기에 대한 보상 시스템 및 이를 이용한 보상 방법",
+   "title_en": "3phase shift compensation method for DAB converter considering parasitic capacitance and diode forward voltage of SiC-MOSFET",
+   "appDate": "2025.06.10",
+   "appNo": "10-2025-0075504",
+   "regDate": "2026.10.12",
+   "regNo": "10-3033031-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
+   "title": "누설인덕턴스 전류변화를 이용한 DAB 컨버터의 제어 시스템 및 방법",
+   "title_en": "Control system and method of DAB converter using leakage inductance current change",
+   "appDate": "2024.08.07",
+   "appNo": "10-2024-0105199",
+   "regDate": "2026.09.09",
+   "regNo": "10-3018949-0000",
+   "transfer": null,
+   "joint": {
+    "ko": "㈜에니트",
+    "en": "ENIT Co., Ltd."
+   }
+  },
+  {
+   "title": "자동 급수와 가습 기능을 추가한 식물 재배 방법 및 장치",
+   "title_en": "Method and apparatus for growing plants with automatic water supply and humidification functions",
+   "appDate": "2023.11.02",
+   "appNo": "10-2023-0150042",
+   "regDate": "2026.07.14",
+   "regNo": "10-2992641-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
+   "title": "누설 인덕턴스 가변이 가능한 에너지 변환 장치 및 이를 이용한 변환 방법",
+   "title_en": "Leakage inductance variable energy conversion device and conversion method using the same",
+   "appDate": "2024.10.04",
+   "appNo": "10-2024-0134644",
+   "regDate": "2026.04.15",
+   "regNo": "10-2954804-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
    "title": "화재 발생 시 온도 변화에 따라 자기적 특성이 변하는 가돌리늄을 이용한 보조 개폐 장치를 포함하는 화재 감시 시스템 및 이를 이용한 방법",
-   "title_en": "A fire monitoring system including an auxiliary opening and closing device using gadolinium, whose magnetic characteristics…",
+   "title_en": "A fire monitoring system including an auxiliary opening and closing device using gadolinium, whose magnetic characteristics change according to temperature changes in the event of a fire, and a method using it",
    "appDate": "2023.07.07",
    "appNo": "10-2023-0088118",
    "regDate": "2026.02.27",
-   "regNo": "10-2934326-0000"
+   "regNo": "10-2934326-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "온도 변화에 따라 자기적 특성이 변하는 가돌리늄을 이용한 리드스위치",
@@ -1631,7 +1696,22 @@ window.LAB_DATA = {
    "appDate": "2023.07.07",
    "appNo": "10-2023-0088129",
    "regDate": "2026.01.15",
-   "regNo": "10-2915006-0000"
+   "regNo": "10-2915006-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
+   "title": "누설인덕턴스 전류 변화를 이용한 제어를 통한 DAB 컨버터 내부 자성부품 파라미터 계산 시스템 및 이를 이용한 계산 방법",
+   "title_en": "DAB converter internal magnetic component parameter calculation system and calculation method using leakage inductance current change",
+   "appDate": "2024.08.07",
+   "appNo": "10-2024-0105187",
+   "regDate": "2025.12.16",
+   "regNo": "10-2902142-0000",
+   "transfer": null,
+   "joint": {
+    "ko": "㈜에니트",
+    "en": "ENIT Co., Ltd."
+   }
   },
   {
    "title": "태양광 단선 검출기 및 이를 이용한 검출 방법",
@@ -1639,15 +1719,19 @@ window.LAB_DATA = {
    "appDate": "2022.09.21",
    "appNo": "10-2022-0119403",
    "regDate": "2025.12.08",
-   "regNo": "10-2898838-0000"
+   "regNo": "10-2898838-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "DAB 컨버터에 사용되는 변압기의 변압비와 누설 인덕턴스 추정 시스템 및 그 방법",
-   "title_en": "System and Method for Estimating Turns Ratio and Leakage Inductance of Transformers Used in DAB Converters",
+   "title_en": "System and method for estimating turns ratio and leakage inductance of transformers used in DAB converters",
    "appDate": "2023.04.10",
    "appNo": "10-2023-0046565",
    "regDate": "2025.05.28",
-   "regNo": "10-2815838-0000"
+   "regNo": "10-2815838-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "삽입된 리액터 일체형 고주파변압기의 누설인덕턴스 가변 장치 및 그 방법",
@@ -1655,23 +1739,29 @@ window.LAB_DATA = {
    "appDate": "2023.04.10",
    "appNo": "10-2023-0046571",
    "regDate": "2025.03.31",
-   "regNo": "10-2790915-0000"
+   "regNo": "10-2790915-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "DAB 컨버터에 사용되는 스위칭 소자의 기생용량 영향을 고려한 위상각 제어 시스템 및 제어 방법",
-   "title_en": "",
+   "title_en": "A phase angle control system and control method considering the parasitic capacity influence of switching elements used in DAB converters",
    "appDate": "2023.01.19",
    "appNo": "10-2023-0007961",
    "regDate": "2024.12.18",
-   "regNo": "10-2745924"
+   "regNo": "10-2745924-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "Dual-Phase Shift를 이용한 3포트 DC-DC 컨버터의 Backflow power 제거 시스템",
-   "title_en": "Dual-phase Shift Controlled Triple Active Bridge Converter with Reduced Backflow Power",
+   "title_en": "Dual-phase shift controlled triple active bridge converter with reduced backflow power",
    "appDate": "2022.11.01",
    "appNo": "10-2022-0143450",
    "regDate": "2024.11.18",
-   "regNo": "10-2732670-0000"
+   "regNo": "10-2732670-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "자기장을 동력원으로 하는 내구성이 향상된 시계장치 및 그 작동방법",
@@ -1679,7 +1769,9 @@ window.LAB_DATA = {
    "appDate": "2021.12.28",
    "appNo": "10-2021-0190011",
    "regDate": "2024.04.15",
-   "regNo": "10-2658718-0000"
+   "regNo": "10-2658718-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "내구성과 안정성이 향상된 금속 분말 시계와 그 작동방법",
@@ -1687,23 +1779,22 @@ window.LAB_DATA = {
    "appDate": "2021.12.21",
    "appNo": "10-2021-0183761",
    "regDate": "2024.04.01",
-   "regNo": "10-2654599-0000"
+   "regNo": "10-2654599-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "태양광 모듈의 MPPT 제어를 위해 일사량, 부하, 및 컨버터 토폴로지를 고려한 알고리즘을 이용한 태양광 직병렬연결 시스템",
-   "title_en": "",
-   "appDate": "2024.01.12",
+   "title_en": "Photovoltaic series and parallel connection system using an algorithm considering solar radiation, load, and converter topology for MPPT control of photovoltaic modules",
+   "appDate": "2023.09.14",
    "appNo": "10-2023-0122149",
    "regDate": "2024.01.12",
-   "regNo": "10-2626309"
-  },
-  {
-   "title": "숙성 정도의 조절이 가능한 치즈 숙성장치 및 그 장치를 이용한 치즈 숙성방법",
-   "title_en": "Cheese ripening apparatus that can control the ripeness of cheese ingredients and cheese ripening method using apparatus",
-   "appDate": "2020.11.13",
-   "appNo": "10-2020-0151487",
-   "regDate": "2023.06.16",
-   "regNo": "10-2545890-0000"
+   "regNo": "10-2626309-0000",
+   "transfer": {
+    "ko": "㈜셀시스템",
+    "en": "Cell System Co., Ltd."
+   },
+   "joint": null
   },
   {
    "title": "미생물 활성도의 관찰이 가능한 치즈 숙성장치 및 그 장치를 이용한 치즈 숙성방법",
@@ -1711,15 +1802,19 @@ window.LAB_DATA = {
    "appDate": "2020.11.13",
    "appNo": "10-2020-0151488",
    "regDate": "2023.06.16",
-   "regNo": "10-2545886-0000"
+   "regNo": "10-2545886-0000",
+   "transfer": null,
+   "joint": null
   },
   {
-   "title": "PV 시스템의 단선 고장 위치를 검출하기 위한 휴대형 기생커패시턴스 탐지, 감지, 식별, 및 인식 단말기 및 이를 이용한 검출 방법",
-   "title_en": "",
-   "appDate": "2023.03.31",
-   "appNo": "10-2518017",
-   "regDate": "2023.03.31",
-   "regNo": "10-2518017"
+   "title": "숙성 정도의 조절이 가능한 치즈 숙성장치 및 그 장치를 이용한 치즈 숙성방법",
+   "title_en": "Cheese ripening apparatus that can control the ripeness of cheese ingredients and cheese ripening method using apparatus",
+   "appDate": "2020.11.13",
+   "appNo": "10-2020-0151487",
+   "regDate": "2023.06.16",
+   "regNo": "10-2545890-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "PV 시스템의 단선 고장 위치를 검출하기 위한 기생커패시턴스 탐지 알고리즘이 포함된 시스템 및 이를 이용한 검출 방법",
@@ -1727,7 +1822,22 @@ window.LAB_DATA = {
    "appDate": "2022.05.23",
    "appNo": "10-2022-0062538",
    "regDate": "2023.03.31",
-   "regNo": "10-2518017-0000"
+   "regNo": "10-2518017-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
+   "title": "PV 시스템의 단선 고장 위치를 검출하기 위한 휴대형 기생커패시턴스 탐지, 감지, 식별, 및 인식 단말기 및 이를 이용한 검출 방법",
+   "title_en": "Detection of disconnection position of PV system using parasitic capacitance and the method using it",
+   "appDate": "2022.05.23",
+   "appNo": "10-2022-0062574",
+   "regDate": "2023.03.31",
+   "regNo": "10-2518018-0000",
+   "transfer": {
+    "ko": "㈜티엠씨솔루션즈",
+    "en": "TMC Solutions Co., Ltd."
+   },
+   "joint": null
   },
   {
    "title": "PV 시스템의 단선 고장 위치를 검출하기 위한 기생커패시턴스 탐지기능이 결합된 인버터 및 이를 이용한 검출 방법",
@@ -1735,15 +1845,19 @@ window.LAB_DATA = {
    "appDate": "2022.05.23",
    "appNo": "10-2022-0062556",
    "regDate": "2023.03.07",
-   "regNo": "10-2508632-0000"
+   "regNo": "10-2508632-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "변압기 지지대 시뮬레이션 시스템 및 이를 이용한 시뮬레이션 방법",
-   "title_en": "",
-   "appDate": "2023.02.06",
-   "appNo": "10-2497961",
+   "title_en": "A transformer support simulation system and a simulation method using it",
+   "appDate": "2020.12.31",
+   "appNo": "10-2020-0188832",
    "regDate": "2023.02.06",
-   "regNo": "10-2497961"
+   "regNo": "10-2497961-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "복수개의 서포터를 갖는 변압기 지지대 시뮬레이션 시스템 및 이를 이용한 시뮬레이션 방법",
@@ -1751,127 +1865,173 @@ window.LAB_DATA = {
    "appDate": "2020.12.31",
    "appNo": "10-2020-0188833",
    "regDate": "2023.02.06",
-   "regNo": "10-2497969-0000"
+   "regNo": "10-2497969-0000",
+   "transfer": null,
+   "joint": null
   },
   {
-   "title": "딥 러닝을 이용한 AI 기반의 농기계 탈부착형 안전 탐지 방법 및 안전장치가스 튀김 장치",
-   "title_en": "",
-   "appDate": "2023.01.27",
-   "appNo": "10-2494578",
+   "title": "딥 러닝을 이용한 AI 기반의 농기계 탈부착형 안전 탐지 방법 및 안전장치",
+   "title_en": "Method and system for artificial intelligence based quality inspection in manufacturing process using machine vision deep learning",
+   "appDate": "2020.12.09",
+   "appNo": "10-2020-0171529",
    "regDate": "2023.01.27",
-   "regNo": "10-2494578"
+   "regNo": "10-2494578-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "스마트 치즈 숙성고와 그 숙성방법",
-   "title_en": "",
-   "appDate": "2022.12.29",
-   "appNo": "10-2483166",
-   "regDate": "2022.12.29",
-   "regNo": "10-2483166"
+   "title_en": "Smart cheese refrigerator and ripening method thereof",
+   "appDate": "2020.11.13",
+   "appNo": "10-2020-0151486",
+   "regDate": "2022.12.27",
+   "regNo": "10-2483166-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "기생커패시턴스 감지 알고리즘을 이용한 태양광 패널의 단선 위치 검출 시스템 및 그 검출 방법",
    "title_en": "Detection of disconnection position of PV system using parasitic capacitor and the method using it",
-   "appDate": "2022.12.21",
+   "appDate": "2021.12.10",
    "appNo": "10-2021-0176538",
-   "regDate": "2022.12.21",
-   "regNo": "10-2480168-0000"
+   "regDate": "2022.12.19",
+   "regNo": "10-2480168-0000",
+   "transfer": {
+    "ko": "㈜티엠씨솔루션즈",
+    "en": "TMC Solutions Co., Ltd."
+   },
+   "joint": null
   },
   {
    "title": "카메라와 감지 센서를 이용한 농업 기계용 안전 모듈 및 이를 이용한 방법",
-   "title_en": "",
-   "appDate": "2022.10.25",
-   "appNo": "10-2460083",
+   "title_en": "Safety modules for agricultural machinery using cameras and ultrasonic sensors",
+   "appDate": "2020.12.08",
+   "appNo": "10-2020-0170791",
    "regDate": "2022.10.25",
-   "regNo": "10-2460083"
+   "regNo": "10-2460083-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "E형 철심을 이용한 공극 가변형 변압기 구조체 및 이를 이용하는 이용방법",
-   "title_en": "",
-   "appDate": "2022.10.13",
-   "appNo": "10-2455751",
+   "title_en": "Gap variable type transformer structure using e-type iron core and method of using the same",
+   "appDate": "2021.11.29",
+   "appNo": "10-2021-0166891",
    "regDate": "2022.10.13",
-   "regNo": "10-2455751"
+   "regNo": "10-2455751-0000",
+   "transfer": {
+    "ko": "㈜셀시스템",
+    "en": "Cell System Co., Ltd."
+   },
+   "joint": null
   },
   {
    "title": "E형 철심을 이용한 공극 가변형 변압기 구조체 및 그 이용방법",
-   "title_en": "",
-   "appDate": "2022.10.13",
-   "appNo": "10-2455726",
+   "title_en": "Gap variable type transformer structure using e-type iron core and using method thereof",
+   "appDate": "2021.12.08",
+   "appNo": "10-2021-0174303",
    "regDate": "2022.10.13",
-   "regNo": "10-2455726"
-  },
-  {
-   "title": "가습기 겸용 전기포트",
-   "title_en": "",
-   "appDate": "2021.02.02",
-   "appNo": "10-2213550",
-   "regDate": "2021.02.02",
-   "regNo": "10-2213550"
+   "regNo": "10-2455726-0000",
+   "transfer": {
+    "ko": "㈜셀시스템",
+    "en": "Cell System Co., Ltd."
+   },
+   "joint": null
   },
   {
    "title": "가습기 겸용 전열주전자",
    "title_en": "Humidifier combined electric heating pot",
-   "appDate": "2021.02.02",
-   "appNo": "10-2213544-0000",
+   "appDate": "2019.11.26",
+   "appNo": "10-2019-0153132",
    "regDate": "2021.02.02",
-   "regNo": "10-2213544-0000"
+   "regNo": "10-2213544-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "가습기 겸용 전기포트",
-   "title_en": "Electric Water Boiler Combined with Humidifier",
-   "appDate": "2021.02.02",
-   "appNo": "10-2213537-0000",
+   "title_en": "Electric water boiler combined with humidifier",
+   "appDate": "2019.11.26",
+   "appNo": "10-2019-0153131",
    "regDate": "2021.02.02",
-   "regNo": "10-2213537-0000"
+   "regNo": "10-2213537-0000",
+   "transfer": null,
+   "joint": null
+  },
+  {
+   "title": "가습기 겸용 전열주전자",
+   "title_en": "Humidifier combined electric heating pot",
+   "appDate": "2019.11.26",
+   "appNo": "10-2019-0153133",
+   "regDate": "2021.02.02",
+   "regNo": "10-2213550-0000",
+   "transfer": null,
+   "joint": null
   },
   {
    "title": "자속 보조용 페라이트 코어를 이용한 용량 가변형 변압기 구조체 및 그 제조 방법",
-   "title_en": "",
-   "appDate": "2020.07.22",
-   "appNo": "10-2139004",
+   "title_en": "Variable-capacity transformer structure using magnetic flux assist slot and manufacturing method thereof",
+   "appDate": "2019.04.02",
+   "appNo": "10-2019-0038652",
    "regDate": "2020.07.22",
-   "regNo": "10-2139004"
+   "regNo": "10-2139004-0000",
+   "transfer": null,
+   "joint": {
+    "ko": "한국전력공사",
+    "en": "KEPCO"
+   }
   },
   {
    "title": "자속 보조용 페라이트 코어를 이용한 용량 가변형 변압기 구조체 결합구조 및 그 제조 방법",
    "title_en": "",
-   "appDate": "2020.07.14",
-   "appNo": "10-2136026",
+   "appDate": "2019.04.03",
+   "appNo": "10-2019-0038772",
    "regDate": "2020.07.14",
-   "regNo": "10-2136026"
+   "regNo": "10-2136026-0000",
+   "transfer": null,
+   "joint": {
+    "ko": "한국전력공사",
+    "en": "KEPCO"
+   }
   },
   {
    "title": "변압기 코어부의 모서리 포화 저감 구조체 및 그 제조 방법",
-   "title_en": "",
-   "appDate": "2020.07.02",
-   "appNo": "10-2131584",
+   "title_en": "Structure or method of transformer core for saturation flux reduction",
+   "appDate": "2019.04.02",
+   "appNo": "10-2019-0038653",
    "regDate": "2020.07.02",
-   "regNo": "10-2131584"
+   "regNo": "10-2131584-0000",
+   "transfer": null,
+   "joint": {
+    "ko": "한국전력공사",
+    "en": "KEPCO"
+   }
   },
   {
-   "title": "유도가열기기의 온도설정장치",
-   "title_en": "",
-   "appDate": "2019.10.29",
-   "appNo": "10-2040390",
+   "title": "유도 가열 기기의 온도 설정 장치",
+   "title_en": "Temperature controlling apparatus for inductive heating device",
+   "appDate": "2018.01.16",
+   "appNo": "10-2018-0005503",
    "regDate": "2019.10.29",
-   "regNo": "10-2040390"
-  },
-  {
-   "title": "에너지 절감을 위한 스마트 살균건조기",
-   "title_en": "",
-   "appDate": "2018.10.04",
-   "appNo": "제 10-1907323 호",
-   "regDate": "2018.10.04",
-   "regNo": "제 10-1907323 호"
+   "regNo": "10-2040390-0000",
+   "transfer": {
+    "ko": "㈜프라임",
+    "en": "Prime Co., Ltd."
+   },
+   "joint": null
   },
   {
    "title": "스마트 화분",
-   "title_en": "Smart Pot",
-   "appDate": "2016.01.12",
-   "appNo": "10-1586544-0000",
+   "title_en": "Smart pot",
+   "appDate": "2013.12.24",
+   "appNo": "10-2013-0162270",
    "regDate": "2016.01.12",
-   "regNo": "10-1586544-0000"
+   "regNo": "10-1586544-0000",
+   "transfer": {
+    "ko": "유한회사 와이케이",
+    "en": "YK Ltd."
+   },
+   "joint": null
   }
  ],
  "projects": [

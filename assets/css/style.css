@@ -293,6 +293,7 @@ a.card, a.card:hover { color: inherit; }
 .badge { display: inline-block; font: 700 11px var(--font-head); padding: 1px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; background: var(--tint); color: var(--accent-ink); }
 .badge.solid { background: var(--accent); color: #fff; }
 .badge.gray { background: var(--line); color: var(--muted); }
+.pub-meta.transfer { color: var(--accent-ink); font-weight: 700; }
 .updated { font-size: 12.5px; color: var(--muted); margin-top: 22px; }
 
 /* ---------- projects ---------- */

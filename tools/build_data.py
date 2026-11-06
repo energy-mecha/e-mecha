@@ -40,16 +40,29 @@ def find(keyword):
     return find_all(keyword)[0]
 
 
+def open_sheet(path):
+    try:
+        return openpyxl.load_workbook(path, data_only=True).active
+    except (ValueError, IndexError):
+        # 특허청(KIPRIS) 등에서 내려받은 파일은 서식 정보가 깨져 있는 경우가 있어 서식을 건너뛰고 값만 읽음
+        import openpyxl.reader.excel as rx
+        orig, rx.apply_stylesheet = rx.apply_stylesheet, lambda archive, wb: None
+        try:
+            return openpyxl.load_workbook(path, data_only=True, read_only=True).active
+        finally:
+            rx.apply_stylesheet = orig
+
+
 def rows(path):
     """헤더 행을 기준으로 dict 리스트를 반환"""
-    ws = openpyxl.load_workbook(path, data_only=True).active
+    ws = open_sheet(path)
     it = ws.iter_rows(values_only=True)
     header = [str(h).strip() if h is not None else "" for h in next(it)]
     out = []
     for r in it:
         if not any(c is not None and str(c).strip() for c in r):
             continue
-        out.append({header[i] or f"_{i}": r[i] for i in range(len(header))})
+        out.append({header[i] or f"_{i}": (r[i] if i < len(r) else None) for i in range(len(header))})
     return out
 
 
@@ -103,8 +116,79 @@ for r in (r for f in find_all("학술대회") for r in rows(f)):
     })
 
 # ---------------- 특허 ----------------
+def kr_no(s, kind):
+    """특허청 번호를 하이픈 형식으로 — 출원(app): 1020230150042 → 10-2023-0150042, 등록(reg): 1029926410000 → 10-2992641-0000"""
+    s = clean(s)
+    d = re.sub(r"\D", "", s)
+    if len(d) == 13 and d.startswith("10"):
+        return f"{d[:2]}-{d[2:6]}-{d[6:]}" if kind == "app" else f"{d[:2]}-{d[2:9]}-{d[9:]}"
+    return s
+
+
+SCNU_OWNER = "국립순천대학교산학협력단"
+# 기술이전 기업 영문명 (없으면 국문명 그대로 표시)
+COMPANY_EN = {
+    "㈜셀시스템": "Cell System Co., Ltd.",
+    "㈜티엠씨솔루션즈": "TMC Solutions Co., Ltd.",
+    "㈜프라임": "Prime Co., Ltd.",
+    "유한회사 와이케이": "YK Ltd.",
+    "㈜에니트": "ENIT Co., Ltd.",
+    "한국전력공사": "KEPCO",
+}
+
+
+def company(name):
+    """'주식회사프라임' · '(주)셀시스템' → '㈜프라임' · '㈜셀시스템'"""
+    name = clean(name)
+    name = re.sub(r"^(주식회사|\(주\))\s*", "㈜", name)
+    return re.sub(r"\s*(주식회사|\(주\))$", "㈜", name)
+
+
+def owner_names(owners):
+    names = [company(o) for o in owners]
+    return {"ko": ", ".join(names), "en": ", ".join(COMPANY_EN.get(n, n) for n in names)}
+
+
+def transfer(r):
+    """학교가 출원한 뒤 최종권리자가 기업으로 바뀐 특허 → 기술이전(특허양도) 기업명."""
+    owners = [o for o in clean(r.get("최종권리자")).split("|") if o]
+    if not owners or SCNU_OWNER in owners:
+        return None
+    return owner_names(owners)
+
+
+def joint(r):
+    """학교와 기업이 함께 권리자인 특허(공동출원) → 학교를 뺀 공동권리자 이름."""
+    owners = [o for o in clean(r.get("최종권리자")).split("|") if o]
+    others = [o for o in owners if o != SCNU_OWNER]
+    if SCNU_OWNER not in owners or not others:
+        return None
+    return owner_names(others)
+
+
 patents = []
 for r in rows(find("특허등록")):
+    if "발명의명칭" in r:
+        # 특허청(KIPRIS) 검색 결과 형식: 국문·영문 명칭이 따로 있고 번호는 숫자만 있음
+        if clean(r.get("상태")) not in ("", "등록"):
+            continue
+        ko, en = clean(r.get("발명의명칭")), clean(r.get("발명의명칭(영문)"))
+        en = en.rstrip(". ") if re.search(r"[A-Za-z]", en) else ""
+        en = en[:1].upper() + en[1:]
+        # 특허청 영문 명칭은 약어가 소문자로 되어 있어 대문자로 바로잡음
+        for w in ("DC", "AC", "DAB", "MPPT", "PV", "AI", "IoT", "ESS", "LED", "SiC", "MOSFET"):
+            en = re.sub(rf"\b{w}\b", w, en, flags=re.I)
+        patents.append({
+            "title": ko,
+            "title_en": en,
+            "appDate": clean(r.get("출원일자")),
+            "appNo": kr_no(r.get("출원번호"), "app"),
+            "regDate": clean(r.get("등록일자")) or clean(r.get("출원일자")),
+            "regNo": kr_no(r.get("등록번호"), "reg") or kr_no(r.get("출원번호"), "app"),
+            "transfer": transfer(r),
+            "joint": joint(r),
+        })
+        continue
     title = clean(r.get("지식재산권명"))
     # "국문명(English name)" 형태면 분리 (영문명이 '...'로 잘린 경우 포함)
     m = re.match(r"^(.*?[가-힣].*?)\s*\(([A-Za-z][^()]*)\)?\s*$", title)

@@ -328,7 +328,9 @@
         const ko = esc(it.title), en = it.title_en ? esc(it.title_en) : ko;
         return `<li class="pub" data-n="${n}"><div><div class="pub-title">${bi(ko, en)}</div>
           ${it.title_en ? `<div class="pub-meta"><i>${bi(en, ko)}</i></div>` : ""}
-          <div class="pub-meta">${bi("등록번호", "Reg. No.")} ${esc(it.regNo)} (${esc(it.regDate)}) · ${bi("출원", "Appl.")} ${esc(it.appNo)} (${esc(it.appDate)})<span class="badge">KR</span></div></div></li>`;
+          <div class="pub-meta">${bi("등록번호", "Reg. No.")} ${esc(it.regNo)} (${esc(it.regDate)}) · ${bi("출원", "Appl.")} ${esc(it.appNo)} (${esc(it.appDate)})<span class="badge">KR</span></div>
+          ${it.transfer ? `<div class="pub-meta transfer">${bi(`기술이전(특허양도) - ${esc(it.transfer.ko)}`, `Technology transfer (patent assignment) - ${esc(it.transfer.en)}`)}</div>` : ""}
+          ${it.joint ? `<div class="pub-meta transfer">${bi(`공동특허 - ${esc(it.joint.ko)}`, `Joint patent - ${esc(it.joint.en)}`)}</div>` : ""}</div></li>`;
       }
       return `<li class="pub" data-n="${n}"><div><div class="pub-title">${esc(it.title)}</div>
         <div class="pub-meta"><i>${esc(it.venue)}</i>, ${esc(it.date)}</div></div></li>`;
