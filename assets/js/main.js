@@ -242,6 +242,8 @@
       const ko = esc(n.ko ?? n), en = esc(n.en ?? n.ko ?? n);
       return en === ko ? `<h3>${ko}</h3>` : `<h3>${bi(ko, en)}</h3><div class="alt-name">${bi(en, ko)}</div>`;
     };
+    // 구성원 뱃지(직위 아래 표시): content.js 의 badge 값
+    const BADGE = { startup: bi("연구실 창업", "Lab Startup"), professor: bi("교수채용", "Faculty Appointment") };
     const people = (list) => list.length
       ? `<div class="grid c4">${list.map((m) => `<div class="card person">
           ${m.photo
@@ -249,6 +251,7 @@
             : `<div class="avatar no-photo" role="img" aria-label="${esc(L.name)}"><img src="assets/img/emblem.png" alt=""><b>${esc(L.name)}</b></div>`}
           ${nameHTML(m.name)}
           <div class="pos">${T(m.pos)}</div>
+          ${BADGE[m.badge] ? `<div class="member-badge-row"><span class="member-badge ${m.badge}">${BADGE[m.badge]}</span></div>` : ""}
           ${m.edu?.length ? `<ul class="edu">${m.edu.map((e) => `<li>${T(e)}</li>`).join("")}</ul>` : ""}
           ${m.work ? `<div class="work">${T(m.work)}</div>` : ""}
           ${m.topic ? `<div class="topic">${T(m.topic)}</div>` : ""}</div>`).join("")}</div>`

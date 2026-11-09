@@ -69,7 +69,8 @@ window.LAB = {
      예) { name: { ko: "홍길동", en: "Gil-dong Hong" }, pos: POS.phd, photo: "assets/img/members/hong.jpg",
            edu: [EDU("공학사", "B.S.", SCNU_EE)], work: { ko: "㈜회사 (2020년 ~ 현재)", en: "Company (2020–present)" },
            topic: { ko: "전력전자", en: "Power electronics" } }
-     photo 를 비우면 이름 첫 글자로 표시됩니다. edu · work · topic 은 비워도 됩니다. */
+     photo 를 비우면 이름 첫 글자로 표시됩니다. edu · work · topic 은 비워도 됩니다.
+     badge: "startup" 을 넣으면 직위 아래에 「연구실 창업」, badge: "professor" 는 「교수채용」 뱃지가 붙습니다. */
   members: {
     grad: [
       { name: { ko: "최철웅", en: "Cheol-Woong Choi" }, pos: POS.phd, photo: "assets/img/members/choi-cheolwoong.jpg",
@@ -110,15 +111,15 @@ window.LAB = {
   alumni: [
     { year: 2025, name: { ko: "기송도", en: "Song-Do Ki" }, pos: { ko: "Ph.D. · 2025년 졸업", en: "Ph.D. · 2025" }, photo: "assets/img/members/ki-songdo.jpg",
       edu: [EDU("공학사", "B.S.", { ko: "호남대학교 컴퓨터공학과", en: "Computer Engineering, Honam University" }), EDU("공학박사", "Ph.D.", SCNU_EE)],
-      work: { ko: "㈜에니트 대표이사 (2018년 ~ 현재)", en: "CEO, ENIT Co., Ltd. (2018–present)" },
+      work: { ko: "㈜에니트 대표이사 (2018년 ~ 현재)", en: "CEO, ENIT Co., Ltd. (2018–present)" }, badge: "startup",
       topic: { ko: "신재생에너지, 전력전자, 에너지변환기기", en: "Renewable energy, power electronics, energy conversion devices" } },
     { year: 2026, name: { ko: "조석환", en: "Seok-Hwan Cho" }, pos: { ko: "Ph.D. · 2026년 졸업", en: "Ph.D. · 2026" }, photo: "assets/img/members/cho-seokhwan.jpg",
       edu: [EDU("공학사", "B.S.", { ko: "국립순천대학교 전자공학과", en: "Electronic Engineering, Sunchon National University" }), EDU("공학박사", "Ph.D.", SCNU_EE)],
-      work: { ko: "㈜티엠씨솔루션즈 대표이사 (2022년 ~ 현재)", en: "CEO, TMC Solutions Co., Ltd. (2022–present)" },
+      work: { ko: "㈜티엠씨솔루션즈 대표이사 (2022년 ~ 현재)", en: "CEO, TMC Solutions Co., Ltd. (2022–present)" }, badge: "startup",
       topic: { ko: "신재생에너지, 전력전자", en: "Renewable energy, power electronics" } },
     { year: 2025, name: { ko: "고재섭", en: "Jae-Sub Ko" }, pos: { ko: "연구교수 (2020 ~ 2025)", en: "Research Professor (2020–2025)" }, photo: "assets/img/members/ko-jaesub.jpg",
       edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE), EDU("공학박사", "Ph.D.", SCNU_EE)],
-      work: { ko: "국립강원대학교 전기공학과 교수 (2025년 ~ 현재)", en: "Professor, Electrical Engineering, Kangwon National University (2025–present)" },
+      work: { ko: "국립강원대학교 전기공학과 교수 (2025년 ~ 현재)", en: "Professor, Electrical Engineering, Kangwon National University (2025–present)" }, badge: "professor",
       topic: { ko: "신재생에너지, 전력전자, 에너지변환기기", en: "Renewable energy, power electronics, energy conversion devices" } },
     { year: 2021, name: { ko: "소재현", en: "Jae-hyeon So" }, pos: { ko: "박사수료 · 2021년", en: "Ph.D. Coursework Completed · 2021" },
       edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학박사수료", "Ph.D. coursework", SCNU_EE)],
@@ -129,7 +130,7 @@ window.LAB = {
       topic: { ko: "신재생에너지, EMS", en: "Renewable energy, EMS" } },
     { year: 2019, name: { ko: "박용운", en: "Young-Un Park" }, pos: { ko: "Ph.D. · 2019년 졸업", en: "Ph.D. · 2019" }, photo: "assets/img/members/park-youngun.jpg",
       edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE), EDU("공학박사", "Ph.D.", SCNU_EE)],
-      work: { ko: "순천제일대학교 전기자동화과 교수 (2025년 ~ 현재)", en: "Professor, Electrical Automation, Suncheon Jeil College (2025–present)" },
+      work: { ko: "순천제일대학교 전기자동화과 교수 (2025년 ~ 현재)", en: "Professor, Electrical Automation, Suncheon Jeil College (2025–present)" }, badge: "professor",
       topic: { ko: "마이크로그리드 및 전기기기", en: "Microgrids and electric machines" } },
     { year: 2019, name: { ko: "박제석", en: "Je-Seok Park" }, pos: { ko: "M.S. · 2019년 졸업", en: "M.S. · 2019" }, photo: "assets/img/members/park-jeseok.jpg",
       edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE), EDU("공학박사", "Ph.D.", { ko: "국민대학교 자동차모빌리티대학원", en: "Graduate School of Automotive Engineering & Mobility, Kookmin University" })],

@@ -247,6 +247,9 @@ a.card, a.card:hover { color: inherit; }
 .person .edu { list-style: none; padding: 10px 0 0; margin: 10px 0 0; border-top: 1px solid var(--line); font-size: 13px; line-height: 1.5; color: var(--ink-2); text-align: left; }
 .person .edu li + li { margin-top: 3px; }
 .person .work { font-size: 13px; color: var(--ink-2); margin-top: 6px; text-align: left; font-weight: 600; }
+.person .member-badge-row { margin-top: 8px; }
+.person .member-badge { display: inline-block; font: 700 12px var(--font-head); letter-spacing: .02em; color: #fff; background: var(--accent); padding: 3px 12px; border-radius: 999px; white-space: nowrap; }
+.person .member-badge.professor { background: #2f5597; }
 .person .topic { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: left; }
 .person .edu + .topic, .person .work + .topic { padding-top: 6px; border-top: 1px dashed var(--line); }
 .empty-note { padding: 20px; border: 1px dashed var(--line-2); text-align: center; color: var(--muted); border-radius: var(--radius); }
