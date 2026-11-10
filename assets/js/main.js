@@ -185,23 +185,41 @@
 
   /* ---------- helpers ---------- */
   const TAG = { publication: "Publication", award: "Award", people: "People", grant: "Grant", patent: "Patent" };
+  // 소식 분류 표시: 빨강·검정의 채움(●)/테두리(○)로 구분 (순서 = 필터 뱃지 순서)
+  const NEWS_CAT = [
+    ["publication", "논문", "Publication"], ["patent", "특허", "Patent"],
+    ["award", "수상", "Award"], ["grant", "과제", "Grant"], ["people", "구성원", "People"],
+  ];
+  const catLabel = (t) => { const c = NEWS_CAT.find((x) => x[0] === t); return c ? bi(c[1], c[2]) : esc(t); };
+  const CHECK = '<svg class="nf-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+  /* 최신 소식: 분류 뱃지를 여러 개 함께 골라 거를 수 있음 (아무것도 안 고르면 전체) */
   function renderNews(el, limit) {
     if (!el) return;
     const filterEl = $("#news-filter");
-    let cur = "all";
+    const sel = new Set();
     const draw = () => {
-      const items = L.news.filter((n) => cur === "all" || n.type === cur).slice(0, limit || 999);
-      el.innerHTML = items.map((n) => `<li><span class="news-date">${esc(n.date)}</span><span class="tag ${n.type}">${TAG[n.type]}</span><span>${n.link ? `<a href="${esc(n.link)}">${T(n.text)}</a>` : T(n.text)}</span></li>`).join("");
+      const items = L.news.filter((n) => !sel.size || sel.has(n.type)).slice(0, limit || 999);
+      el.innerHTML = items.map((n) => `<li><span class="news-date">${esc(n.date)}</span><span class="mk ${esc(n.type)}" title="${esc(TAG[n.type] || n.type)}"><span class="sr-only">${catLabel(n.type)}</span></span><span>${n.link ? `<a href="${esc(n.link)}">${T(n.text)}</a>` : T(n.text)}</span></li>`).join("");
+      if (filterEl) filterEl.querySelectorAll(".nf-chip[data-t]").forEach((b) => {
+        const on = sel.has(b.dataset.t);
+        b.classList.toggle("on", on);
+        b.setAttribute("aria-pressed", on);
+      });
+      const all = filterEl && filterEl.querySelector(".nf-all");
+      if (all) all.classList.toggle("on", !sel.size);
     };
     if (filterEl) {
-      const types = ["all", ...Object.keys(TAG)];
-      filterEl.innerHTML = types.map((t) => `<button class="chip ${t === "all" ? "on" : ""}" data-t="${t}">${t === "all" ? "All" : TAG[t]}</button>`).join("");
+      const cnt = (t) => L.news.filter((n) => n.type === t).length;
+      filterEl.setAttribute("role", "group");
+      filterEl.setAttribute("aria-label", "News categories");
+      filterEl.innerHTML = NEWS_CAT.map(([t]) => `<button type="button" class="nf-chip" data-t="${t}" aria-pressed="false"><span class="mk ${t}" aria-hidden="true"></span>${catLabel(t)}<span class="nf-cnt">${cnt(t)}</span>${CHECK}</button>`).join("")
+        + `<button type="button" class="nf-chip nf-all">${bi("전체 보기", "Show all")}</button>`;
       filterEl.addEventListener("click", (e) => {
-        const b = e.target.closest(".chip");
+        const b = e.target.closest(".nf-chip");
         if (!b) return;
-        cur = b.dataset.t;
-        filterEl.querySelectorAll(".chip").forEach((x) => x.classList.toggle("on", x === b));
+        if (b.classList.contains("nf-all")) sel.clear();
+        else sel.has(b.dataset.t) ? sel.delete(b.dataset.t) : sel.add(b.dataset.t);
         draw();
       });
     }
