@@ -34,4 +34,15 @@
 
 ## GitHub Pages 배포
 저장소 Settings → Pages → Source: `Deploy from a branch`, Branch: `main` / `(root)`
-→ https://energy-mecha.github.io/e-mecha/
+→ https://emecha.scnu.ac.kr/ (`CNAME` 로 연결, 예전 주소 https://energy-mecha.github.io/e-mecha/ 는 자동 이동)
+
+## 버전 관리
+이 폴더는 GitHub 저장소 `energy-mecha/e-mecha` 와 연결된 git 저장소입니다.
+1. 수정할 때마다 `git commit` 으로 기록합니다.
+2. 게시할 때 [CHANGELOG.md](CHANGELOG.md) 맨 위에 새 버전 줄을 추가하고, 같은 이름으로 태그를 붙입니다.
+   ```
+   git tag -a v1.8 -m "v1.8 변경 요약"
+   git push origin main --tags
+   ```
+3. 버전 규칙: 화면 구성·디자인이 크게 바뀌면 앞자리, 내용 추가·수정은 뒷자리를 올립니다.
+4. 이전 버전 확인: `git log --oneline --decorate`, 비교 `git diff v1.5 v1.6`
