@@ -139,6 +139,16 @@ section.block.soft { background: none; }
 .section-title::after { content: ""; position: absolute; left: 0; bottom: 0; width: 72px; height: 3px; border-radius: 2px; background: var(--grad-h2); }
 .section-title.center { text-align: center; }
 .section-title.center::after { left: 50%; transform: translateX(-50%); }
+/* 큰제목(페이지 제목)·중제목(섹션 제목): 검정 → 빨강 그라데이션 글자 */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .page-banner h1, .section-title {
+    width: fit-content; max-width: 100%;
+    background-image: linear-gradient(90deg, var(--ink) 0%, var(--ink) 30%, var(--accent) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+  .join .section-title { background: none; color: #fff; -webkit-text-fill-color: #fff; }
+}
 .section-desc { color: var(--muted); max-width: 760px; margin-bottom: 24px; font-size: 15px; }
 .section-desc.center { text-align: center; margin-left: auto; margin-right: auto; }
 .more-link { font: 700 14px var(--font-head); color: var(--accent-ink); border: 0 !important; }
@@ -317,7 +327,6 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
 .badge.link:hover { background: var(--accent-ink); color: #fff; text-decoration: none; }
 .pub-meta { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
 .pub-meta i { color: var(--accent-ink); }
-#recent-pubs { border-top: 0 !important; }
 .badge { display: inline-block; font: 700 11px var(--font-head); padding: 1px 9px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; background: var(--tint); color: var(--accent-ink); }
 .badge.solid { background: var(--accent); color: #fff; }
 .badge.gray { background: var(--line); color: var(--muted); }

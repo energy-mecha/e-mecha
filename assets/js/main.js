@@ -229,8 +229,6 @@
   /* ---------- HOME ---------- */
   if (page === "home") {
     renderNews($("#news"), 10);
-    const recent = (D.journals || []).filter((j) => j.scope === "intl").slice(0, 4);
-    $("#recent-pubs").innerHTML = recent.map((j, i) => `<li class="pub" data-n="${i + 1}"><div><div class="pub-title">${esc(j.title)}</div><div class="pub-meta"><i>${esc(j.venue)}</i>, ${esc(j.date)}</div></div></li>`).join("");
   }
 
   /* ---------- MEMBERS ---------- */
