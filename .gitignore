@@ -1,2 +1,15 @@
 assets/css/*.prev.css
 __pycache__/
+
+# 비밀번호·키·토큰 파일은 절대 올리지 않음
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa*
+*secret*
+*credential*
+*password*
+*token*
