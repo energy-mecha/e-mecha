@@ -8,6 +8,7 @@
 
 | 버전 | 게시일 | 주요 변경 |
 |---|---|---|
+| v1.14 | 2026-11-12 | International Conferences에서 ICICT·ICNCT 논문 16편 제외(56→40) · International Journals에서 「단상 BLDC 전동기의 코깅토크 저감을 위한고정자 형상 최적설계」 제외(48→47) · 엑셀 재생성 시에도 제외되도록 build_data.py에 반영 · .gitignore에 비밀번호·키·토큰 파일 차단 |
 | v1.13 | 2026-11-10 | 왼쪽 사이드바 교수 사진의 빨간 테두리 제거(Members 사진과 같은 연한 회색 선) |
 | v1.12 | 2026-11-10 | 홈 「Recent Journal Papers」 삭제(Latest News를 전체 폭으로) · 페이지 제목과 섹션 제목을 검정→빨강 그라데이션 글자로(어두운 바탕 제목은 흰색 유지) |
 | v1.11 | 2026-11-10 | 카드(홈 Research Areas · Patents 대표 특허기술 · Members)에 마우스를 올리면 위쪽 빨간 선이 검정으로 바뀜 |

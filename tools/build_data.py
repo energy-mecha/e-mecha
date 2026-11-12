@@ -84,7 +84,13 @@ def ym(s):
 
 # ---------------- 저널 ----------------
 journals = []
+# 홈페이지에 싣지 않는 저널 논문 (논문명, 띄어쓰기 무시하고 비교)
+EXCLUDE_JOURNAL = {re.sub(r"\s", "", t) for t in [
+    "단상 BLDC 전동기의 코깅토크 저감을 위한고정자 형상 최적설계",
+]}
 for r in rows(find("저널실적")):
+    if re.sub(r"\s", "", clean(r.get("논문명"))) in EXCLUDE_JOURNAL:
+        continue
     kind = clean(r.get("학술지구분"))
     journals.append({
         "date": ym(r.get("게재년월")),
@@ -98,10 +104,14 @@ for r in rows(find("저널실적")):
 # '학술대회'가 들어간 엑셀이 여러 개면(예: 연도별 추가 파일) 모두 합치고, 같은 업적번호는 한 번만 넣음
 conferences = []
 seen = set()
+# 홈페이지에 싣지 않는 학술대회 (학술대회명에 이 이름이 들어가면 제외)
+EXCLUDE_CONF = re.compile(r"ICICT|ICNCT", re.I)
 for r in (r for f in find_all("학술대회") for r in rows(f)):
     title = clean(r.get("논문명"))
     key = clean(r.get("업적번호")) or (title, ym(r.get("발표일자")))
     if key in seen:
+        continue
+    if EXCLUDE_CONF.search(clean(r.get("학술대회명"))):
         continue
     seen.add(key)
     # 헤더가 '학술대회\n구분' 처럼 줄바꿈을 포함할 수 있어 공백을 제거하고 찾음

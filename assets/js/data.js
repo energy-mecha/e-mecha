@@ -290,13 +290,6 @@ window.LAB_DATA = {
    "index": "SCI(E)"
   },
   {
-   "date": "2013.11",
-   "title": "단상 BLDC 전동기의 코깅토크 저감을 위한고정자 형상 최적설계",
-   "venue": "The Transactions of the Korean Institute of Electrical Engineers",
-   "scope": "intl",
-   "index": "SCI(E)"
-  },
-  {
    "date": "2013.09",
    "title": "소수력 발전용 10kW급 영구자석형 동기발전기 개발",
    "venue": "조명.전기설비학회논문지",
@@ -830,24 +823,6 @@ window.LAB_DATA = {
    "scope": "dom"
   },
   {
-   "date": "2021.07",
-   "title": "Development of External Intrusion Monitoring System and Solutions Based on Distributed Acoustic Sensor",
-   "venue": "ICICT2021",
-   "scope": "intl"
-  },
-  {
-   "date": "2021.07",
-   "title": "Characteristics of an AC/DC Hybrid converter according to load fluctuation",
-   "venue": "ICICT2021",
-   "scope": "intl"
-  },
-  {
-   "date": "2021.07",
-   "title": "Optimal Design for Power Density Considering Shared Transformer/Reactor Core Size",
-   "venue": "ICICT2021",
-   "scope": "intl"
-  },
-  {
    "date": "2021.05",
    "title": "공유형 변압기/리액터의 코일 두께 변화에 따른 특성 해석",
    "venue": "2021년도 대한전기학회 전기기기 및 에너지변환시스템 부문회 춘계학술대회",
@@ -866,24 +841,6 @@ window.LAB_DATA = {
    "scope": "dom"
   },
   {
-   "date": "2021.01",
-   "title": "Re-enforced Dual Active Bridge Converter Architecture (with high DC-DC voltage gain) SST",
-   "venue": "International Conference on Next-generation Convergence Technology(ICNCT2021)",
-   "scope": "intl"
-  },
-  {
-   "date": "2021.01",
-   "title": "Equivalent Circuit Basic Design of Shared Transformer/Reactor used in PCS",
-   "venue": "International Conference on Next-generation Convergence Technology - ICNCT2021 -",
-   "scope": "intl"
-  },
-  {
-   "date": "2021.01",
-   "title": "Brokerage Transaction System for Distributed Power Management Under 1MW And Participation In The Small Power Brokerage Market",
-   "venue": "International Conference on Next-generation Convergence Technology(ICNCT2021)",
-   "scope": "intl"
-  },
-  {
    "date": "2020.10",
    "title": "카메라와 초음파 센서를 이용한 농업 기계용 안전 센서",
    "venue": "2020년 (사)국제차세대융합기술학회 추계융합학술발표대회",
@@ -894,24 +851,6 @@ window.LAB_DATA = {
    "title": "치즈 종류에 따른 온·습도 자동 제어 시스템을 적용한 스마트 치즈 숙성고",
    "venue": "2020년 (사)국제차세대융합기술학회 추계융합학술발표대회",
    "scope": "dom"
-  },
-  {
-   "date": "2020.07",
-   "title": "A Study on the Intelligent Hybrid Switchboard System Capable of Automatic Power Supply control for each Consumer for Sharing Renewable Energy Sources Connected to the System",
-   "venue": "International Conference on Innovation Convergence Technology (ICICT2020)",
-   "scope": "intl"
-  },
-  {
-   "date": "2020.07",
-   "title": "Study on the Ultra-Compact Wireless Sensor-Based Safety System for the Prevention Fire Accidents in Industrial ESS",
-   "venue": "International Conference on Innovation Convergence Technology (ICICT2020)",
-   "scope": "intl"
-  },
-  {
-   "date": "2020.07",
-   "title": "Self-Inductance Analysis of 50kVA Class Shared Transformer/Reactor",
-   "venue": "International Conference on Innovation Convergence Technology (ICICT2020)",
-   "scope": "intl"
   },
   {
    "date": "2020.07",
@@ -936,12 +875,6 @@ window.LAB_DATA = {
    "title": "1MW이하 분산전원 관리 및 소규모전력 중개시장 참여를 위한 중개사업자용 중개거래 시스템",
    "venue": "제51회 대한전기학회 학계학술대회",
    "scope": "dom"
-  },
-  {
-   "date": "2020.01",
-   "title": "Parametric analysis for 50kVa shared transformer/reactor",
-   "venue": "ICNCT2020",
-   "scope": "intl"
   },
   {
    "date": "2019.10",
@@ -980,34 +913,10 @@ window.LAB_DATA = {
    "scope": "dom"
   },
   {
-   "date": "2019.07",
-   "title": "Analysis of 50kVA individual and shared transformer/reactor model thermal characteristics",
-   "venue": "ICICT2019",
-   "scope": "intl"
-  },
-  {
    "date": "2019.04",
    "title": "50kVA급 공유형 변압기/리액터와 개별 모델 특성해석",
    "venue": "2019년 대한전기학회 전기기기 및 에너지변환시스템부문회 춘계학술대회",
    "scope": "dom"
-  },
-  {
-   "date": "2019.01",
-   "title": "Characteristics analysis of 50kva shared reactor/transformer",
-   "venue": "ICNCT2019",
-   "scope": "intl"
-  },
-  {
-   "date": "2019.01",
-   "title": "Evaluation of torque ripple of an optimal designed 3-phase induction motor using uncertainty",
-   "venue": "ICNCT2019",
-   "scope": "intl"
-  },
-  {
-   "date": "2019.01",
-   "title": "Calculation and Analysis of Leakage Inductance for 100kw Class High Frequency Transformers",
-   "venue": "ICNCT2019",
-   "scope": "intl"
   },
   {
    "date": "2018.10",
@@ -1098,18 +1007,6 @@ window.LAB_DATA = {
    "title": "코기토크 최소화를 위한 단상 외전형 BLDC 전동기의 Step-sloping 노치 형상 최적 설계",
    "venue": "2018년도 대한전기학회 전기기기 및 에너지변환시스템부문회 춘계학술대회",
    "scope": "dom"
-  },
-  {
-   "date": "2018.01",
-   "title": "Loss Analysis of High Frequency Transformers on 3kW-clss DC-DC Converter using Thermal-Electromagnetic Coupled 3D-Finite Element Analysis",
-   "venue": "ICNCT2018",
-   "scope": "intl"
-  },
-  {
-   "date": "2018.01",
-   "title": "Loss Analysis in Accordance Switching State of 3kW DC-DC Converter",
-   "venue": "ICNCT2018",
-   "scope": "intl"
   },
   {
    "date": "2017.10",
