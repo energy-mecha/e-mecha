@@ -184,11 +184,11 @@
   };
 
   /* ---------- helpers ---------- */
-  const TAG = { publication: "Publication", award: "Award", people: "People", grant: "Grant", patent: "Patent" };
+  const TAG = { publication: "Publication", award: "Award", people: "People", grant: "Grant", patent: "Patent", teaching: "Teaching" };
   // 소식 분류 표시: 빨강·검정의 채움(●)/테두리(○)로 구분 (순서 = 필터 뱃지 순서)
   const NEWS_CAT = [
     ["publication", "논문", "Publication"], ["patent", "특허", "Patent"],
-    ["award", "수상", "Award"], ["grant", "과제", "Grant"], ["people", "구성원", "People"],
+    ["award", "수상", "Award"], ["grant", "과제", "Grant"], ["teaching", "교육", "Teaching"], ["people", "구성원", "People"],
   ];
   const catLabel = (t) => { const c = NEWS_CAT.find((x) => x[0] === t); return c ? bi(c[1], c[2]) : esc(t); };
   const CHECK = '<svg class="nf-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
