@@ -160,6 +160,26 @@ window.LAB = {
     { ko: "기초전기실험", en: "Basic Electrical Engineering Laboratory", term: { ko: "2학년 2학기 (3주간)", en: "Sophomore · Fall (3 weeks)" } },
   ],
 
+  /* ---------------- 비교과과정 (Teaching 페이지, 연도별) ----------------
+     교재 HTML은 edu/<연도-주제>/ 폴더에 두고 file 에 경로를 적습니다.
+     (동영상·그림은 각 폴더의 media/ 에 따로 있어야 GitHub 100MB 제한을 넘지 않습니다) */
+  extracurricular: [
+    { year: "2026",
+      title: { ko: "자기장 해석 프로그램을 이용한 에너지변환기기 교육", en: "Energy Conversion Machines Training with Magnetic Field Analysis Software" },
+      people: [
+        { ko: "강사 : 순천제일대학교 박용운 교수", en: "Instructor: Prof. Young-Un Park, Suncheon Jeil College" },
+        { ko: "주관 : 김대경 교수", en: "Organizer: Prof. Dae-kyong Kim" },
+      ],
+      items: [
+        { ko: "자계 원리 및 특성 해석", en: "Magnetic Field Principles and Characteristic Analysis",
+          note: { ko: "초급 · 막대자석 착자 Maxwell 2D 따라하기", en: "Beginner · Bar-magnet magnetization, Maxwell 2D walkthrough" },
+          file: "edu/2026-maxwell/01-magnet/index.html" },
+        { ko: "회전기기(유도전동기)의 특성 해석", en: "Characteristic Analysis of Rotating Machines (Induction Motors)",
+          note: { ko: "중급 · 3상 유도전동기 RMxprt–Maxwell 2D/3D 따라하기", en: "Intermediate · 3-phase induction motor, RMxprt–Maxwell 2D/3D walkthrough" },
+          file: "edu/2026-maxwell/02-induction-motor/index.html" },
+      ] },
+  ],
+
   /* ---------------- 종합설계(캡스톤디자인) 과제 — capstone.html ----------------
      yt: YouTube 영상 ID, awards: 수상·성과 목록 */
   capstone: [

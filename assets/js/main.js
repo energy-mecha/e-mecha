@@ -289,6 +289,22 @@
         ${t.href ? `<span class="more-link">${bi("과제 보기", "View Projects")}</span>` : ""}
         ${t.term ? `<span class="term">${T(t.term)}</span>` : ""}</div></${tag}>`;
     }).join("");
+
+    /* 비교과과정: 연도별(최신 연도 먼저) → 프로그램 → 차시별 교재 링크 */
+    const ex = $("#extracurricular");
+    if (ex) {
+      const progs = (L.extracurricular || []).slice().sort((a, b) => String(b.year).localeCompare(String(a.year)));
+      const years = [...new Set(progs.map((p) => p.year))];
+      ex.innerHTML = years.map((y) => `<div class="year-group"><h3>${esc(y)}</h3>
+        ${progs.filter((p) => p.year === y).map((p) => `<div class="ex-prog">
+          <h4>${T(p.title)}</h4>
+          ${(p.people || []).length ? `<p class="ex-people">${p.people.map((x) => `<span>${T(x)}</span>`).join("")}</p>` : ""}
+          <ol class="ex-list">${(p.items || []).map((it) => `<li>
+            <div class="ex-name">${bi(esc(it.ko), esc(it.en))}</div>
+            ${it.note ? `<div class="ex-note">${T(it.note)}</div>` : ""}
+            ${it.file ? `<a class="more-link" href="${esc(it.file)}" target="_blank" rel="noopener">${bi("교재 보기", "Open workbook")}</a>` : ""}
+          </li>`).join("")}</ol></div>`).join("")}</div>`).join("");
+    }
   }
 
   /* ---------- CAPSTONE ---------- */
