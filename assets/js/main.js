@@ -300,7 +300,7 @@
           <h4>${T(p.title)}</h4>
           ${(p.people || []).length ? `<p class="ex-people">${p.people.map((x) => `<span>${T(x)}</span>`).join("")}</p>` : ""}
           <ol class="ex-list">${(p.items || []).map((it) => `<li>
-            <div class="ex-name">${bi(esc(it.ko), esc(it.en))}</div>
+            <div class="ex-name">${bi(esc(it.ko), esc(it.en))}${it.date ? ` <span class="ex-date">(${T(it.date)})</span>` : ""}</div>
             ${it.note ? `<div class="ex-note">${T(it.note)}</div>` : ""}
             ${it.file ? `<a class="more-link" href="${esc(it.file)}" target="_blank" rel="noopener">${bi("교재 보기", "Open workbook")}</a>` : ""}
           </li>`).join("")}</ol></div>`).join("")}</div>`).join("");

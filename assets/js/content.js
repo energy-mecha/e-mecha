@@ -172,9 +172,11 @@ window.LAB = {
       ],
       items: [
         { ko: "자계 원리 및 특성 해석", en: "Magnetic Field Principles and Characteristic Analysis",
+          date: { ko: "2026.11.06(금) & 2026.11.13(금)", en: "Fri, Nov 6 & Fri, Nov 13, 2026" },
           note: { ko: "초급 · 막대자석 착자 Maxwell 2D 따라하기", en: "Beginner · Bar-magnet magnetization, Maxwell 2D walkthrough" },
           file: "edu/2026-maxwell/01-magnet/index.html" },
         { ko: "회전기기(유도전동기)의 특성 해석", en: "Characteristic Analysis of Rotating Machines (Induction Motors)",
+          date: { ko: "2026.11.20(금) & 2026.11.27(금)", en: "Fri, Nov 20 & Fri, Nov 27, 2026" },
           note: { ko: "중급 · 3상 유도전동기 RMxprt–Maxwell 2D/3D 따라하기", en: "Intermediate · 3-phase induction motor, RMxprt–Maxwell 2D/3D walkthrough" },
           file: "edu/2026-maxwell/02-induction-motor/index.html" },
       ] },

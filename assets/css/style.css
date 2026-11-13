@@ -184,6 +184,7 @@ a.card, a.card:hover { color: inherit; }
 .ex-list li { counter-increment: ex; position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; align-items: center; padding: 12px 0 12px 40px; border-bottom: 1px solid var(--line); }
 .ex-list li::before { content: counter(ex); position: absolute; left: 2px; top: 12px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font: 700 13px/26px var(--font-head); text-align: center; }
 .ex-list .ex-name { font-weight: 700; color: var(--ink); grid-column: 1; }
+.ex-list .ex-date { font-weight: 500; font-size: 14px; color: var(--accent); }
 .ex-list .ex-note { font-size: 13.5px; color: var(--muted); grid-column: 1; }
 .ex-list .more-link { grid-column: 2; grid-row: 1 / span 2; white-space: nowrap; }
 @media (max-width: 600px) { .ex-list li { grid-template-columns: 1fr; } .ex-list .more-link { grid-column: 1; grid-row: auto; margin-top: 4px; } }
