@@ -121,7 +121,7 @@ window.LAB = {
       edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE), EDU("공학박사", "Ph.D.", SCNU_EE)],
       work: { ko: "국립강원대학교 전기공학과 교수 (2025년 ~ 현재)", en: "Professor, Electrical Engineering, Kangwon National University (2025–present)" }, badge: "professor",
       topic: { ko: "신재생에너지, 전력전자, 에너지변환기기", en: "Renewable energy, power electronics, energy conversion devices" } },
-    { year: 2021, name: { ko: "소재현", en: "Jae-hyeon So" }, pos: { ko: "박사수료 · 2021년", en: "Ph.D. Coursework Completed · 2021" }, photo: "assets/img/members/so-jaehyeon.jpg",
+    { year: 2023, name: { ko: "소재현", en: "Jae-hyeon So" }, pos: { ko: "박사수료 · 2023년", en: "Ph.D. Coursework Completed · 2023" }, photo: "assets/img/members/so-jaehyeon.jpg",
       edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학박사수료", "Ph.D. coursework", SCNU_EE)],
       topic: { ko: "전기기기", en: "Electric machines" } },
     { year: 2024, name: { ko: "이승훈", en: "Seung-Hoon Lee" }, pos: { ko: "M.S. · 2024년 졸업", en: "M.S. · 2024" }, photo: "assets/img/members/lee-seunghoon.jpg",
