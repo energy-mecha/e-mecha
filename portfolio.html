@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/lang.js"></script>
+<title>Strategic Technology Portfolio — Energy Mechatronics Lab.</title>
+<meta name="description" content="Strategic Technology Portfolio of the Energy Mechatronics Lab., Sunchon National University — smart power conversion and renewable-energy fault diagnosis. 국립순천대학교 에너지메카트로닉스연구실 전략기술포트폴리오">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/book.css">
+</head>
+<body class="navy">
+<script src="assets/js/content.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/book-engine.js"></script>
+<script>
+(function(){
+"use strict";
+var LB = window.LAB || {}, D = window.LAB_DATA || {};
+var $ = BK.$, $$ = BK.$$, bi = BK.bi, biS = BK.biS, bo = BK.bo, wf = BK.wf, fig = BK.fig, rnd = BK.rnd, onCleanup = BK.onCleanup;
+/* 대표특허 장은 「기존 vs 본 기술」 카드를 개요 바로 아래에 둡니다 */
+var left = function(o){ if (o.flap && o.flap.indexOf("flap vs") > -1){ o.body = o.flap + (o.body || ""); o.flap = ""; } return BK.left(o); };
+var PDF = "assets/files/emecha-tech-portfolio-v2.2.pdf";
+
+/* ================= source data (전략기술포트폴리오 v2.2, 2026.11.06) ================= */
+/* [연번, 발명의 명칭, 등록번호, 등록일, 권리자(현), 기업권리자 여부] */
+var PATS = [
+  [1, "DAB 컨버터에 사용되는 스위칭 소자의 기생용량 영향을 고려한 위상각 제어 시스템 및 제어방법", "10-2745924", "2024.12.18", "순천대산단"],
+  [2, "SiC-Mosfet의 기생 커패시턴스 및 다이오드 전방 전압을 고려한 DAB 변환기에 대한 보상 시스템 및 이를 이용한 보상 방법", "10-3033031", "2026.10.12", "순천대산단"],
+  [3, "DAB 컨버터에 사용되는 변압기의 변압비와 누설인덕턴스 추정 시스템 및 그 방법", "10-2815838", "2025.05.28", "순천대산단"],
+  [4, "누설인덕턴스 전류변화를 이용한 제어를 통한 DAB 컨버터 내부 자성부품 파라미터 계산 시스템 및 이를 이용한 계산 방법", "10-2902142", "2025.12.16", "㈜에니트 · 순천대", 1],
+  [5, "누설인덕턴스 전류변화를 이용한 DAB 컨버터의 제어 시스템 및 방법", "10-3018949", "2026.09.09", "㈜에니트 · 순천대", 1],
+  [6, "Dual-Phase Shift를 이용한 3포트 DC-DC 컨버터의 Backflow power 제거 시스템", "10-2732670", "2024.11.18", "순천대산단"],
+  [7, "삽입된 리액터 일체형 고주파 변압기의 누설인덕턴스 가변 장치 및 그 방법", "10-2790915", "2025.03.31", "순천대산단"],
+  [8, "누설인덕턴스 가변이 가능한 에너지 변환 장치 및 이를 이용한 변환 방법", "10-2954804", "2026.04.15", "순천대산단"],
+  [9, "E형 철심을 이용한 공극 가변형 변압기 구조체 및 이를 이용하는 이용방법", "10-2455751", "2022.10.13", "㈜셀시스템", 1],
+  [10, "E형 철심을 이용한 공극 가변형 변압기 구조체 및 그 이용방법", "10-2455726", "2022.10.13", "㈜셀시스템", 1],
+  [11, "변압기 지지대 시뮬레이션 시스템 및 이를 이용한 시뮬레이션 방법", "10-2497961", "2023.02.06", "순천대산단"],
+  [12, "복수개의 서포터를 갖는 변압기 지지대 시뮬레이션 시스템 및 이를 이용한 시뮬레이션 방법", "10-2497969", "2023.02.06", "순천대산단"],
+  [13, "변압기 코어부의 모서리 포화 저감 구조체 및 그 제조방법", "10-2131584", "2020.07.02", "한전 · 순천대", 1],
+  [14, "자속 보조용 페라이트 코어를 이용한 용량 가변형 변압기 구조체 및 그 제조방법", "10-2139004", "2020.07.22", "한전 · 순천대", 1],
+  [15, "자속 보조용 페라이트 코어를 이용한 용량 가변형 변압기 구조체 결합구조 및 그 제조방법", "10-2136026", "2020.07.14", "한전 · 순천대", 1],
+  [16, "기생 커패시턴스 감지 알고리즘을 이용한 태양광 패널의 단선 위치 검출 시스템 및 그 검출 방법", "10-2480168", "2022.12.19", "㈜티엠씨솔루션즈", 1],
+  [17, "PV 시스템의 단선 고장 위치를 검출하기 위한 기생 커패시턴스 탐지 기능이 결합된 인버터 및 이를 이용한 검출 방법", "10-2508632", "2023.03.07", "순천대산단"],
+  [18, "PV 시스템의 단선 고장 위치를 검출하기 위한 기생 커패시턴스 탐지 알고리즘이 포함된 시스템 및 이를 이용한 검출 방법", "10-2518017", "2023.03.31", "순천대산단"],
+  [19, "PV 시스템의 단선 고장 위치를 검출하기 위한 휴대형 기생 커패시턴스 탐지, 감지, 식별, 및 인식 단말기 및 이를 이용한 검출 방법", "10-2518018", "2023.03.31", "㈜티엠씨솔루션즈", 1],
+  [20, "태양광 단선 검출기 및 이를 이용한 검출 방법", "10-2898838", "2025.12.08", "순천대산단"],
+  [21, "태양광 모듈의 MPPT 제어를 위해 일사량, 부하, 및 컨버터 토폴로지를 고려한 알고리즘을 이용한 태양광 직병렬 연결 시스템", "10-2626309", "2024.01.12", "㈜셀시스템", 1],
+  [22, "태양광 모듈의 MPPT 제어를 위해 일사량, 부하, 및 컨버터 토폴로지를 고려한 알고리즘을 이용한 태양광 직병렬 연결 방법", "10-3038569", "2026.10.22", "순천대산단"],
+  [23, "색온도를 이용한 DC 아크 검출 및 전원 차단장치 및 방법", "10-3038560", "2026.10.22", "순천대산단"],
+  [24, "온도 변화에 따라 자기적 특성이 변하는 가돌리늄을 이용한 리드스위치", "10-2915006", "2026.01.15", "순천대산단"],
+  [25, "화재 발생시 온도 변화에 따라 자기적 특성이 변하는 가돌리늄을 이용한 보조 개폐 장치를 포함하는 화재 감시 시스템 및 이를 이용한 방법", "10-2934326", "2026.02.27", "순천대산단"],
+  [26, "스마트 화분", "10-1586544", "2016.01.12", "(유)와이케이", 1],
+  [27, "자동 급수와 가습 기능을 추가한 식물 재배 방법 및 장치", "10-2992641", "2026.07.14", "순천대산단"],
+  [28, "스마트 치즈 숙성고와 그 숙성 방법", "10-2483166", "2022.12.27", "순천대산단"],
+  [29, "미생물 활성도의 관찰이 가능한 치즈 숙성 장치 및 그 장치를 이용한 치즈 숙성 방법", "10-2545886", "2023.06.16", "순천대산단"],
+  [30, "숙성 정도의 조절이 가능한 치즈 숙성 장치 및 그 장치를 이용한 치즈 숙성 방법", "10-2545890", "2023.06.16", "순천대산단"],
+  [31, "카메라와 감지센서를 이용한 농업기계용 안전모듈 및 이를 이용한 방법", "10-2460083", "2022.10.25", "순천대산단"],
+  [32, "딥러닝을 이용한 AI 기반의 농기계 탈부착형 안전 탐지 방법 및 안전장치", "10-2494578", "2023.01.27", "순천대산단"],
+  [33, "가습기 겸용 전열 주전자", "10-2213544", "2021.02.02", "순천대산단"],
+  [34, "가습기 겸용 전기 포트", "10-2213537", "2021.02.02", "순천대산단"],
+  [35, "가습기 겸용 전열 주전자", "10-2213550", "2021.02.02", "순천대산단"],
+  [36, "유도가열기기의 온도 설정 장치", "10-2040390", "2019.10.29", "㈜프라임", 1],
+  [37, "자기장을 동력원으로 하는 내구성이 향상된 시계 장치 및 그 작동 방법", "10-2658718", "2024.04.15", "순천대산단"],
+  [38, "내구성과 안정성이 향상된 금속분말 시계와 그 작동 방법", "10-2654599", "2024.04.01", "순천대산단"]
+];
+var HOLDER_EN = { "순천대산단": "SCNU IACF", "㈜에니트 · 순천대": "ENIT · SCNU", "㈜셀시스템": "Cell System", "한전 · 순천대": "KEPCO · SCNU",
+  "㈜티엠씨솔루션즈": "TMC Solutions", "(유)와이케이": "YK Ltd.", "㈜프라임": "Prime Co." };
+var GROUPS = [
+  ["전력변환", "Power conversion", 1, 6], ["자성부품", "Magnetic components", 7, 15], ["태양광 운전·진단", "PV operation & diagnosis", 16, 22],
+  ["전기안전", "Electrical safety", 23, 25], ["융합응용", "Convergence applications", 26, 38]
+];
+function enTitle(reg){
+  var p = (D.patents || []).filter(function(x){ return String(x.regNo || "").indexOf(reg) === 0; })[0];
+  return p && p.title_en ? p.title_en : null;
+}
+function ptTitle(p){ var en = enTitle(p[2]); return bi(p[1], en || p[1]); }
+function holder(p){ return bi(p[4], HOLDER_EN[p[4]] || p[4]); }
+function rowsFor(nums){
+  return nums.map(function(n){
+    if (typeof n === "object") return '<div class="prow"><span class="n">' + bi(n[0], n[1]) + '</span><span class="r">' + n[2] + '</span><span class="d">' + n[3] + '</span></div>';
+    var p = PATS[n - 1];
+    return '<div class="prow"><span class="n" title="' + p[1] + '">' + ptTitle(p) + '</span><span class="r">' + p[2] + '</span><span class="d">' + p[3] + '</span></div>';
+  }).join("");
+}
+var TRL_LABEL = [["기초이론·실험", "basic research"], ["개념 정립", "concept"], ["연구실 성능검증", "lab validation"], ["연구실 부품평가", "lab component test"],
+  ["시작품 제작·평가", "prototype"], ["Pilot 시작품", "pilot prototype"], ["Pilot 신뢰성", "pilot reliability"], ["인증·표준화", "certification"], ["사업화", "commercial"]];
+function trl(n, nextKo, nextEn){
+  var s = ""; for (var i = 1; i <= 9; i++) s += '<div class="s' + (i < n ? " done" : i === n ? " now" : "") + '"><i></i>' + i + '</div>';
+  return '<div class="sech">' + bi("기술성숙도 TRL " + n + " · " + TRL_LABEL[n - 1][0], "Readiness TRL " + n + " · " + TRL_LABEL[n - 1][1]) + '</div><div class="trl">' + s + '</div>' +
+    '<div class="trl-next">' + bi("다음 단계: " + nextKo, "next: " + nextEn) + '</div>';
+}
+function market(pKo, pEn, mKo, mEn, prKo, prEn){
+  return '<div class="sech">' + bi("목표시장", "Target market") + '</div><div class="mk">' +
+    '<b>' + bi("부품", "PART") + '</b><span>' + bi(pKo, pEn) + '</span><b class="m">' + bi("모듈", "MODULE") + '</b><span>' + bi(mKo, mEn) + '</span>' +
+    '<b class="p">' + bi("제품", "PRODUCT") + '</b><span>' + bi(prKo, prEn) + '</span></div>';
+}
+function vs(bKo, bEn, aKo, aEn){
+  var li = function(a){ return '<ul class="lst">' + a.map(function(x){ return "<li>" + x + "</li>"; }).join("") + '</ul>'; };
+  return '<div class="flap vs"><div class="a"><div class="tag">' + bi("본 기술 · AFTER", "OUR TECHNOLOGY · AFTER") + '</div>' + bi(li(aKo), li(aEn)) + '</div>' +
+    '<div class="q"><div class="tag">' + bi("기존 기술 · BEFORE", "CONVENTIONAL · BEFORE") + '</div>' + bi(li(bKo), li(bEn)) +
+    '<span class="hint" style="position:absolute;right:12px;bottom:6px">' + bi("들어 올려 본 기술 보기 ↑", "lift to see ours ↑") + '</span></div></div>';
+}
+function feats(ko, en){ return '<div class="sech">' + bi("기술 특징", "Key results") + '</div><ul class="pts">' + ko.map(function(k, i){ return "<li>" + bi(k, en[i]) + "</li>"; }).join("") + '</ul>'; }
+function patentRight(svg, ctl, trlHtml, rows){
+  return '<div class="fig-pg">' + svg + (ctl || "") + trlHtml + '<div class="sech">' + bi("특허 · 권리 현황", "Registered patents") + '</div>' + rows + '</div>';
+}
+function kick(n, ko, en){ return bi("대표특허 0" + n + " · " + ko, "Flagship patent 0" + n + " · " + en); }
+
+/* ================= spreads ================= */
+var S = [];
+var P_IDX = {}; // 대표특허 번호 → spread index
+
+/* 0 · contents */
+S.push({ t: ["목차", "Contents"],
+  L: function(){ return '<div class="pg"><div class="kicker">' + bi("머리말", "Preface") + '</div>' +
+    '<h2 class="ttl">' + bi("스마트 전력변환 ·<br>신재생 고장진단 기술", "Smart power conversion &amp;<br>renewable fault diagnosis") + '</h2>' +
+    '<p class="lead">' + bi("국립순천대학교 에너지메카트로닉스연구실이 보유한 등록특허 <b>38건</b>과 대표 특허기술 <b>8건</b>을 한 권으로 엮었습니다.",
+      "This book gathers the <b>38 registered patents</b> and <b>8 flagship technologies</b> of the Energy Mechatronics Lab., Sunchon National University.") + '</p>' +
+    '<p>' + bi("대표 특허기술마다 오른쪽 페이지의 그림을 직접 조작해 원리를 확인할 수 있고, 왼쪽의 회색 카드를 들어 올리면 기존 기술과 무엇이 다른지 볼 수 있습니다.",
+      "For each flagship technology, the drawing on the right is live, and lifting the grey card on the left shows how it differs from conventional technology.") + '</p>' +
+    '<div class="kpis"><div class="kpi"><b>38</b>' + bi("국내 등록특허", "registered patents") + '</div><div class="kpi"><b>8</b>' + bi("대표 특허기술", "flagship technologies") + '</div><div class="kpi"><b>5</b>' + bi("기술 분야", "technology areas") + '</div></div>' +
+    '<p class="sub">' + bi("국립순천대학교 전기공학과 김대경 교수 · 2026. 11. 06 · Ver. 2.2", "Prof. Dae-kyong Kim, Dept. of Electrical Engineering, SCNU · 2026-11-06 · Ver. 2.2") + '</p>' +
+    '<div class="note">' + bi("원본 PDF는 아래 막대의 PDF 버튼", "the original PDF is behind the PDF button below") + '</div></div>'; },
+  R: function(){
+    var e = function(i, ko, en, sub){ return '<li data-go="' + i + '"><span class="n">' + String(i).padStart(2, "0") + '</span><span>' + bi(ko, en) + (sub ? '<br><small style="font:400 11.5px var(--sans);color:var(--ink-2)">' + sub + '</small>' : "") + '</span><span class="p">' + (i * 2) + '</span></li>'; };
+    return '<div class="pg"><div class="kicker">' + bi("목차", "Contents") + '</div><h2 class="ttl">' + bi("이 책의 차례", "In this book") + '</h2><ul class="toc" style="margin-top:4px">' +
+      e(1, "PART 01 · 기술개요와 적용맵", "Part 01 · Overview & application map") +
+      e(2, "PART 02 · 시장전망", "Part 02 · Market outlook") +
+      e(3, "기술 · 정책 동향", "Technology & policy trends") +
+      e(4, "PART 03 · 보유기술 현황", "Part 03 · Technology holdings") +
+      e(5, "대표 특허기술 01 – 08", "Flagship technologies 01 – 08", bi("DAB 위상각 보상 · 파라미터 추정 · 가변 변압기 · TAB · DC 아크 · PV 단선 · 직병렬 재구성 · 가돌리늄", "DAB compensation · parameter estimation · variable transformer · TAB · DC arc · PV break · reconfiguration · gadolinium")) +
+      e(13, "PART 04 · 대표연구자", "Part 04 · Principal investigator") +
+      e(14, "등록특허 리스트 (38건)", "All 38 registered patents") +
+      e(15, "협력 안내", "Working with us") + '</ul></div>'; }
+});
+
+/* 1 · overview & map */
+S.push({ t: ["기술개요 · 적용맵", "Overview & map"],
+  L: function(){ return left({
+    kicker: bi("PART 01 · 기술개요", "Part 01 · Overview"),
+    title: bi("DC 전력망을 잇는 핵심기술", "The core of the DC power grid"),
+    lead: bi("스마트 전력변환은 신재생에너지·ESS·전기차·데이터센터를 잇는 DC 전력망에서 전력을 <b>고효율·양방향·절연</b> 변환하는 기술입니다.",
+      "Smart power conversion moves energy <b>efficiently, bidirectionally and with isolation</b> across DC grids that link renewables, storage, EVs and data centres."),
+    body: '<ul class="pts">' +
+      '<li>' + bi("60 Hz 변압기·단방향 정류기 → 고주파 절연형 양방향 DAB · 반도체변압기(SST)로 전환 중", "Shifting from 60 Hz transformers and one-way rectifiers to high-frequency bidirectional DAB and solid-state transformers (SST)") + '</li>' +
+      '<li>' + bi("SiC·GaN 소자로 수십~수백 kHz 스위칭 — 데드타임·기생성분 정밀제어가 관건", "SiC/GaN switching at tens to hundreds of kHz — dead time and parasitics must be controlled precisely") + '</li>' +
+      '<li>' + bi("DC 계통 확산으로 DC 아크·단선·배터리 화재 등 새로운 안전 리스크 증가 → 진단·보호 기능을 전력변환장치에 내장(PHM)", "DC grids bring new risks — DC arcs, open circuits, battery fires — so diagnosis and protection move inside the converter (PHM)") + '</li></ul>',
+    flap: BK.flap("기존 전력변환과 차세대 스마트 전력변환의 차이는?", "Conventional vs next-generation conversion?",
+      "기존: AC 계통 → 60 Hz 변압기(대형·중량) → 단방향 정류기 → DC 부하.<br>차세대: AC·DC 계통 → <b>SST · DAB(고주파 절연·양방향)</b> → PV·ESS·EV·데이터센터, 그리고 <b>내장형 진단·보호</b>.",
+      "Conventional: AC grid → bulky 60 Hz transformer → one-way rectifier → DC load.<br>Next-gen: AC/DC grid → <b>SST · DAB (HF-isolated, bidirectional)</b> → PV, ESS, EV, data centres — with <b>built-in diagnosis and protection</b>."),
+    note: bi("오른쪽 번호를 누르면 해당 특허로 이동 →", "tap a number on the map to jump to that patent →") }); },
+  R: function(){
+    var mk = function(n, x, y, safety){ return '<g class="mkr" data-go="' + (4 + n) + '"><circle cx="' + x + '" cy="' + y + '" r="12" fill="' + (safety ? "#1d2b47" : "#b3121b") + '" stroke="#2a2926" stroke-width="1.5"/>' +
+      '<text x="' + x + '" y="' + (y + 5) + '" text-anchor="middle" class="mono" style="fill:#fff;font-size:12px">' + n + '</text></g>'; };
+    var box = function(x, y, w, h, ko, en){ return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="6" class="inkf"/><text x="' + (x + w / 2) + '" y="' + (y + h / 2 + 5) + '" text-anchor="middle" style="font-size:14px">' + biS(ko, en) + '</text>'; };
+    var svg = '<svg viewBox="0 0 460 540">' +
+      box(20, 20, 110, 40, "전력망 (AC)", "AC grid") + box(170, 20, 120, 40, "태양광 PV", "solar PV") + box(330, 20, 110, 40, "ESS 배터리", "ESS battery") +
+      wf("M75,60 L75,100") + wf("M230,60 L230,100") + wf("M385,60 L385,100", "b") +
+      box(20, 100, 110, 46, "SST · DAB", "SST · DAB") + box(170, 100, 120, 46, "PV 컨버터", "PV converter") + box(330, 100, 110, 46, "TAB 3포트", "TAB 3-port") +
+      wf("M75,146 L75,230") + wf("M230,146 L230,230") + wf("M385,146 L385,230", "b rev") +
+      '<path class="ink" d="M20,230 L440,230" style="stroke-width:4"/><path class="ink" d="M20,238 L440,238" style="stroke-width:1"/>' +
+      '<path class="flow" d="M30,234 L430,234"/>' +
+      '<text x="230" y="262" text-anchor="middle" class="mono">DC BUS 380 – 800 VDC</text>' +
+      wf("M75,238 L75,320") + wf("M230,238 L230,320") + wf("M385,238 L385,320", "b") +
+      box(20, 320, 110, 46, "EV 충전 (V2G)", "EV charging (V2G)") + box(170, 320, 120, 46, "AI 데이터센터", "AI data centre") + box(330, 320, 110, 46, "P2H 히터 · 건물", "P2H heater · bldg") +
+      mk(1, 22, 100) + mk(2, 50, 160) + mk(3, 128, 100) + mk(7, 290, 100) + mk(4, 330, 100) +
+      mk(6, 170, 20, 1) + mk(5, 290, 60, 1) + mk(8, 440, 20, 1) +
+      '<g transform="translate(0,400)">' +
+      [[1, "DAB 위상각 보상", "DAB phase compensation"], [2, "DAB 파라미터 온라인 추정", "DAB online parameters"], [3, "가변 누설인덕턴스 변압기", "variable-leakage transformer"], [4, "TAB 3포트 컨버터", "TAB 3-port converter"],
+       [5, "색온도 DC 아크 검출", "colour-temp arc detection"], [6, "PV 단선 위치 검출", "PV break localization"], [7, "PV 직병렬 재구성 MPPT", "PV reconfiguration MPPT"], [8, "가돌리늄 Fail-safe", "gadolinium fail-safe"]]
+        .map(function(a, i){ var x = i < 4 ? 20 : 240, y = (i % 4) * 30, s = a[0] >= 5 && a[0] !== 7;
+          return '<g class="mkr" data-go="' + (4 + a[0]) + '"><circle cx="' + (x + 10) + '" cy="' + (y + 10) + '" r="10" fill="' + (s ? "#1d2b47" : "#b3121b") + '"/><text x="' + (x + 10) + '" y="' + (y + 14) + '" text-anchor="middle" class="mono" style="fill:#fff;font-size:11px">' + a[0] + '</text>' +
+            '<text x="' + (x + 28) + '" y="' + (y + 15) + '" style="font-size:14px">' + biS(a[1], a[2]) + '</text></g>'; }).join("") + '</g></svg>';
+    return fig(svg, '<div class="legend"><span><i style="background:#b3121b"></i>' + bi("전력변환 · 자성부품", "power conversion · magnetics") + '</span><span><i style="background:#1d2b47"></i>' + bi("안전 · 진단", "safety · diagnosis") + '</span></div>',
+      '<b>' + bi("그림 1.", "Fig. 1.") + '</b> ' + bi("보유기술 적용맵 — DC 전력망", "Where our technologies sit on the DC grid")); }
+});
+
+/* 2 · market */
+var MK = [
+  { k: "pv", t: ["세계 태양광 연간 신규설치", "Global annual PV installations"], u: ["GW", "GW"], y: ["2024", "25E", "26E", "27E", "28E", "29E"], v: [597, 655, 665, 755, 847, 930], tag: "2024→2029 +56%",
+    src: "SolarPower Europe, Global Market Outlook 2025-2029 (중간 시나리오)" },
+  { k: "sic", t: ["글로벌 SiC 전력반도체 시장", "Global SiC power semiconductors"], u: ["억 달러", "100M USD"], y: ["2024", "25E", "26E", "27E", "28E", "29E", "30E"], v: [34, 41, 49, 59, 71, 86, 103], tag: "CAGR 20%",
+    src: "Yole Group, Power SiC 2025 — 2024년 값은 CAGR 역산" },
+  { k: "sst", t: ["글로벌 반도체변압기(SST) 시장", "Global solid-state transformers"], u: ["백만 달러", "M USD"], y: ["2024", "25E", "26E", "27E", "28E", "29E", "30E"], v: [164, 214, 279, 364, 474, 618, 806], tag: "CAGR 30.3%",
+    src: "Global Industry Analysts (2025.8)" }
+];
+function barChart(m){
+  var mx = Math.max.apply(null, m.v), x0 = 40, w = 400 / m.v.length, base = 300, h = 220;
+  var s = '<path class="ink" d="M' + x0 + ',60 L' + x0 + ',' + base + ' L445,' + base + '"/>';
+  m.v.forEach(function(v, i){
+    var bh = v / mx * h, bx = x0 + i * w + w * .17, bw = w * .66, last = i === m.v.length - 1;
+    s += '<rect x="' + bx.toFixed(1) + '" y="' + (base - bh).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + bh.toFixed(1) + '" fill="' + (last ? "#ffcf9e" : "url(#hatch)") + '" stroke="#2a2926" stroke-width="1.3"><animate attributeName="height" from="0" to="' + bh.toFixed(1) + '" dur=".6s" fill="freeze"/><animate attributeName="y" from="' + base + '" to="' + (base - bh).toFixed(1) + '" dur=".6s" fill="freeze"/></rect>' +
+      '<text x="' + (bx + bw / 2).toFixed(1) + '" y="' + (base - bh - 8).toFixed(1) + '" text-anchor="middle" class="mono">' + v + '</text>' +
+      '<text x="' + (bx + bw / 2).toFixed(1) + '" y="' + (base + 20) + '" text-anchor="middle" style="font-size:13px">' + m.y[i] + '</text>';
+  });
+  s += '<text x="445" y="40" text-anchor="end" style="font-size:20px;fill:#b3121b">' + m.tag + '</text>' +
+    '<text x="40" y="40" style="font-size:14px">(' + biS(m.u[0], m.u[1]) + ')</text>';
+  return s;
+}
+S.push({ t: ["시장전망", "Market outlook"],
+  L: function(){ return left({
+    kicker: bi("PART 02 · 시장전망", "Part 02 · Market outlook"),
+    title: bi("함께 커지는 두 시장", "Two markets growing together"),
+    lead: bi("신재생·ESS·전기차·AI 데이터센터가 늘수록 <b>고효율 양방향 전력변환</b>과 <b>DC 안전·진단</b> 수요가 함께 성장합니다.",
+      "As renewables, storage, EVs and AI data centres grow, demand rises for both <b>efficient bidirectional conversion</b> and <b>DC safety and diagnosis</b>."),
+    body: '<ul class="pts"><li>' + bi("세계 태양광 연간 설치 2025년 664 GW, 누적 3 TW 돌파 (SolarPower Europe, 2026)", "Global PV installs reached 664 GW in 2025, passing 3 TW cumulative (SolarPower Europe, 2026)") + '</li>' +
+      '<li>' + bi("세계 ESS 신규설치 2026년 158 GW / 459 GWh (+45%) 전망 (BloombergNEF)", "Global new ESS in 2026: 158 GW / 459 GWh (+45%) forecast (BloombergNEF)") + '</li></ul>' +
+      '<div class="kpis"><div class="kpi"><b>800 VDC</b>' + bi("AI 데이터센터 전원 — 구리 45%↓, 효율 최대 5%↑ (NVIDIA, 2025)", "AI data-centre power — 45% less copper, up to 5% more efficient (NVIDIA, 2025)") + '</div>' +
+      '<div class="kpi"><b>535' + bi("건", "") + '</b>' + bi("국내 태양광 설비 화재 (2020~2025 상반기, 재산피해 66.7억 원, 소방청)", "PV fires in Korea, 2020 – H1 2025 (KRW 6.67 bn damage, NFA)") + '</div>' +
+      '<div class="kpi"><b>59' + bi("건", "") + '</b>' + bi("국내 ESS 화재 (최근 5년, 재산피해 약 890억 원)", "ESS fires in Korea, last 5 years (≈ KRW 89 bn damage)") + '</div></div>',
+    note: bi("오른쪽 탭으로 시장을 바꿔 보세요 →", "switch markets with the tabs →") }); },
+  R: function(){
+    return fig('<svg viewBox="0 0 460 330" class="mchart">' + barChart(MK[0]) + '</svg>',
+      '<div class="mtab">' + MK.map(function(m, i){ return '<button class="tg' + (i ? "" : " on") + '" data-m="' + i + '">' + bi(m.t[0], m.t[1]) + '</button>'; }).join("") + '</div>' +
+      '<div class="src msrc">' + bi("출처: ", "Source: ") + MK[0].src + bi(" ※ 중간 연도는 CAGR 기반 보간", " — intermediate years interpolated by CAGR") + '</div>',
+      '<b>' + bi("그림 2.", "Fig. 2.") + '</b> <span class="mttl">' + bi(MK[0].t[0], MK[0].t[1]) + '</span>'); },
+  init: function(L, R){
+    $$(".mtab .tg", R).forEach(function(b){ b.addEventListener("click", function(){
+      var m = MK[+b.dataset.m];
+      $$(".mtab .tg", R).forEach(function(x){ x.classList.toggle("on", x === b); });
+      $(".mchart", R).innerHTML = barChart(m);
+      $(".mttl", R).innerHTML = bi(m.t[0], m.t[1]);
+      $(".msrc", R).innerHTML = bi("출처: ", "Source: ") + m.src + bi(" ※ 중간 연도는 CAGR 기반 보간", " — intermediate years interpolated by CAGR");
+    }); });
+  }
+});
+
+/* 3 · tech & policy trends */
+var POL = {
+  "한국": ["Korea", [
+    ["분산에너지 활성화 특별법 시행(2024.6.14): 분산에너지 특화지역, 직접 전력거래·ESS 특례", "Distributed Energy Act in force (2024-06-14): special zones, direct power trading, ESS exemptions"],
+    ["제11차 전력수급기본계획(2025.2): 2038년 재생에너지 비중 29.2%, 설비 121.9 GW", "11th Basic Plan (2025-02): 29.2% renewables and 121.9 GW by 2038"],
+    ["2035 NDC(2025.11): 2018년 대비 53~61% 감축", "2035 NDC (2025-11): 53–61% cut vs 2018"],
+    ["제1차 재생에너지 기본계획(2026.5): 2025년 37.1 GW → 2030년 100 GW (태양광 약 87 GW)", "1st Renewable Energy Plan (2026-05): 37.1 GW (2025) → 100 GW by 2030 (≈87 GW PV)"]]],
+  "미국": ["USA", [
+    ["OBBBA(2025.7.4): 2027년 말 이후 가동 태양광·풍력 45Y/48E 세액공제 종료 (2026.7.4 이전 착공분 예외)", "OBBBA (2025-07-04): 45Y/48E credits end for solar and wind placed in service after 2027 (projects begun before 2026-07-04 exempt)"],
+    ["IRS Notice 2025-42: 착공 인정요건 강화(물리적 작업 테스트)", "IRS Notice 2025-42: stricter begin-construction test (physical work)"],
+    ["NEC 690.11: PV DC 회로 아크고장 보호 요구", "NEC 690.11: arc-fault protection required on PV DC circuits"]]],
+  "EU": ["EU", [
+    ["넷제로산업법(NZIA, 2024.6.29 발효): 2030년 넷제로 기술 연간 수요의 40% 이상 역내 제조", "Net-Zero Industry Act (in force 2024-06-29): ≥40% of annual net-zero tech demand made in the EU by 2030"],
+    ["유럽 태양광 헌장(2024.4): 회원국·산업계 PV 제조 공급망 지원 공동선언", "European Solar Charter (2024-04): joint support for the PV manufacturing chain"]]],
+  "중국": ["China", [
+    ["제15차 5개년 계획(2026.3 채택): 2030년 신형 전력시스템 초기 구축, 신규 전력수요를 청정전력으로 충당", "15th Five-Year Plan (2026-03): new-type power system by 2030; new demand met by clean power"],
+    ["2035 NDC(2025.9): 풍력+태양광 3,600 GW 이상 — 2025년 말 1.8 TW 돌파", "2035 NDC (2025-09): ≥3,600 GW wind + solar — passed 1.8 TW at end-2025"]]],
+  "일본": ["Japan", [
+    ["제7차 에너지기본계획(2025.2.18): 2040년 재생에너지 40~50%, 태양광 23~29%", "7th Strategic Energy Plan (2025-02-18): 40–50% renewables, 23–29% solar by 2040"],
+    ["페로브스카이트 태양전지 2040년 20 GW 보급 목표", "Perovskite PV target: 20 GW by 2040"]]]
+};
+function polList(k){ return '<ul class="pol-list">' + POL[k][1].map(function(x){ return "<li>" + bi(x[0], x[1]) + "</li>"; }).join("") + '</ul>'; }
+S.push({ t: ["기술 · 정책 동향", "Tech & policy trends"],
+  L: function(){
+    var c = function(tk, te, bk, be){ return '<div class="cardp"><b>' + bi(tk, te) + '</b>' + bi(bk, be) + '</div>'; };
+    return '<div class="pg"><div class="kicker">' + bi("PART 02 · 최신 기술 · 제품 동향", "Part 02 · Technology & products") + '</div>' +
+      '<h2 class="ttl">' + bi("지금 일어나는 일", "What is happening now") + '</h2><div class="cards">' +
+      c("WBG 기반 DAB 정밀제어", "Precise WBG-based DAB control", "SiC·GaN 고속 스위칭에서 접합 커패시턴스·데드타임이 ZVS 범위와 위상 오차를 좌우 → 데드타임 보상이 표준 설계 절차로 정착", "With fast SiC/GaN switching, junction capacitance and dead time set the ZVS range and phase error — dead-time compensation is becoming standard design practice") +
+      c("다중포트(TAB) 컨버터", "Multi-port (TAB) converters", "PV·배터리·부하를 단일 변압기로 통합 — 포트 간 전력 결합 해소, 역류전력 저감, 전 포트 ZVS가 핵심", "PV, battery and load on one transformer — decoupling the ports, cutting backflow power and keeping ZVS on every port") +
+      c("SST · 800 VDC 데이터센터", "SST · 800 VDC data centres", "NVIDIA 800 VDC 아키텍처(2025), OCP LVDC SST 사양 v0.3(2026.7) — 80여 개 업체 참여, 2027년 본격 적용", "NVIDIA's 800 VDC architecture (2025) and OCP LVDC SST spec v0.3 (2026-07) — 80+ companies, broad use from 2027") +
+      c("DC 안전 · PV 진단 표준화", "DC safety & PV diagnosis standards", "IEC 63027:2023(PV 직렬아크 검출·차단), NEC 690.11 — AI 아크 분류, TDR 단선 위치 추정 연구 확대", "IEC 63027:2023 (PV series-arc detection), NEC 690.11 — growing work on AI arc classification and TDR fault location") +
+      '</div><div class="src">' + bi("제품 동향(Infineon CoolSiC, Wallbox Quasar 2, Amperesand·Heron Power·DG Matrix SST, Huawei AFCI 등)은 원본 PDF 8쪽 참고", "Product trends (Infineon CoolSiC, Wallbox Quasar 2, Amperesand / Heron Power / DG Matrix SSTs, Huawei AFCI …) are on p. 8 of the PDF") + '</div>' +
+      '<div class="note">' + bi("오른쪽은 주요국 정책 →", "national policies on the right →") + '</div></div>'; },
+  R: function(){
+    var ks = Object.keys(POL);
+    return '<div class="pg"><div class="kicker">' + bi("주요국 정책 동향", "National policy") + '</div><h2 class="ttl sm">' + bi("나라별로 살펴보기", "Country by country") + '</h2>' +
+      '<div class="mtab" style="justify-content:flex-start">' + ks.map(function(k, i){ return '<button class="tg' + (i ? "" : " on") + '" data-k="' + k + '">' + bi(k, POL[k][0]) + '</button>'; }).join("") + '</div>' +
+      '<div class="polbox">' + polList(ks[0]) + '</div>' +
+      '<div class="src" style="margin-top:auto">' + bi("출처: 법무법인 세종·신김 뉴스레터, 뉴시스(2025.11.10), 더팩트(2026.5.19), Sidley(2025.7), PV Tech(2024), pv magazine(2026.3), Enerdata·TaiyangNews(2025.2) 등 재정리", "Sources: Shin &amp; Kim / Sejong newsletters, Newsis (2025-11-10), The Fact (2026-05-19), Sidley (2025-07), PV Tech (2024), pv magazine (2026-03), Enerdata, TaiyangNews (2025-02)") + '</div></div>'; },
+  init: function(L, R){
+    $$(".tg", R).forEach(function(b){ b.addEventListener("click", function(){
+      $$(".tg", R).forEach(function(x){ x.classList.toggle("on", x === b); }); $(".polbox", R).innerHTML = polList(b.dataset.k); }); });
+  }
+});
+
+/* 4 · holdings */
+var HOLD = [
+  ["전력변환", "Power conversion", [["DAB 위상각 보상제어", "DAB phase compensation", 2, 1], ["자성부품 파라미터 추정·제어", "Magnetic parameter estimation", 3, 2], ["다중포트 컨버터", "Multi-port converter", 1, 4]]],
+  ["자성부품", "Magnetics", [["가변 누설인덕턴스 변압기", "Variable-leakage transformer", 4, 3], ["변압기 구조·해석", "Transformer structure & analysis", 5]]],
+  ["신재생·안전진단", "Renewables & safety", [["PV 단선 위치 검출", "PV break localization", 5, 6], ["PV 직병렬 재구성 MPPT", "PV reconfiguration MPPT", 2, 7], ["DC 아크 검출·차단", "DC arc detection", 1, 5], ["Fail-safe 화재감시", "Fail-safe fire monitoring", 2, 8]]],
+  ["융합응용", "Convergence", [["스마트팜·식품", "Smart farm & food", 5], ["농기계 안전", "Farm-machine safety", 2], ["생활가전·기타", "Home appliances & other", 6]]]
+];
+var DONUT = [[6, "#b3121b"], [9, "#e0868a"], [7, "#1d2b47"], [3, "#5a6f96"], [13, "#c9bfa9"]];
+S.push({ t: ["보유기술 현황", "Technology holdings"],
+  L: function(){
+    var rows = HOLD.map(function(g){ return g[2].map(function(s, i){
+      return '<tr>' + (i ? "" : '<td class="g" rowspan="' + g[2].length + '">' + bi(g[0], g[1]) + '</td>') + '<td>' + bi(s[0], s[1]) +
+        (s[3] ? ' <a data-go="' + (4 + s[3]) + '" style="color:var(--crimson);font:700 10.5px var(--head);cursor:pointer">' + bi("대표 0" + s[3], "No. 0" + s[3]) + '</a>' : "") + '</td><td class="c">' + s[2] + '</td></tr>'; }).join(""); }).join("");
+    return '<div class="pg"><div class="kicker">' + bi("PART 03 · 보유기술", "Part 03 · Holdings") + '</div><h2 class="ttl">' + bi("보유기술 현황", "What we hold") + '</h2>' +
+      '<table class="htable"><tr><th>' + bi("대분류", "AREA") + '</th><th>' + bi("세부기술", "TECHNOLOGY") + '</th><th style="text-align:right">' + bi("특허", "PAT.") + '</th></tr>' + rows +
+      '<tr class="tot"><td colspan="2">' + bi("합계", "Total") + '</td><td class="c">38</td></tr></table>' +
+      '<div class="src">' + bi("※ 국내 등록특허 기준(2026.10.22), 기술이전 7건 포함 · 「대표 0n」을 누르면 해당 특허로 이동", "Korean registered patents as of 2026-10-22, incl. 7 transferred · tap “No. 0n” to jump to that patent") + '</div></div>'; },
+  R: function(){
+    var tot = 38, a0 = -Math.PI / 2, cx = 230, cy = 170, r = 120, ri = 70, s = "";
+    DONUT.forEach(function(d, i){
+      var a1 = a0 + d[0] / tot * Math.PI * 2, lg = a1 - a0 > Math.PI ? 1 : 0;
+      var p = function(rr, a){ return (cx + rr * Math.cos(a)).toFixed(1) + "," + (cy + rr * Math.sin(a)).toFixed(1); };
+      s += '<path class="seg" data-i="' + i + '" d="M' + p(r, a0) + ' A' + r + ',' + r + ' 0 ' + lg + ' 1 ' + p(r, a1) + ' L' + p(ri, a1) + ' A' + ri + ',' + ri + ' 0 ' + lg + ' 0 ' + p(ri, a0) + ' Z" fill="' + d[1] + '" stroke="#fbf8f1" stroke-width="2"/>';
+      var am = (a0 + a1) / 2; s += '<text x="' + (cx + (r + 22) * Math.cos(am)).toFixed(1) + '" y="' + (cy + (r + 22) * Math.sin(am) + 5).toFixed(1) + '" text-anchor="middle" class="mono" style="font-size:14px">' + d[0] + '</text>';
+      a0 = a1;
+    });
+    s += '<text x="230" y="168" text-anchor="middle" class="mono dtot" style="font-size:34px">38</text><text x="230" y="192" text-anchor="middle" class="dlbl" style="font-size:15px">' + biS("등록특허", "patents") + '</text>';
+    return fig('<svg viewBox="0 0 460 340">' + s + '</svg>',
+      '<div class="legend" style="flex-wrap:wrap">' + GROUPS.map(function(g, i){ return '<span class="lg" data-i="' + i + '" style="cursor:pointer"><i style="background:' + DONUT[i][1] + '"></i>' + bi(g[0], g[1]) + '</span>'; }).join("") + '</div><div class="readout dread" style="font-weight:600;font-family:var(--sans);font-size:12px"></div>',
+      '<b>' + bi("그림 3.", "Fig. 3.") + '</b> ' + bi("기술분야별 등록특허 38건 — 조각을 눌러 보세요", "38 patents by area — tap a slice")); },
+  init: function(L, R){
+    var pick = function(i){
+      $$(".seg", R).forEach(function(p){ p.style.opacity = +p.dataset.i === i ? 1 : .3; });
+      var g = GROUPS[i];
+      $(".dtot", R).textContent = DONUT[i][0];
+      $(".dlbl", R).innerHTML = biS(g[0], g[1]);
+      var names = PATS.slice(g[2] - 1, g[3]).map(function(p){ return p[1]; });
+      $(".dread", R).innerHTML = bi(names.slice(0, 3).join(" · ") + (names.length > 3 ? " 외 " + (names.length - 3) + "건" : ""),
+        PATS.slice(g[2] - 1, g[3]).slice(0, 3).map(function(p){ return enTitle(p[2]) || p[1]; }).join(" · ") + (names.length > 3 ? " + " + (names.length - 3) + " more" : ""));
+    };
+    $$(".seg,.lg", R).forEach(function(e){ e.addEventListener("click", function(){ pick(+e.dataset.i); }); });
+  }
+});
+
+/* ---------- flagship patents ---------- */
+function sqw(x0, x1, yc, a, per, sh, slope){
+  slope = slope || 0;
+  var lv = function(x){ var t = (((x - x0 - sh) % per) + per) % per; return t < per / 2 ? yc - a : yc + a; };
+  var d = "M" + x0 + "," + lv(x0 + .01);
+  for (var k = -6; k < 20; k++){ var e = x0 + sh + k * per / 2; if (e <= x0) continue; if (e + slope >= x1) break;
+    d += " L" + e.toFixed(1) + "," + lv(e - .01) + " L" + (e + slope).toFixed(1) + "," + lv(e + .01); }
+  return d + " L" + x1 + "," + lv(x1 - .01);
+}
+
+/* 01 · DAB phase compensation */
+P_IDX[1] = S.length;
+S.push({ t: ["대표 01 · DAB 위상각 보상", "01 · DAB phase compensation"],
+  L: function(){ return left({
+    kicker: kick(1, "전력변환", "Power conversion"),
+    title: bi("DAB 컨버터 위상각 보상 제어", "DAB phase-shift compensation"),
+    lead: bi("데드타임 동안 SiC MOSFET 기생 커패시턴스의 충·방전과 환류 다이오드 도통으로 생기는 <b>실효 위상각 오차</b>를 보상해, 출력 정밀도와 효율을 높입니다.",
+      "Compensates the <b>effective phase-shift error</b> caused by SiC MOSFET parasitic-capacitance charging and freewheeling-diode conduction during dead time, raising output accuracy and efficiency."),
+    flap: vs(["이상적 스위치를 가정한 SPS 위상각 제어", "데드타임 중 공진·충방전 구간을 무시 → 실제 전달 위상각 감소", "경부하·고주파일수록 출력 오차 ↑, 별도 보상기·튜닝 필요"],
+      ["SPS control that assumes ideal switches", "Ignores resonance during dead time → less phase actually transferred", "Error grows at light load and high frequency; needs extra tuning"],
+      ["기생 커패시턴스·다이오드 전압을 반영한 보상: <b>φ′ = φ + Δφ</b>", "데드타임 내 상태(State 1~3)별 등가회로로 위상 지연 산출", "실시간 적용 — 추가 센서 불필요"],
+      ["Compensation including parasitics and diode drop: <b>φ′ = φ + Δφ</b>", "Phase delay computed from equivalent circuits of dead-time states 1–3", "Applied in real time — no extra sensors"]),
+    body: feats(["출력전압 정확도 <b>93.17% → 97.16%</b> (입력 100 V, 목표 62.5 V 실험, 기존 SPS 대비)", "EV OBC·V2G, ESS PCS, SST 등에 펌웨어로 적용"],
+      ["Output-voltage accuracy <b>93.17% → 97.16%</b> (100 V in, 62.5 V target, vs SPS)", "Firmware-only: EV OBC / V2G, ESS PCS, SST"]) +
+      market("DAB 디지털 제어 펌웨어·게이트 드라이버", "DAB digital-control firmware, gate drivers", "양방향 절연형 DC-DC 모듈", "Bidirectional isolated DC-DC modules", "EV OBC·V2G 충전기, ESS PCS, SST", "EV OBC / V2G chargers, ESS PCS, SST") }); },
+  R: function(){
+    var svg = '<svg viewBox="0 0 460 300">' +
+      '<text x="10" y="56" class="mono">v₁</text><text x="10" y="126" class="mono">v₂</text>' +
+      '<path class="v1" fill="none" stroke="#ff8a1f" stroke-width="2.4"/><path class="v2" fill="none" stroke="#2f8cff" stroke-width="2.4"/>' +
+      '<path class="dz" fill="#2f8cff" opacity=".16"/>' +
+      '<path class="mk ink" style="stroke-dasharray:3 3"/><text class="mkt" y="168" style="font-size:16px"></text>' +
+      '<text x="40" y="214" style="font-size:14px">' + biS("출력전압 (목표 62.5 V)", "output voltage (target 62.5 V)") + '</text>' +
+      '<rect x="40" y="224" width="380" height="22" rx="4" class="ink"/><rect class="vb" x="41" y="225" height="20" rx="3" fill="#ff8a1f"/>' +
+      '<path class="ink" d="M420,218 L420,252" style="stroke:#b3121b;stroke-width:2"/><text x="420" y="270" text-anchor="end" class="mono" style="fill:#b3121b">62.5 V</text>' +
+      '<text class="vt mono" x="40" y="270"></text></svg>';
+    return patentRight(svg, '<div class="ctl"><button class="tg" data-c="0">' + bi("기존 SPS", "Conventional SPS") + '</button><button class="tg on" data-c="1">' + bi("제안 보상 (φ′ = φ + Δφ)", "Compensated (φ′ = φ + Δφ)") + '</button></div>',
+      trl(4, "시작품 고도화 → 수 kW급 EV 충전기·ESS 실증", "refined prototype → kW-class EV charger / ESS demo"), rowsFor([1, 2])); },
+  init: function(L, R){
+    var set = function(c){
+      $$(".tg", R).forEach(function(b){ b.classList.toggle("on", +b.dataset.c === c); });
+      var per = 200, x0 = 40, sh = 30, dt = 14, extra = c ? 10 : 0;
+      $(".v1", R).setAttribute("d", sqw(x0, 440, 50, 20, per, 0));
+      $(".v2", R).setAttribute("d", sqw(x0, 440, 120, 20, per, sh + extra, dt));
+      var e1 = x0 + per, e2 = e1 + sh + extra, eff = c ? e1 + sh : e1 + sh - 9;
+      $(".dz", R).setAttribute("d", "M" + e2 + ",96 L" + (e2 + dt) + ",96 L" + (e2 + dt) + ",144 L" + e2 + ",144 Z");
+      $(".mk", R).setAttribute("d", "M" + e1 + ",26 L" + e1 + ",160 M" + (e1 + sh) + ",150 L" + (e1 + sh) + ",160");
+      var t = $(".mkt", R); t.setAttribute("x", e1 + sh + 6);
+      t.innerHTML = c ? biS("φ′ = φ + Δφ → 실효 위상 = φ", "φ′ = φ + Δφ → effective = φ") : biS("데드타임 → 실효 위상 < φ", "dead time → effective < φ");
+      var v = c ? 60.73 : 58.23, pc = c ? 97.16 : 93.17;
+      $(".vb", R).setAttribute("width", (378 * v / 62.5).toFixed(1));
+      $(".vb", R).setAttribute("fill", c ? "#ff8a1f" : "#9aa5b5");
+      $(".vt", R).innerHTML = v.toFixed(2) + " V · " + biS("정확도 ", "accuracy ") + pc + "%";
+    };
+    $$(".tg", R).forEach(function(b){ b.addEventListener("click", function(){ set(+b.dataset.c); }); });
+    set(1);
+  }
+});
+
+/* 02 · DAB online parameter estimation */
+P_IDX[2] = S.length;
+S.push({ t: ["대표 02 · DAB 파라미터 추정", "02 · DAB online parameters"],
+  L: function(){ return left({
+    kicker: kick(2, "전력변환 · 진단", "Conversion · diagnosis"),
+    title: bi("누설인덕턴스 온라인 추정 · 제어", "Online leakage-inductance estimation"),
+    lead: bi("운전 중 누설인덕턴스 전류 변화를 이용해 변압기 누설인덕턴스·변압비를 <b>별도 계측장비 없이</b> 계산하고, 제어와 고장예측에 반영합니다.",
+      "Uses the leakage-inductance current change during operation to compute leakage inductance and turns ratio <b>without extra instruments</b>, feeding control and prognosis."),
+    flap: vs(["제작 시 LCR 미터로 잰 오프라인 값을 고정 사용", "온도·열화·제작편차를 반영 못 해 위상 계산 오차·순환전류 증가", "운전 중 자성부품 열화를 진단할 수단 없음"],
+      ["Fixed offline values measured with an LCR meter", "Temperature, ageing and tolerance ignored → phase error, circulating current", "No way to diagnose magnetic ageing in service"],
+      ["전류변화 구간(ΔiL ≤ ε)을 찾아 데드타임 보정 후 <b>L<sub>leak</sub> 실시간 산출</b>", "산출값으로 위상각·변압비 보정, PHM 지표로 활용", "기존 전압·전류 센서만 사용 — 펌웨어 업데이트로 적용"],
+      ["Finds the flat-current interval (ΔiL ≤ ε), corrects dead time and <b>computes L<sub>leak</sub> live</b>", "Corrects phase and turns ratio; serves as a PHM indicator", "Existing V/I sensors only — a firmware update"]),
+    body: feats(["계산값을 FEM 해석 및 LCR 실측(44.25 μH)과 비교 검증", "연구실 창업기업 ㈜에니트와 공동출원·등록 → 사업화 연계"],
+      ["Validated against FEM and an LCR measurement (44.25 μH)", "Co-filed with lab spin-off ENIT Co. → path to commercialization"]) +
+      market("온라인 파라미터 추정 알고리즘(IP)", "Online parameter-estimation IP", "자가진단형 DAB 전력변환 모듈", "Self-diagnosing DAB modules", "데이터센터 전원, EV 충전기, ESS", "Data-centre power, EV chargers, ESS") }); },
+  R: function(){
+    var svg = '<svg viewBox="0 0 460 300">' +
+      '<text x="10" y="24" class="mono">iL</text><path class="ink" d="M30,120 L445,120" style="stroke-dasharray:3 4;opacity:.5"/>' +
+      '<path class="fl" fill="#57b26a" opacity=".18"/>' +
+      '<path class="ilf" fill="none" stroke="#9aa5b5" stroke-width="2" stroke-dasharray="5 4"/>' +
+      '<path class="ila" fill="none" stroke="#ff8a1f" stroke-width="2.6"/>' +
+      '<text x="250" y="236" style="font-size:14px;fill:#3c8a4d">' + biS("ΔiL ≤ ε 구간 → L 계산", "ΔiL ≤ ε interval → compute L") + '</text>' +
+      '<path class="ink" d="M40,250 L70,250" style="stroke:#ff8a1f;stroke-width:2.6"/><text x="76" y="255" style="font-size:13px">' + biS("실제 전류", "actual current") + '</text>' +
+      '<path class="ink" d="M180,250 L210,250" style="stroke:#9aa5b5;stroke-dasharray:5 4"/><text x="216" y="255" style="font-size:13px">' + biS("고정값 모델 (44.25 μH)", "fixed-value model (44.25 μH)") + '</text>' +
+      '<text class="lt mono" x="40" y="285"></text></svg>';
+    return patentRight(svg, '<div class="ctl">' + bi("온도·열화에 따른 실제 L", "actual L with heat / ageing") + '<input type="range" class="lr" min="34" max="56" step=".25" value="50"><output class="lv mono" style="width:70px;font:700 12px var(--head)"></output></div>',
+      trl(4, "산업체 공동 실증 → 상용 DAB 제품 탑재", "joint field demo → commercial DAB products"), rowsFor([3, 4, 5])); },
+  init: function(L, R){
+    var s = $(".lr", R);
+    var wave = function(Lh){ // trapezoid, slopes ∝ 1/L
+      var a = 44.25 / Lh * 70, x0 = 40, per = 200, ph = 50, d = "", y0 = 120;
+      for (var k = 0; k < 2; k++){ var b = x0 + k * per;
+        d += (k ? " L" : "M") + b + "," + (y0 + a) + " L" + (b + ph) + "," + (y0 - a) + " L" + (b + per / 2) + "," + (y0 - a) + " L" + (b + per / 2 + ph) + "," + (y0 + a) + " L" + (b + per) + "," + (y0 + a); }
+      return { d: d, a: a };
+    };
+    var upd = function(){
+      var Lr = +s.value, w = wave(Lr), f = wave(44.25);
+      $(".ila", R).setAttribute("d", w.d); $(".ilf", R).setAttribute("d", f.d);
+      $(".fl", R).setAttribute("d", "M90,20 L140,20 L140,220 L90,220 Z M190,20 L240,20 L240,220 L190,220 Z M290,20 L340,20 L340,220 L290,220 Z M390,20 L440,20 L440,220 L390,220 Z");
+      var err = (44.25 - Lr) / Lr * 100;
+      $(".lv", R).textContent = Lr.toFixed(1) + " μH";
+      $(".lt", R).innerHTML = biS("고정값 사용 시 L 오차 ", "error with fixed L ") + (err >= 0 ? "+" : "") + err.toFixed(1) + "% · " + biS("온라인 추정값 ", "online estimate ") + Lr.toFixed(1) + " μH ✓";
+    };
+    s.addEventListener("input", upd); upd();
+  }
+});
+
+/* 03 · variable leakage transformer */
+P_IDX[3] = S.length;
+S.push({ t: ["대표 03 · 가변 누설인덕턴스 변압기", "03 · Variable-leakage transformer"],
+  L: function(){ return left({
+    kicker: kick(3, "자성부품", "Magnetics"),
+    title: bi("누설인덕턴스를 연속 조절하는<br>고주파 변압기", "A high-frequency transformer<br>with adjustable leakage"),
+    lead: bi("변압기 안에 삽입 코어(리액터)나 회전형 무버를 두고 위치·각도를 바꿔 누설인덕턴스를 연속 가변합니다. 변압기 하나로 DAB의 <b>출력범위와 ZVS 영역을 확장</b>합니다.",
+      "An inserted core (reactor) or rotating mover inside the transformer varies the leakage inductance continuously, so one transformer <b>extends the DAB's power range and ZVS region</b>."),
+    flap: vs(["누설인덕턴스가 제작 시 고정", "부하·전압 조건이 바뀌면 재설계·재제작", "외부 직렬 인덕터 추가 시 부피·손실 증가, 경부하 ZVS 실패"],
+      ["Leakage fixed at manufacture", "New load or voltage → redesign and rebuild", "An external series inductor adds volume and loss; ZVS fails at light load"],
+      ["코어 삽입 위치·무버 회전각으로 누설인덕턴스 가변", "현재값 계산 → 목표 비교 → 구동부로 위치 보정 반복", "리액터 일체형·E형 철심 공극 가변 등 구조 패밀리 특허"],
+      ["Leakage set by core insertion depth or mover angle", "Compute → compare with target → reposition, in a loop", "Patent family: integrated reactor, E-core variable gap and more"]),
+    body: feats(["삽입 위치 50 → 0 mm에서 인덕턴스 약 <b>97 → 29 μH</b>, 출력 약 <b>40 → 260 W</b> 가변 (시작품 실험)", "리액터 일체화로 부품 수·부피 저감 → 출력밀도 향상"],
+      ["Insertion 50 → 0 mm: inductance ≈ <b>97 → 29 μH</b>, output ≈ <b>40 → 260 W</b> (prototype)", "Integrated reactor: fewer parts, smaller size, higher power density"]) +
+      market("가변 누설인덕턴스 고주파 변압기·리액터", "Variable-leakage HF transformers & reactors", "광역출력 DAB / SST 전력단", "Wide-range DAB / SST power stages", "SST, EV 급속충전기, 데이터센터 PSU", "SST, EV fast chargers, data-centre PSUs") }); },
+  R: function(){
+    var svg = '<svg viewBox="0 0 460 300">' +
+      '<rect x="40" y="40" width="200" height="190" rx="4" class="inkf"/><rect x="70" y="70" width="40" height="130" fill="#fbf8f1" stroke="#2a2926" stroke-width="1.6"/><rect x="170" y="70" width="40" height="130" fill="#fbf8f1" stroke="#2a2926" stroke-width="1.6"/>' +
+      '<rect x="40" y="40" width="200" height="190" rx="4" fill="url(#hatch)" opacity=".35"/>' +
+      '<path class="ink" d="M58,82 L122,82 M58,96 L122,96 M58,110 L122,110 M58,124 L122,124" style="stroke:#ff8a1f;stroke-width:3"/>' +
+      '<path class="ink" d="M158,146 L222,146 M158,160 L222,160 M158,174 L222,174 M158,188 L222,188" style="stroke:#2f8cff;stroke-width:3"/>' +
+      '<g class="ins"><rect x="128" y="0" width="24" height="70" rx="2" fill="#e0868a" stroke="#2a2926" stroke-width="1.6"/><path class="ink" d="M140,0 L140,-30"/></g>' +
+      '<text x="140" y="256" text-anchor="middle" style="font-size:14px">' + biS("삽입 코어 위치", "insert position") + ' <tspan class="pos mono"></tspan></text>' +
+      '<path class="ink" d="M280,220 L440,220 M280,220 L280,40"/>' +
+      '<text x="360" y="244" text-anchor="middle" style="font-size:13px">' + biS("삽입 위치 (mm)", "insert (mm)") + '</text>' +
+      '<text x="282" y="236" class="mono" style="font-size:10px">0</text><text x="430" y="236" class="mono" style="font-size:10px">50</text>' +
+      '<path class="ink" d="M280,196 L440,60" style="stroke:#b3121b;stroke-width:2"/><text x="444" y="60" class="mono" style="fill:#b3121b;font-size:11px">L</text>' +
+      '<path class="ink" d="M280,50 L440,206" style="stroke:#ff8a1f;stroke-width:2"/><text x="444" y="210" class="mono" style="fill:#c96a10;font-size:11px">P</text>' +
+      '<circle class="dl" r="5" fill="#b3121b"/><circle class="dp" r="5" fill="#ff8a1f"/>' +
+      '<text class="lv mono" x="290" y="282"></text></svg>';
+    return patentRight(svg, '<div class="ctl">' + bi("삽입 위치", "insertion") + '<input type="range" class="ip" min="0" max="50" value="25"></div>',
+      trl(4, "자동구동형(무버) 시작품 → kW급 DAB 적용평가", "motorized mover prototype → kW-class DAB tests"),
+      rowsFor([7, 8, ["E형 철심을 이용한 공극가변형 변압기 구조체 (2건)", "E-core variable-gap transformer structures (2)", "10-2455751 外", "2022.10.13"],
+        ["변압기 지지대 시뮬레이션 시스템 (2건)", "Transformer-support simulation systems (2)", "10-2497961 外", "2023.02.06"]])); },
+  init: function(L, R){
+    var s = $(".ip", R);
+    var upd = function(){
+      var x = +s.value, u = x / 50;
+      $(".ins", R).setAttribute("transform", "translate(0," + (150 - x * 2.6).toFixed(1) + ")");
+      var Lh = 29 + (97 - 29) * u, P = 260 - (260 - 40) * u, px = 280 + 160 * u;
+      $(".dl", R).setAttribute("cx", px); $(".dl", R).setAttribute("cy", 196 - 136 * u);
+      $(".dp", R).setAttribute("cx", px); $(".dp", R).setAttribute("cy", 50 + 156 * u);
+      $(".pos", R).textContent = x + " mm";
+      $(".lv", R).innerHTML = "L ≈ " + Lh.toFixed(0) + " μH · P ≈ " + P.toFixed(0) + " W";
+    };
+    s.addEventListener("input", upd); upd();
+  }
+});
+
+/* 04 · TAB */
+P_IDX[4] = S.length;
+S.push({ t: ["대표 04 · TAB 3포트 컨버터", "04 · TAB 3-port converter"],
+  L: function(){ return left({
+    kicker: kick(4, "전력변환", "Power conversion"),
+    title: bi("역류전력을 없애는<br>3포트 TAB 컨버터", "A 3-port TAB converter<br>without backflow"),
+    lead: bi("PV·배터리·부하를 3권선 고주파 변압기 하나로 잇는 TAB 컨버터에 <b>DPS(Dual-Phase Shift)</b> 제어를 적용해, 3레벨 전압으로 역류전력과 RMS 전류를 줄입니다.",
+      "Applies <b>Dual-Phase Shift (DPS)</b> control to a TAB converter that links PV, battery and load through one three-winding HF transformer, cutting backflow power and RMS current with three-level voltages."),
+    flap: vs(["SPS 제어 — 포트 간 위상각 2개만 쓰는 2레벨 구형파", "전압변환비 ≠ 1이면 역류전력 급증 (위상 0.2 → 0.5에서 전달전력 2배 미만, 역류 약 5배)", "순환전류·도통손실·철손 증가로 효율 저하"],
+      ["SPS — only two inter-port phases, two-level square waves", "With voltage ratio ≠ 1 backflow soars (phase 0.2 → 0.5: < 2× power, ≈ 5× backflow)", "Circulating current, conduction and core loss lower efficiency"],
+      ["DPS — 포트 간 위상각 + 브리지 내부 위상각 (자유도 3)", "영전압 구간이 있는 3레벨 파형으로 전압·전류 위상 불일치 축소", "위상 파라미터 선정으로 역류전력 최소화 (조건에 따라 0)"],
+      ["DPS — inter-port plus inner-bridge phase (3 degrees of freedom)", "Three-level waves with a zero step shrink the V/I mismatch", "Chosen phases minimize backflow — to zero in some conditions"]),
+    body: feats(["동일 전달전력 개념 시뮬레이션에서 역류전력 SPS 대비 <b>약 58% 저감</b>", "단일 변압기 다중포트 통합 → 부품 수·부피 절감"],
+      ["Concept simulation at equal power: backflow <b>≈ 58% lower</b> than SPS", "One transformer for all ports → fewer parts, less volume"]) +
+      market("다중포트 위상천이 제어기(DSP 펌웨어)", "Multi-port phase-shift controller (DSP firmware)", "3포트 절연형 DC-DC 컨버터", "3-port isolated DC-DC converter", "PV-ESS 하이브리드 PCS, DC 마이크로그리드, 데이터센터 전원", "PV-ESS hybrid PCS, DC microgrids, data-centre power") }); },
+  R: function(){
+    var br = function(x, y, ko, en){ return '<rect x="' + x + '" y="' + y + '" width="86" height="48" rx="5" class="inkf"/><text x="' + (x + 43) + '" y="' + (y + 21) + '" text-anchor="middle" class="mono" style="font-size:11px">H-BRIDGE</text><text x="' + (x + 43) + '" y="' + (y + 39) + '" text-anchor="middle" style="font-size:13px">' + biS(ko, en) + '</text>'; };
+    var svg = '<svg viewBox="0 0 460 300">' +
+      br(10, 20, "포트1 · PV", "port 1 · PV") + br(10, 110, "포트2 · 배터리", "port 2 · battery") + br(364, 65, "포트3 · 부하", "port 3 · load") +
+      '<circle cx="230" cy="92" r="44" class="inkf"/><path class="ink" d="M206,64 q-10,8 0,16 q-10,8 0,16 q-10,8 0,16 M254,72 q10,8 0,16 q10,8 0,16 q10,8 0,16 M222,52 L238,52"/>' +
+      '<text x="230" y="152" text-anchor="middle" style="font-size:13px">' + biS("3권선 고주파 변압기", "3-winding HF transformer") + '</text>' +
+      wf("M96,44 L190,70") + wf("M96,134 L190,112", "b") + wf("M274,92 L364,90") +
+      '<text x="10" y="186" class="mono">v, i</text><path class="ink" d="M40,236 L445,236" style="opacity:.4"/>' +
+      '<path class="bf" fill="#b3121b" opacity=".3"/>' +
+      '<path class="vw" fill="none" stroke="#2f8cff" stroke-width="2.2"/><path class="iw" fill="none" stroke="#ff8a1f" stroke-width="2.4"/>' +
+      '<text x="300" y="296" style="font-size:13px;fill:#b3121b">■ ' + biS("역류전력 구간 (v·i < 0)", "backflow (v·i < 0)") + '</text></svg>';
+    return patentRight(svg, '<div class="ctl"><button class="tg on" data-m="sps">SPS</button><button class="tg" data-m="dps">DPS</button><span class="readout tabr" style="margin:0"></span></div>',
+      trl(3, "하드웨어 시작품 제작 → 3포트 실험검증", "hardware prototype → 3-port experiments"), rowsFor([6])); },
+  init: function(L, R){
+    var set = function(m){
+      $$(".tg", R).forEach(function(b){ b.classList.toggle("on", b.dataset.m === m); });
+      var y = 236, A = 32, x0 = 40, per = 200, v = "", i = "", bf = "";
+      for (var k = 0; k < 2; k++){
+        var b = x0 + k * per, h = per / 2;
+        if (m === "sps"){
+          v += (k ? " L" : "M") + b + "," + (y - A) + " L" + (b + h) + "," + (y - A) + " L" + (b + h) + "," + (y + A) + " L" + (b + per) + "," + (y + A);
+          i += (k ? " L" : "M") + b + "," + (y + 28) + " L" + (b + 40) + "," + (y - 14) + " L" + (b + h) + "," + (y - 30) + " L" + (b + h + 40) + "," + (y + 14) + " L" + (b + per) + "," + (y + 28);
+          bf += "M" + b + "," + y + " L" + b + "," + (y + 28) + " L" + (b + 26.7) + "," + y + " Z M" + (b + h) + "," + y + " L" + (b + h) + "," + (y - 30) + " L" + (b + h + 26.7) + "," + y + " Z ";
+        } else {
+          var z = 18;
+          v += (k ? " L" : "M") + b + "," + y + " L" + (b + z) + "," + y + " L" + (b + z) + "," + (y - A) + " L" + (b + h) + "," + (y - A) + " L" + (b + h) + "," + y + " L" + (b + h + z) + "," + y + " L" + (b + h + z) + "," + (y + A) + " L" + (b + per) + "," + (y + A);
+          i += (k ? " L" : "M") + b + "," + (y + 12) + " L" + (b + z + 10) + "," + (y - 4) + " L" + (b + h) + "," + (y - 26) + " L" + (b + h + z + 10) + "," + (y + 4) + " L" + (b + per) + "," + (y + 12);
+          bf += "M" + (b + z) + "," + y + " L" + (b + z) + "," + (y + 1.2) + " L" + (b + z + 3) + "," + y + " Z M" + (b + h + z) + "," + y + " L" + (b + h + z) + "," + (y - 1.2) + " L" + (b + h + z + 3) + "," + y + " Z ";
+        }
+      }
+      $(".vw", R).setAttribute("d", v); $(".iw", R).setAttribute("d", i); $(".bf", R).setAttribute("d", bf);
+      $(".tabr", R).innerHTML = m === "sps" ? bi("역류전력 큼", "large backflow") : bi("역류전력 약 58% ↓ (개념 시뮬레이션)", "backflow ≈ 58% ↓ (concept simulation)");
+    };
+    $$(".tg", R).forEach(function(b){ b.addEventListener("click", function(){ set(b.dataset.m); }); });
+    set("sps");
+  }
+});
+
+/* 05 · colour-temperature DC arc detection */
+P_IDX[5] = S.length;
+S.push({ t: ["대표 05 · 색온도 DC 아크 검출", "05 · Colour-temperature arc detection"],
+  L: function(){ return left({
+    kicker: kick(5, "전기안전", "Electrical safety"),
+    title: bi("색온도로 찾는 DC 아크", "Finding DC arcs by colour temperature"),
+    lead: bi("DC 아크의 빛을 컬러센서로 측정해 <b>색온도(CCT)</b>로 바꾸고, 전류·전압·온도와의 상관관계를 함께 분석해 정확히 판별한 뒤 전원을 차단합니다.",
+      "A colour sensor converts the arc's light into <b>correlated colour temperature (CCT)</b>; correlating it with current, voltage and temperature confirms the arc before the power is cut."),
+    flap: vs(["전류 고주파 노이즈(FFT) 분석 기반 AFCI", "인버터 스위칭 노이즈·부하 변동으로 오동작(Nuisance trip) 빈번", "단일 전기신호에 의존해 발화 위험도 판단에 한계"],
+      ["AFCI based on high-frequency current noise (FFT)", "Frequent nuisance trips from inverter switching and load changes", "Relies on one electrical signal to judge fire risk"],
+      ["아크 발광 색온도 + 다중물리량 융합 판정 후 즉시 차단", "광학 채널은 스위칭 노이즈의 영향을 받지 않는 독립 검출 경로", "정상 과도현상과 아크를 구분 → 릴레이·차단기 개방"],
+      ["Arc-light CCT fused with other quantities, then immediate cut-off", "The optical path is immune to switching noise", "Separates normal transients from arcs → relay / breaker opens"]),
+    body: feats(["연구실 DC 아크 검출기 선행 실증: 100회 시험 평균 검출 <b>1.058 s</b>, 정확도 <b>100%</b> (UL 기준 2.5 s 이내)", "BIPV·ESS 접속반, DC 배전반, EV 충전설비 적용"],
+      ["Lab DC-arc detector, 100 trials: mean detection <b>1.058 s</b>, accuracy <b>100%</b> (UL limit 2.5 s)", "For BIPV / ESS combiner boxes, DC switchboards and EV chargers"]) +
+      market("컬러센서 기반 아크 검출 센서", "Colour-sensor arc detector", "DC 아크 검출·차단 모듈(AFCI)", "DC arc detection & cut-off module (AFCI)", "PV 접속반·인버터, ESS, DC 배전반", "PV combiner boxes & inverters, ESS, DC switchboards") }); },
+  R: function(){
+    var svg = '<svg viewBox="0 0 460 300">' +
+      '<rect x="180" y="20" width="64" height="38" rx="6" class="inkf"/><circle cx="212" cy="39" r="11" class="ink"/><circle class="lens" cx="212" cy="39" r="5" fill="#2a2926"/>' +
+      '<path class="ink" d="M198,58 L190,132 M226,58 L240,132" style="stroke-dasharray:4 4;opacity:.6"/>' +
+      '<text x="252" y="34" style="font-size:13px">' + biS("컬러센서 → 색온도", "colour sensor → CCT") + '</text>' +
+      '<rect x="252" y="42" width="120" height="12" rx="6" class="ink"/><rect class="cct" x="253" y="43" width="0" height="10" rx="5" fill="#f2a93b"/>' +
+      '<path class="ink" d="M336,38 L336,58" style="stroke:#b3121b;stroke-width:2"/>' +
+      '<rect x="10" y="100" width="70" height="90" rx="3" class="inkf" style="fill:#eef2f7"/><path class="thin" d="M33,100 L33,190 M57,100 L57,190 M10,130 L80,130 M10,160 L80,160"/>' +
+      '<text x="45" y="208" text-anchor="middle">PV · ESS</text>' +
+      wf("M80,145 L176,145", "af") +
+      '<rect x="166" y="133" width="40" height="24" rx="3" class="inkf"/>' +
+      '<path class="arcg" fill="none" stroke="#ff8a1f" stroke-width="9" filter="url(#bigglow)" opacity="0"/><path class="arcc" fill="none" stroke="#fffbe8" stroke-width="2.4" opacity="0"/>' +
+      '<g class="conR"><rect x="206" y="133" width="40" height="24" rx="3" class="inkf"/><path class="ink" d="M246,145 L292,145"/></g>' +
+      '<rect x="270" y="170" width="74" height="34" rx="4" class="inkf"/><text x="307" y="192" text-anchor="middle" class="mono" style="font-size:11px">MCU</text>' +
+      '<path class="ink" d="M226,70 L300,70 L300,170" style="stroke-dasharray:3 3"/>' +
+      '<circle cx="300" cy="145" r="4" class="inkf"/><circle cx="340" cy="145" r="4" class="inkf"/><path class="ink lever" d="M300,145 L341,137" style="stroke-width:2.6"/>' +
+      '<path class="ink" d="M320,170 L320,152" style="stroke-dasharray:3 3"/>' +
+      wf("M344,145 L380,145", "af") +
+      '<rect x="380" y="100" width="70" height="90" rx="4" class="inkf"/><path class="ink" d="M394,150 q9,-22 18,0 t18,0"/><text x="415" y="208" text-anchor="middle">' + biS("부하", "load") + '</text>' +
+      wf("M415,190 L415,236 L45,236 L45,190", "b af") +
+      '<text class="msg" x="230" y="276" text-anchor="middle" style="font-size:22px;fill:#b3121b"></text></svg>';
+    return patentRight(svg, '<div class="ctl">' + bi("커넥터 풀림", "Loosening") + '<input type="range" class="loose" min="0" max="100" value="0"><button class="tg rst">' + bi("복귀", "Reset") + '</button></div>',
+      trl(3, "컬러센서 검출 시작품 → IEC 63027 시험대응", "colour-sensor prototype → IEC 63027 testing"), rowsFor([23])); },
+  init: function(L, R){
+    var s = $(".loose", R), tripped = false, arcOn = false, t0 = 0, trip = 0, timer = 0;
+    var arcPath = function(x0, x1){ var d = "M" + x0 + ",145"; for (var i = 1; i < 6; i++) d += " L" + (x0 + (x1 - x0) * i / 6).toFixed(1) + "," + (145 + rnd(-7, 7)).toFixed(1); return d + " L" + x1 + ",145"; };
+    var state = function(){
+      $(".lever", R).setAttribute("transform", tripped ? "rotate(-38 300 145)" : "");
+      $$(".af", R).forEach(function(f){ if (f.classList.contains("flow")) f.classList.toggle("off", tripped); });
+      if (!arcOn && !tripped) $(".msg", R).innerHTML = "";
+    };
+    var draw = function(){
+      var gap = +s.value * .3, want = !tripped && +s.value > 55;
+      $(".conR", R).setAttribute("transform", "translate(" + gap.toFixed(1) + ",0)");
+      if (want){ var d = arcPath(206, 206 + gap); $(".arcg", R).setAttribute("d", d); $(".arcc", R).setAttribute("d", d); $(".arcg", R).setAttribute("opacity", rnd(.6, 1).toFixed(2)); $(".arcc", R).setAttribute("opacity", 1); }
+      else { $(".arcg", R).setAttribute("opacity", 0); $(".arcc", R).setAttribute("opacity", 0); }
+      $(".cct", R).setAttribute("width", want ? rnd(96, 118).toFixed(0) : 30);
+      if (want && !arcOn){ arcOn = true; t0 = performance.now(); $(".msg", R).innerHTML = biS("⚠ 색온도 상승 — 다중물리량 판정 중", "⚠ CCT rising — correlating signals");
+        trip = setTimeout(function(){ tripped = true; arcOn = false; state(); draw();
+          $(".msg", R).innerHTML = biS("아크 판정 → 차단 (" + ((performance.now() - t0) / 1000).toFixed(2) + " s)", "Arc confirmed → cut off (" + ((performance.now() - t0) / 1000).toFixed(2) + " s)"); }, 1058); }
+      if (!want && arcOn){ arcOn = false; clearTimeout(trip); state(); }
+    };
+    s.addEventListener("input", draw);
+    $(".rst", R).addEventListener("click", function(){ tripped = false; arcOn = false; s.value = 0; clearTimeout(trip); state(); draw(); });
+    timer = setInterval(function(){ if (arcOn) draw(); }, 70);
+    onCleanup(function(){ clearInterval(timer); clearTimeout(trip); });
+    state(); draw();
+  }
+});
+
+/* 06 · PV disconnection localization */
+P_IDX[6] = S.length;
+S.push({ t: ["대표 06 · PV 단선 위치 검출", "06 · PV break localization"],
+  L: function(){ return left({
+    kicker: kick(6, "고장진단", "Fault diagnosis"),
+    title: bi("기생 커패시턴스로 찾는<br>PV 스트링 단선 위치", "Locating PV string breaks<br>by parasitic capacitance"),
+    lead: bi("PV 모듈과 대지 사이 기생 커패시턴스가 연결된 모듈 수에 비례하는 성질을 이용해, (+)·(−) 단자와 접지 사이 정전용량(C<sub>p-g</sub>, C<sub>n-g</sub>)을 재서 <b>단선 위치를 현장에서 바로</b> 계산합니다.",
+      "Module-to-ground parasitic capacitance scales with the number of connected modules, so measuring C<sub>p-g</sub> and C<sub>n-g</sub> from the (+) and (−) terminals gives the <b>break location on the spot</b>."),
+    formula: "n = <sup>C<sub>p-g</sub></sup>⁄<sub>C<sub>p-g</sub> + C<sub>n-g</sub></sub> × M",
+    flap: vs(["작업자가 모듈을 하나씩 분리·측정 (멀티미터, I-V 트레이서)", "BIPV·지붕형 등 접근이 어려운 설비는 점검 시간·인력 과다", "TDR 방식은 고가 장비와 반사파 해석 전문성 필요"],
+      ["Workers disconnect and test modules one by one", "Slow and labour-heavy for BIPV and rooftops", "TDR needs costly gear and expert interpretation"],
+      ["C<sub>p-g</sub> · C<sub>n-g</sub> 측정만으로 단선 위치 산출", "스트링 전압 0 감지 시 고주파 신호 주입해 정전용량 측정", "휴대형 단말·인버터 결합형·검출기 등 제품군 특허"],
+      ["Break position from C<sub>p-g</sub> and C<sub>n-g</sub> alone", "When string voltage is 0, inject an HF signal and measure", "Patents for handheld, inverter-integrated and stand-alone versions"]),
+    body: feats(["6모듈 스트링 실험: 단선 위치별 n = 6 · 1 · 2 · 4 로 모듈 단위 판정", "모듈 1장 기생 커패시턴스 약 225 pF → 저가 측정회로", "㈜티엠씨솔루션즈 기술이전"],
+      ["6-module string test: n = 6 · 1 · 2 · 4, located to the module", "≈ 225 pF per module → low-cost measuring circuit", "Licensed to TMC Solutions"]) }); },
+  R: function(){
+    var xs = [30, 100, 170, 240, 310, 380], s = '<svg viewBox="0 0 460 300">';
+    xs.forEach(function(x, i){ var cx = x + 25;
+      s += '<g class="pm" data-k="' + (i + 1) + '"><rect x="' + x + '" y="40" width="50" height="90" rx="3" class="inkf" style="fill:#eef2f7"/>' +
+        '<path class="thin" d="M' + cx + ',40 L' + cx + ',130 M' + x + ',70 L' + (x + 50) + ',70 M' + x + ',100 L' + (x + 50) + ',100"/>' +
+        '<path class="crack" d="M' + (x + 10) + ',50 L' + (x + 26) + ',80 L' + (x + 18) + ',92 L' + (x + 38) + ',122" fill="none" stroke="#b3121b" stroke-width="2.4" style="display:none"/>' +
+        '<text x="' + cx + '" y="30" text-anchor="middle" style="font-size:13px">' + (i + 1) + '</text></g>' +
+        '<path class="ink" d="M' + cx + ',130 L' + cx + ',160 M' + cx + ',160 L' + cx + ',176 M' + (cx - 8) + ',176 L' + (cx + 8) + ',176 M' + (cx - 8) + ',182 L' + (cx + 8) + ',182 M' + cx + ',182 L' + cx + ',196"/>' +
+        '<path class="flow cap" data-k="' + (i + 1) + '" d="M' + cx + ',162 L' + cx + ',174"/>';
+    });
+    s += '<path class="ink" d="M55,160 L405,160"/><path class="ink" d="M30,196 L430,196" style="stroke-dasharray:6 4"/>' +
+      '<path class="ink" d="M55,160 L20,160 L20,236 M405,160 L440,160 L440,236"/>' +
+      '<text x="14" y="252" class="mono">(+)</text><text x="430" y="252" class="mono">(−)</text>' +
+      '<text x="230" y="214" text-anchor="middle" style="font-size:13px">' + biS("접지 (모듈 프레임) · 모듈당 약 225 pF", "ground (frames) · ≈ 225 pF per module") + '</text>' +
+      '<text class="cp mono" x="40" y="246"></text><text class="cn mono" x="420" y="246" text-anchor="end"></text>' +
+      '<text class="res" x="230" y="282" text-anchor="middle" style="font-size:19px;fill:#b3121b"></text></svg>';
+    return patentRight(s, '<div class="readout" style="font:13px var(--hand)">' + bi("모듈을 눌러 단선 위치를 바꿔 보세요", "tap a module to move the break") + '</div>',
+      trl(5, "휴대형 장비 현장실증 → 제품화", "handheld field demo → product"), rowsFor([16, 17, 18, 19, 20])); },
+  init: function(L, R){
+    var Cm = 225, M = 6;
+    var set = function(k){
+      $$(".pm", R).forEach(function(g){ $(".crack", g).style.display = +g.dataset.k === k ? "" : "none"; });
+      $$(".cap", R).forEach(function(c){ var j = +c.dataset.k; c.classList.toggle("b", j > k); c.classList.toggle("off", j === k); });
+      var cp = k * Cm, cn = (M - k) * Cm, n = cp / (cp + cn) * M;
+      $(".cp", R).textContent = "Cp-g ≈ " + cp.toFixed(0) + " pF"; $(".cn", R).textContent = "Cn-g ≈ " + cn.toFixed(0) + " pF";
+      $(".res", R).innerHTML = "n = " + n.toFixed(0) + " → " + biS(k + "번 모듈에서 단선", "break at module " + k);
+    };
+    $$(".pm", R).forEach(function(g){ g.addEventListener("click", function(){ set(+g.dataset.k); }); });
+    set(4);
+  }
+});
+
+/* 07 · PV reconfiguration MPPT */
+P_IDX[7] = S.length;
+var CFG = [["6S", 6, 1], ["3S2P", 3, 2], ["2S3P", 2, 3], ["6P", 1, 6]];
+function pvPower(G, ns, np, R){
+  var Isc = 9 * G / 1000, Voc = 37 + 1.8 * Math.log(Math.max(G, 1) / 1000), Vt = 1.6;
+  var I = function(V){ var vm = V / ns; return np * Math.max(0, Isc * (1 - Math.exp((vm - Voc) / Vt))); };
+  var lo = 0, hi = ns * (Voc + 2);
+  for (var it = 0; it < 50; it++){ var mid = (lo + hi) / 2; if (I(mid) * R > mid) lo = mid; else hi = mid; }
+  return lo * lo / R;
+}
+S.push({ t: ["대표 07 · PV 직병렬 재구성", "07 · PV reconfiguration MPPT"],
+  L: function(){ return left({
+    kicker: kick(7, "신재생에너지", "Renewables"),
+    title: bi("일사량에 맞춰 결선을 바꾸는<br>PV 직병렬 재구성 MPPT", "Rewiring PV to the sunlight:<br>reconfiguration MPPT"),
+    lead: bi("히터 같은 고정저항 부하를 쓰는 P2H 시스템에서 일사량에 따라 모듈의 직렬·병렬 연결을 자동 전환하고, Buck/Boost 토폴로지별 MPPT 추적영역까지 고려해 최대 전력을 얻습니다.",
+      "In P2H systems with a fixed resistive heater, modules are switched between series and parallel as irradiance changes, taking each Buck/Boost topology's MPPT range into account."),
+    flap: vs(["고정 직렬연결 + 단일 DC-DC 컨버터 MPPT", "저일사 시 PV MPP와 부하 MPP 불일치 → 추적영역 이탈, 발전량 손실", "지역·계절별 일사 특성을 구성 설계에 반영 못 함"],
+      ["Fixed series string + one DC-DC MPPT", "At low irradiance PV and load MPPs drift apart → tracking fails, energy lost", "Regional and seasonal irradiance not designed in"],
+      ["일사량 전환점 기반 직병렬 스위칭 + P&O MPPT", "Buck·Boost 추적 특성을 고려해 최적 연결 선정", "일사각·날씨·조도 데이터 머신러닝으로 최적 연결 예측"],
+      ["Series/parallel switching at irradiance break-points + P&O MPPT", "Best connection chosen with Buck / Boost tracking limits in mind", "Machine learning on sun angle, weather and illuminance predicts the best wiring"]),
+    body: feats(["6S·3S2P·2S3P·6P 구성 비교, 국내 6개 지역 연간 발전량 분석", "3 kW급 P2H 실증 테스트베드 구축·운영, ㈜셀시스템 기술이전"],
+      ["6S / 3S2P / 2S3P / 6P compared across 6 Korean regions over a year", "3 kW P2H testbed in operation; licensed to Cell System"]) +
+      market("직병렬 전환 스위치 어레이·제어 알고리즘", "Switch array & control algorithm", "재구성형 PV-MPPT 컨버터", "Reconfigurable PV-MPPT converter", "P2H 온수·난방, 농가·건물형 PV", "P2H hot water & heating, farm and building PV") }); },
+  R: function(){
+    var svg = '<svg viewBox="0 0 460 300">' +
+      '<circle cx="40" cy="36" r="18" class="inkf" style="fill:#fff3c9"/><path class="flow sunf" d="M58,46 L96,70"/>' +
+      '<g class="mods"></g>' +
+      '<rect x="330" y="20" width="110" height="100" rx="14" class="inkf"/><rect x="335" y="50" width="100" height="65" rx="10" fill="url(#warm)" class="heat"/>' +
+      '<path class="ink" d="M350,30 L420,40 L350,50 L420,60 L350,70 L420,80 L350,90 L420,100" style="stroke:#b3121b"/>' +
+      '<text x="385" y="138" text-anchor="middle" style="font-size:13px">' + biS("히터 R = 10 Ω", "heater R = 10 Ω") + '</text>' +
+      '<path class="ink" d="M40,270 L440,270"/><g class="bars"></g></svg>';
+    return patentRight(svg, '<div class="ctl">' + bi("일사량", "Irradiance") + '<input type="range" class="g" min="100" max="1000" step="10" value="300"><output class="gv mono" style="width:80px;font:700 12px var(--head)"></output></div>' +
+      '<div class="src" style="text-align:center;margin-top:0">' + bi("개념 계산 — 단순 PV 모델(모듈 Isc 9 A, Voc 37 V), 실증 데이터 아님", "Concept calculation — simple PV model (module Isc 9 A, Voc 37 V); not measured data") + '</div>',
+      trl(5, "실증 데이터 기반 제어기 제품화", "productize the controller from field data"), rowsFor([21, 22])); },
+  init: function(L, R){
+    var s = $(".g", R);
+    var mods = ""; for (var i = 0; i < 6; i++){ var x = 100 + (i % 3) * 66, y = 22 + Math.floor(i / 3) * 56;
+      mods += '<rect x="' + x + '" y="' + y + '" width="56" height="44" rx="2" class="inkf" style="fill:#eef2f7"/><path class="thin" d="M' + (x + 28) + ',' + y + ' L' + (x + 28) + ',' + (y + 44) + ' M' + x + ',' + (y + 22) + ' L' + (x + 56) + ',' + (y + 22) + '"/>'; }
+    $(".mods", R).innerHTML = mods;
+    var upd = function(){
+      var G = +s.value, P = CFG.map(function(c){ return pvPower(G, c[1], c[2], 10); }), mx = Math.max.apply(null, P), best = P.indexOf(mx);
+      var top = Math.max(1, pvPower(1000, 3, 2, 10)), out = "";
+      CFG.forEach(function(c, i){ var h = P[i] / top * 110, x = 60 + i * 95;
+        out += '<rect x="' + x + '" y="' + (270 - h).toFixed(1) + '" width="60" height="' + h.toFixed(1) + '" fill="' + (i === best ? "#ff8a1f" : "url(#hatch)") + '" stroke="#2a2926" stroke-width="1.3"/>' +
+          '<text x="' + (x + 30) + '" y="' + (262 - h).toFixed(1) + '" text-anchor="middle" class="mono" style="font-size:11px">' + P[i].toFixed(0) + ' W</text>' +
+          '<text x="' + (x + 30) + '" y="290" text-anchor="middle" class="mono" style="font-size:12px' + (i === best ? ";fill:#b3121b" : "") + '">' + (i === best ? "★ " : "") + c[0] + '</text>'; });
+      $(".bars", R).innerHTML = out;
+      $(".gv", R).textContent = G + " W/m²";
+      $(".heat", R).setAttribute("opacity", (0.25 + .75 * mx / top).toFixed(2));
+    };
+    s.addEventListener("input", upd); upd();
+  }
+});
+
+/* 08 · gadolinium fail-safe */
+P_IDX[8] = S.length;
+S.push({ t: ["대표 08 · 가돌리늄 Fail-safe", "08 · Gadolinium fail-safe"],
+  L: function(){ return left({
+    kicker: kick(8, "화재안전", "Fire safety"),
+    title: bi("가돌리늄 리드스위치<br>Fail-safe 화재감시", "Gadolinium reed-switch<br>fail-safe fire monitoring"),
+    lead: bi("퀴리온도(약 20 °C)에서 강자성 → 상자성으로 바뀌는 가돌리늄을 리드스위치의 자기 차폐체로 써서, 과열되면 <b>전기신호·소프트웨어 없이</b> 물리적으로 회로를 엽니다.",
+      "Gadolinium turns from ferromagnetic to paramagnetic at its Curie point (≈ 20 °C). Used as a magnetic shield for a reed switch, it opens the circuit on overheating <b>with no electronics or software</b>."),
+    flap: vs(["온도·연기 센서 + MCU 판단 → 차단기 동작", "센서·제어기 노후·파손·전원 상실 시 차단 불능 (단일 고장점)", "배터리 열폭주 초기 대응 지연"],
+      ["Temperature / smoke sensor + MCU → breaker", "Fails if sensor, controller or power is lost (single point of failure)", "Slow first response to battery thermal runaway"],
+      ["가돌리늄 감온 자기차폐 리드스위치로 보조 개폐 이중화", "열전소자로 가돌리늄을 20 °C 이하 유지 → 외부 과열 시 상자성 전이 → 회로 개방", "온도 미하강 시 화재 지속 판단 → 소화약제·스프링클러 연계"],
+      ["A Gd-shielded reed switch adds a redundant cut-off", "A Peltier keeps Gd below 20 °C; outside heat flips it paramagnetic → circuit opens", "If heat persists, fire is assumed → extinguisher / sprinkler"]),
+    body: feats(["전원·제어신호 없이 소재 물성으로 동작하는 수동형(Passive) 안전장치", "ESS·배터리 랙, EV 충전기, 분전반, 모터 과열보호"],
+      ["Passive: works from material physics, no power or control signal", "ESS / battery racks, EV chargers, panels, motor protection"]) +
+      market("감온 자성 리드스위치", "Thermo-magnetic reed switch", "Fail-safe 보조 개폐 모듈", "Fail-safe auxiliary switch module", "ESS 화재감시·소화, 분전반, EV 충전기", "ESS fire monitoring, panels, EV chargers") }); },
+  R: function(){
+    var svg = '<svg viewBox="0 0 460 300">' +
+      '<rect x="20" y="70" width="34" height="70" class="inkf" style="fill:#e0868a"/><rect x="20" y="140" width="34" height="70" class="inkf" style="fill:#9fb3d9"/>' +
+      '<text x="37" y="110" text-anchor="middle" class="mono">N</text><text x="37" y="180" text-anchor="middle" class="mono">S</text>' +
+      '<g class="fieldS"><path class="flow b" d="M54,100 C90,100 96,120 100,140"/><path class="flow b" d="M54,180 C90,180 96,160 100,140"/></g>' +
+      '<g class="fieldT"><path class="flow b" d="M54,96 C150,80 200,90 236,124"/><path class="flow b" d="M54,184 C150,200 200,190 236,156"/></g>' +
+      '<rect class="gd" x="100" y="60" width="26" height="160" rx="3" stroke="#2a2926" stroke-width="1.6"/>' +
+      '<text x="113" y="50" text-anchor="middle" class="mono">Gd</text>' +
+      '<rect x="92" y="228" width="42" height="22" rx="3" class="inkf"/><text x="113" y="244" text-anchor="middle" class="mono" style="font-size:9px">PELTIER</text>' +
+      '<rect x="200" y="122" width="96" height="36" rx="18" class="inkf" style="fill:#f3f6fa"/>' +
+      '<path class="ink" d="M200,140 L240,140"/><path class="ink reed" d="M256,140 L296,140"/>' +
+      '<text x="248" y="178" text-anchor="middle" style="font-size:13px">' + biS("리드스위치", "reed switch") + '</text>' +
+      wf("M200,140 L180,140 L180,270 L420,270 L420,140 L296,140", "cf") +
+      '<circle cx="380" cy="90" r="20" class="inkf"/><circle class="alarm" cx="380" cy="90" r="14" fill="#57b26a"/>' +
+      '<path class="ink" d="M380,110 L380,140"/>' +
+      '<g transform="translate(232,180)"><path class="ink" d="M0,0 L0,60 L130,60"/><path class="ink" d="M4,10 C40,12 50,14 60,30 C66,44 80,54 128,56" style="stroke:#b3121b"/>' +
+      '<circle class="mt" r="5" fill="#ff8a1f"/><text x="64" y="76" text-anchor="middle" style="font-size:12px">' + biS("온도 → 자화", "T → magnetization") + '</text>' +
+      '<path class="ink" d="M60,0 L60,60" style="stroke-dasharray:2 3;opacity:.5"/><text x="60" y="-4" text-anchor="middle" class="mono" style="font-size:9px">20 °C</text></g>' +
+      '<text class="gmsg" x="230" y="30" text-anchor="middle" style="font-size:18px"></text></svg>';
+    return patentRight(svg, '<div class="ctl">' + bi("가돌리늄 온도", "Gd temperature") + '<input type="range" class="tp" min="0" max="40" value="12"><output class="tv mono" style="width:50px;font:700 12px var(--head)"></output></div>',
+      trl(3, "감온 리드스위치 시작품 → ESS 랙 적용시험", "reed-switch prototype → ESS rack tests"), rowsFor([24, 25])); },
+  init: function(L, R){
+    var s = $(".tp", R);
+    var upd = function(){
+      var T = +s.value, hot = T > 20, m = 1 / (1 + Math.exp((T - 20) / 2.2));
+      $(".tv", R).textContent = T + " °C";
+      $(".gd", R).setAttribute("fill", hot ? "#f3e2c4" : "#8d96a8");
+      $(".fieldS", R).style.display = hot ? "none" : ""; $(".fieldT", R).style.display = hot ? "" : "none";
+      $(".reed", R).setAttribute("d", hot ? "M256,140 L292,124" : "M240,140 L296,140");
+      $$(".cf", R).forEach(function(f){ if (f.classList.contains("flow")) f.classList.toggle("off", hot); });
+      $(".alarm", R).setAttribute("fill", hot ? "#d63a3a" : "#57b26a");
+      var mt = $(".mt", R); mt.setAttribute("cx", (4 + T / 40 * 124).toFixed(1)); mt.setAttribute("cy", (56 - m * 46).toFixed(1));
+      $(".gmsg", R).innerHTML = hot ? biS("과열 → 상자성 → 회로 개방!", "Overheat → paramagnetic → circuit open!") : biS("정상 — 가돌리늄이 자계를 차폐", "Normal — Gd shields the field");
+      $(".gmsg", R).setAttribute("style", "font-size:18px;fill:" + (hot ? "#b3121b" : "#3c8a4d"));
+    };
+    s.addEventListener("input", upd); upd();
+  }
+});
+
+/* 13 · researcher */
+S.push({ t: ["대표연구자", "Principal investigator"],
+  L: function(){
+    var pi = LB.pi || {};
+    var car = [["2011 – ", "국립순천대학교 전기공학과 교수", "Professor, Dept. of Electrical Engineering, SCNU"], ["2020 – ", "국립순천대학교 스마트에너지연구소 연구소장", "Director, Smart Energy Research Institute, SCNU"],
+      ["2014 – 2015", "University of Wisconsin–Madison, WEMPEC 방문교수", "Visiting Professor, WEMPEC, UW–Madison"], ["2005 – 2011", "한국전자기술연구원(KETI) 디지털컨버전스연구센터 센터장", "Director, Digital Convergence Research Center, KETI"],
+      ["2001 – 2005", "삼성전자 가전연구소 선임연구원", "Senior Engineer, Samsung Electronics Digital Appliance R&D"]]
+      .map(function(c){ return '<li><i>' + c[0] + '</i>' + bi(c[1], c[2]) + '</li>'; }).join("");
+    return '<div class="pg"><div class="kicker">' + bi("PART 04 · 대표연구자", "Part 04 · Principal investigator") + '</div>' +
+      '<div class="pi" style="margin-top:10px"><div class="photo"><img src="' + (pi.photo || "assets/img/prof-kim.jpg") + '" alt=""></div><div>' +
+      '<div style="font:700 21px var(--serif)">' + bi("김대경 교수", "Prof. Dae-Kyong Kim") + '</div><div style="font:600 12px var(--head);color:var(--ink-2)">Dae-Kyong Kim, Ph.D. · IEEE Senior Member</div>' +
+      '<ul class="career" style="margin-top:8px">' + car + '</ul></div></div>' +
+      '<div class="kpis" style="grid-template-columns:repeat(4,1fr)"><div class="kpi"><b>38</b>' + bi("국내 등록특허", "patents") + '</div><div class="kpi"><b>48</b>' + bi("SCI(E)급 저널", "SCI(E) papers") + '</div>' +
+      '<div class="kpi"><b>12</b>' + bi("기술이전", "tech transfers") + '</div><div class="kpi"><b>2</b>' + bi("연구실 창업", "spin-offs") + '</div></div>' +
+      '<p style="font-size:12.5px;margin-top:4px">#DAB컨버터 #고주파변압기 #SiC전력변환 #TAB #PV단선검출 #DC아크검출 #P2H #고장진단·예측</p>' +
+      '<p style="font:700 14px var(--head)">✉ <a href="mailto:dkkim@scnu.ac.kr" style="color:var(--crimson)">dkkim@scnu.ac.kr</a> · ☎ 061-750-3546</p>' +
+      '<div class="src">' + bi("※ 특허·저널은 연구자 실적 DB(2026.10), 기술이전·창업은 연구실 소개자료(2025.12) 기준", "Patents and papers per the researcher database (2026-10); transfers and spin-offs per the lab profile (2025-12)") + '</div></div>'; },
+  R: function(){
+    var papers = [["Performance Comparison of PV Module Configurations in a Fixed-Load P2H System Considering Regional and Seasonal Solar Irradiance in Korea", "Energies", 2025],
+      ["A Novel Structure of Variable Inductance High-Frequency Transformer for Power Level Enhancement in Dual-Active-Bridge Converters", "Energies", 2025],
+      ["Current-Sensorless Method for Photovoltaic System Using Capacitor Charging Characteristics", "Energies", 2024],
+      ["Novel Phase Shift Angle Compensation Method of DAB Converter Considering Parasitic Capacitance of SiC MOSFET", "IEEE Access", 2024],
+      ["Influence Analysis of SiC MOSFET's Parasitic Capacitance on DAB Converter Output", "Electronics", 2022],
+      ["Simulations to Eliminate Backflow Power in an Isolated Three-Port Bidirectional DC-DC Converter", "Energies", 2022],
+      ["Localization of Disconnection Faults in PV Installations Using the Multiple Frequencies Injection Method", "Energies", 2021]];
+    var projs = [["PV 시스템의 기생 커패시턴스를 이용한 휴대형 단선 위치 검출 장비 실용화 개발", "Handheld PV break detector using parasitic capacitance", "전남대 산학협력단", "2024"],
+      ["BI(BA) PV 안전 및 자산관리를 위한 Sentinel System & Cloud Analytics System 개발", "Sentinel & cloud analytics for BIPV safety and asset management", "중소벤처기업부", "2023–24"],
+      ["광주·전남 지역 에너지 클러스터 인재양성", "Gwangju–Jeonnam energy-cluster workforce program", "산업부 · KETEP", "2021–25"],
+      ["이동형 융합기기용 전원시스템 고안전성 평가 기반 구축", "Safety-evaluation infrastructure for mobile power systems", "KIAT", "2020–22"],
+      ["분산전원용 50 kVA급 전력변환기용 일체형 변압기·리액터 최적화 설계", "Integrated transformer-reactor for 50 kVA DG converters", "한국전력공사", "2018–21"],
+      ["대전력 고주파 변압기의 성능 향상을 위한 최적화 설계 및 온도 해석", "Design and thermal analysis of high-power HF transformers", "한국연구재단", "2017–20"]];
+    return '<div class="pg"><div class="sech" style="margin-top:0">' + bi("주요 논문", "Selected papers") + '</div>' +
+      papers.map(function(p){ return '<div class="prow" style="grid-template-columns:1fr 70px 34px"><span class="n" style="-webkit-line-clamp:2">' + p[0] + '</span><span class="r">' + p[1] + '</span><span class="d">' + p[2] + '</span></div>'; }).join("") +
+      '<div class="sech">' + bi("주요 연구개발사업 (연구책임자)", "Major R&amp;D projects (PI)") + '</div>' +
+      projs.map(function(p){ return '<div class="prow" style="grid-template-columns:1fr 84px 50px"><span class="n" style="-webkit-line-clamp:2">' + bi(p[0], p[1]) + '</span><span class="r" style="white-space:normal">' + p[2] + '</span><span class="d">' + p[3] + '</span></div>'; }).join("") + '</div>'; }
+});
+
+/* 14–15 · patent lists */
+function plist(gs){
+  return '<table class="plist"><tr><th>#</th><th>' + bi("발명의 명칭", "Title") + '</th><th>' + bi("등록번호 · 일자", "Reg. no · date") + '</th><th>' + bi("권리자", "Holder") + '</th></tr>' +
+    gs.map(function(gi){ var g = GROUPS[gi];
+      return '<tr class="grp"><td colspan="4">' + bi(g[0], g[1]) + ' (' + (g[3] - g[2] + 1) + ')</td></tr>' +
+        PATS.slice(g[2] - 1, g[3]).map(function(p){ return '<tr><td class="no">' + p[0] + '</td><td><span class="tt">' + ptTitle(p) + '</span></td><td class="rg">' + p[2] + '<br>' + p[3] + '</td><td class="hd' + (p[5] ? " co" : "") + '">' + holder(p) + '</td></tr>'; }).join(""); }).join("") + '</table>';
+}
+S.push({ t: ["등록특허 리스트", "Registered patents"],
+  L: function(){ return '<div class="pg"><div class="kicker">' + bi("PART 04 · 보유 등록특허 (1/2)", "Part 04 · Registered patents (1/2)") + '</div>' + plist([0, 1]) + '</div>'; },
+  R: function(){ return '<div class="pg"><div class="kicker">' + bi("보유 등록특허 (2/2)", "Registered patents (2/2)") + '</div>' + plist([2, 3]) +
+    '<div class="src">' + bi("※ 붉은 권리자는 기술이전 또는 공동출원 건 · 국내 등록특허 38건 (2026.10.22 기준)", "Red holders: transferred or co-filed · 38 Korean registered patents as of 2026-10-22") + '</div>' +
+    '<div class="note">' + bi("나머지 융합응용 13건은 다음 장 →", "13 convergence patents on the next spread →") + '</div></div>'; }
+});
+S.push({ t: ["융합응용 · 협력 안내", "Convergence & working with us"],
+  L: function(){ return '<div class="pg"><div class="kicker">' + bi("보유 등록특허 — 융합응용", "Registered patents — convergence") + '</div>' + plist([4]) + '</div>'; },
+  R: function(){
+    var c = function(k, e, dk, de){ return '<div class="cardp"><b>' + bi(k, e) + '</b>' + bi(dk, de) + '</div>'; };
+    return '<div class="pg"><div class="kicker">' + bi("협력 안내", "Working with us") + '</div><h2 class="ttl">' + bi("함께 만드는 스마트 전력변환 ·<br>신재생 고장진단 기술", "Building smart power conversion<br>&amp; fault diagnosis together") + '</h2>' +
+      '<div class="cards">' + c("기술이전 · 사업화", "Licensing", "보유특허 기반 기술이전·사업화 및 실시권 협의", "Licensing and commercialization of our patents") +
+      c("공동 R&D", "Joint R&D", "산업체·연구기관 공동 연구개발 및 국가과제 공동기획", "Joint R&D and national project planning with companies and institutes") +
+      c("수탁연구", "Contract research", "DAB·고주파 변압기 설계, PV·DC 안전진단 수탁연구", "DAB and HF transformer design; PV and DC safety diagnosis") +
+      c("기업지원 · 기술지도", "Technical support", "시작품 시험·평가, 보유장비 활용 기술지도", "Prototype testing and consulting with our equipment") + '</div>' +
+      '<p style="margin-top:14px;font-size:13px">' + bi("국립순천대학교 에너지메카트로닉스연구실 · (57922) 전라남도 순천시 중앙로 255 국립순천대학교 전기공학과", "Energy Mechatronics Lab., Dept. of Electrical Engineering, Sunchon National University, 255 Jungang-ro, Suncheon, Jeonnam 57922, Korea") + '</p>' +
+      '<p style="font:700 15px var(--head)">✉ <a href="mailto:dkkim@scnu.ac.kr" style="color:var(--crimson)">dkkim@scnu.ac.kr</a> · ☎ 061-750-3546</p>' +
+      '<div class="links" style="grid-template-columns:1fr 1fr"><a href="' + PDF + '" target="_blank" rel="noopener">' + bi("원본 PDF 보기", "Open the PDF") + '<small>34p · 1.6 MB</small></a><a href="publications.html#pt">' + bi("특허 목록 (홈페이지)", "Patents on the site") + '<small>' + bi("KIPRIS 링크 포함", "with KIPRIS links") + '</small></a></div>' +
+      '<div class="src">' + bi("본 자료의 시장·정책 수치는 공개된 보고서·보도자료를 인용한 해당 기관의 추정치이며, 발간 시점에 따라 일부 상이할 수 있습니다. 기술성숙도(TRL)는 연구실 자체평가 기준입니다. 무단 전재·재배포를 금하며, 인용 시 출처를 밝혀 주시기 바랍니다.",
+        "Market and policy figures are estimates quoted from public reports and may differ by publication date. TRL levels are the lab's own assessment. Please cite the source when quoting; no unauthorized redistribution.") + '</div></div>'; }
+});
+
+/* ---------------- cover ---------------- */
+var COVER = '<div class="frame"></div>' +
+  '<div class="ct" style="top:70px;font-size:40px">Strategic<br>Technology<br>Portfolio<span class="cs">에너지메카트로닉스연구실 전략기술포트폴리오</span></div>' +
+  '<div class="plate" style="top:340px;height:190px">' +
+  '<svg viewBox="0 0 250 170" style="width:100%;height:100%"><circle cx="125" cy="70" r="40" class="inkf"/>' +
+  '<path class="ink" d="M106,44 q-9,7 0,14 q-9,7 0,14 q-9,7 0,14 q-9,7 0,14 M144,44 q9,7 0,14 q9,7 0,14 q9,7 0,14 q9,7 0,14"/>' +
+  '<rect x="10" y="50" width="54" height="40" rx="4" class="inkf"/><text x="37" y="75" text-anchor="middle" class="mono" style="font-size:10px">PV</text>' +
+  '<rect x="186" y="50" width="54" height="40" rx="4" class="inkf"/><text x="213" y="75" text-anchor="middle" class="mono" style="font-size:10px">DC BUS</text>' +
+  '<path class="flow" d="M64,70 L85,70"/><path class="flow" d="M165,70 L186,70"/>' +
+  '<text x="125" y="140" text-anchor="middle" style="font-size:15px">' + biS("스마트 전력변환 · 신재생 고장진단", "smart conversion · fault diagnosis") + '</text></svg></div>' +
+  '<div class="cb">Ver. 2.2 · 2026.11.06<br>Sunchon National University · Prof. Dae-kyong Kim</div>';
+
+BK.start({ spreads: S, cover: COVER,
+  extra: { href: PDF, title: "PDF", newTab: true, icon: '<svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 14h6M9 17h4"/></svg>' } });
+})();
+</script>
+</body>
+</html>
