@@ -472,3 +472,10 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
 .pf-coop { text-align: left; padding: 18px 18px 16px; }
 .pf-coop b { font-size: 22px; }
 .pf-coop span { font-size: 14px; color: var(--ink); }
+
+/* ---------- embedded 3D books (lab-book.html, tech-portfolio.html) ---------- */
+.book-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.book-head h1 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; margin: 0; line-height: 1.15; }
+.book-head a { font: 700 13px var(--font-head); color: var(--accent); white-space: nowrap; }
+.book-frame { display: block; width: 100%; height: calc(100vh - 170px); min-height: 560px; border: 1px solid var(--line); border-radius: var(--radius); background: #e9dcc4; }
+.sidebar .side-cta.active { background: var(--accent); color: #fff; }

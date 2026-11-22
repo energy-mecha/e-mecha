@@ -37,6 +37,11 @@ var DEFS = '<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 
 function start(opts){
   var S = opts.spreads;
+  /* ?embed=1 : 홈페이지 사이드바 옆(iframe)에 띄울 때 — 언어·홈 버튼은 바깥 페이지가 맡고, 링크는 바깥 창에서 엽니다 */
+  if (/[?&]embed=1/.test(location.search)){
+    document.body.classList.add("embed");
+    var base = document.createElement("base"); base.target = "_top"; document.head.appendChild(base);
+  }
   var extra = opts.extra ? '<a href="' + opts.extra.href + '" title="' + opts.extra.title + '"' + (opts.extra.newTab ? ' target="_blank" rel="noopener"' : "") + '>' + opts.extra.icon + '</a>' : "";
   document.body.insertAdjacentHTML("afterbegin", DEFS +
     '<div class="stage" id="stage"><div class="scaler" id="scaler"><div class="plane"><div class="mat"></div>' +

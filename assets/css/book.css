@@ -269,3 +269,7 @@ body.navy{--cloth:#1d2b47;--ribbon:#b3121b}
 body.flat .kpis{grid-template-columns:repeat(2,1fr)}
 body.flat .prow{grid-template-columns:1fr 74px}
 body.flat .prow .d{display:none}
+
+/* ---------- embedded in the site (?embed=1) ---------- */
+body.embed .bar #bLang, body.embed .bar a[title="Classic site"], body.embed .bar .sep{display:none}
+body.embed .light{opacity:.6}

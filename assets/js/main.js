@@ -35,6 +35,10 @@
     root.lang = l;
     try { localStorage.setItem("lang", l); } catch (e) { /* 저장 불가 환경 */ }
     langHooks.forEach((fn) => fn(l));
+    // 옆에 띄운 3D 책(iframe)도 같은 언어로
+    document.querySelectorAll("iframe.book-frame").forEach((f) => {
+      try { const d = f.contentDocument.documentElement; d.dataset.lang = l; d.lang = l; } catch (e) { /* 다른 출처 */ }
+    });
   }
 
   /* ---------- header ---------- */
@@ -106,14 +110,16 @@
     </ul>
     <div class="side-ctas">
       <a class="side-cta" href="index.html#join">Join the Lab</a>
-      <a class="side-cta" href="book.html">Lab Book</a>
-      <a class="side-cta" href="portfolio.html">Technology Portfolio</a>
+      <a class="side-cta${page === "labbook" ? " active" : ""}" href="lab-book.html">Lab Book</a>
+      <a class="side-cta${page === "portfolio" ? " active" : ""}" href="tech-portfolio.html">Technology Portfolio</a>
     </div>`;
   const mainEl = $("#main");
   const layout = document.createElement("div");
   layout.className = "layout";
   mainEl.before(layout);
   layout.append(sidebar, mainEl);
+  // 3D 책 iframe은 레이아웃으로 옮긴 뒤에 불러옵니다 (옮기면서 두 번 불러오지 않도록)
+  document.querySelectorAll("iframe.book-frame[data-src]").forEach((f) => { f.src = f.dataset.src; });
 
   /* ---------- footer ---------- */
   const footer = document.createElement("footer");
