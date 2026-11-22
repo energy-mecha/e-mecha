@@ -239,6 +239,22 @@
   /* ---------- HOME ---------- */
   if (page === "home") {
     renderNews($("#news"), 10);
+    const co = $("#co-research");
+    if (co && L.coResearch) {
+      const GROUPS = [["industry", "산업체", "Industry"], ["academia", "대학 · 연구실", "Universities & Labs"]];
+      const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } };
+      co.innerHTML = GROUPS.map(([g, ko, en]) => {
+        const items = L.coResearch.filter((p) => p.group === g);
+        if (!items.length) return "";
+        return `<div class="co-group"><h3>${bi(ko, en)}</h3><ul class="co-grid">${items.map((p) => `
+          <li><a class="co-card" href="${esc(p.url)}" target="_blank" rel="noopener">
+            <span class="co-logo"><img src="${esc(p.logo)}" alt="" loading="lazy"></span>
+            <span class="co-name">${T(p.name)}</span>
+            ${p.sub ? `<span class="co-sub">${T(p.sub)}</span>` : ""}
+            <span class="co-site">${esc(host(p.url))}</span>
+          </a></li>`).join("")}</ul></div>`;
+      }).join("");
+    }
   }
 
   /* ---------- MEMBERS ---------- */

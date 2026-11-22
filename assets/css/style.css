@@ -479,3 +479,18 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
 .book-head a { font: 700 13px var(--font-head); color: var(--accent); white-space: nowrap; }
 .book-frame { display: block; width: 100%; height: calc(100vh - 170px); min-height: 560px; border: 1px solid var(--line); border-radius: var(--radius); background: #e9dcc4; }
 .sidebar .side-cta.active { background: var(--accent); color: #fff; }
+
+/* ---------- Co-Research (home) ---------- */
+#co-research-section { scroll-margin-top: 80px; }
+.co-group + .co-group { margin-top: 28px; }
+.co-group h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin: 0 0 12px; padding-left: 10px; border-left: 3px solid var(--accent); line-height: 1.2; }
+.co-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.co-card { display: flex; flex-direction: column; height: 100%; padding: 14px 14px 12px; background: var(--surface, #fff); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: var(--radius); color: var(--ink); text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-top-color .15s ease; }
+.co-card:hover, .co-card:focus-visible { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(27,27,25,.1); border-top-color: var(--ink); }
+.co-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.co-logo { display: flex; align-items: center; justify-content: center; height: 56px; margin-bottom: 12px; }
+.co-logo img { height: 44px; width: 100%; object-fit: contain; }
+.co-name { font-weight: 700; font-size: 14px; line-height: 1.35; }
+.co-sub { font-size: 12.5px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+.co-site { margin-top: auto; padding-top: 8px; font-size: 12px; color: var(--accent-ink); }
+@media (max-width: 600px) { .co-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .co-logo { height: 46px; } .co-logo img { height: 38px; } }

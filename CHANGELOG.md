@@ -8,6 +8,7 @@
 
 | 버전 | 게시일 | 주요 변경 |
 |---|---|---|
+| v1.26 | 2026-11-22 | 홈 「Latest News」 아래 「Co-Research」 추가 — 산업체 6곳(에니트·티엠씨솔루션즈·셀시스템·더블유피·에스알이엔지·엘시스)과 대학 연구실 4곳(Purdue POWER Lab., 전남대 EPSL, 상명대 FISL, 금오공대 EDS LAB)을 로고 카드로 표시, 누르면 각 홈페이지로 연결(로고: 각 홈페이지 로고, 없으면 학교 로고 — assets/img/partners) |
 | v1.25 | 2026-11-22 | 「Lab Book」 · 「Technology Portfolio」 뱃지를 누르면 3D 책이 사이드바 옆 본문 영역에 열리도록 변경(lab-book.html, tech-portfolio.html — 상단 메뉴 유지, 언어 전환 연동, 「전체 화면으로 보기」 링크) · 홈 「Lab Book」 버튼과 특허 탭 「전략기술포트폴리오 보기」도 같은 페이지로 연결 |
 | v1.24 | 2026-11-22 | 왼쪽 사이드바 「Join the Lab」 옆에 「Lab Book」(book.html) · 「Technology Portfolio」(portfolio.html) 뱃지 추가 — 모든 페이지 공통 |
 | v1.23 | 2026-11-22 | 전략기술포트폴리오를 3D 책(portfolio.html)으로 제작 — 16장(기술개요·적용맵, 시장·정책 동향, 보유기술 현황, 대표특허 01~08, 대표연구자, 등록특허 38건, 협력 안내), 대표특허마다 직접 조작하는 그림·「기존 vs 본 기술」 카드·TRL 표시 · Publications 특허 탭의 「전략기술포트폴리오 보기」 버튼을 PDF 대신 3D 책으로 연결(PDF 다운로드는 유지) · Lab Book과 공용 책 엔진(book-engine.js, book.css)으로 분리 |

@@ -265,6 +265,21 @@ window.LAB = {
     { y: "2019, 2022", t: { ko: "한국전력 주관 BIXPO 국제발명특허대전 대학생 부문 동상", en: "Bronze Prize (University Division), BIXPO International Invention & Patent Exhibition hosted by KEPCO" } },
   ],
 
+  /* ---------------- 공동연구 (홈 「Co-Research」) ----------------
+     group: industry | academia · logo: assets/img/partners/ (홈페이지 로고, 없으면 학교 로고) */
+  coResearch: [
+    { group: "industry", name: { ko: "㈜에니트", en: "ENIT Co., Ltd." }, logo: "assets/img/partners/enit.png", url: "https://enitt.co.kr/" },
+    { group: "industry", name: { ko: "㈜티엠씨솔루션즈", en: "TMC Solutions Co., Ltd." }, logo: "assets/img/partners/tmc.png", url: "https://tmcsolutions.co.kr/" },
+    { group: "industry", name: { ko: "㈜셀시스템", en: "SEL System Co., Ltd." }, logo: "assets/img/partners/selsystem.png", url: "http://selsystem.co.kr/main/main.php" },
+    { group: "industry", name: { ko: "㈜더블유피", en: "WP Co., Ltd." }, logo: "assets/img/partners/wp.png", url: "http://www.wp-pv.com/" },
+    { group: "industry", name: { ko: "㈜에스알이엔지", en: "SRENG Co., Ltd." }, logo: "assets/img/partners/sreng.png", url: "http://www.sreng.kr/main" },
+    { group: "industry", name: { ko: "㈜엘시스", en: "ELSYS Co., Ltd." }, logo: "assets/img/partners/elsys.png", url: "https://www.elsys.kr/" },
+    { group: "academia", name: "Purdue POWER Lab.", sub: { ko: "퍼듀대학교 · Prof. Woongkul Lee", en: "Purdue University · Prof. Woongkul Lee" }, logo: "assets/img/partners/purdue-power.png", url: "https://mattwklee.github.io/" },
+    { group: "academia", name: "Electric Propulsion System Laboratory", sub: { ko: "전남대학교 · Prof. Yong-min You", en: "Chonnam National University · Prof. Yong-min You" }, logo: "assets/img/partners/jnu-epsl.png", url: "https://sites.google.com/view/epsl-jnu" },
+    { group: "academia", name: "Future Intelligence System Lab.", sub: { ko: "상명대학교 · Prof. Soo-Whang Baek", en: "Sangmyung University · Prof. Soo-Whang Baek" }, logo: "assets/img/partners/smu.svg", url: "https://sites.google.com/view/smufisl/home" },
+    { group: "academia", name: "Electric Driven System LAB", sub: { ko: "국립금오공과대학교 · Prof. Kyu-Yun Hwang", en: "Kumoh National Institute of Technology · Prof. Kyu-Yun Hwang" }, logo: "assets/img/partners/kit-edslab.png", url: "https://sites.google.com/view/edslab/home" },
+  ],
+
   /* ---------------- 뉴스 ----------------
      type: publication | award | people | grant | patent */
   news: [
