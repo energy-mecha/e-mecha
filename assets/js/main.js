@@ -104,7 +104,11 @@
       <li>${ico("people")} <a href="members.html">Members</a></li>
       ${L.links.map((l) => `<li>${l.icon === "scnu" ? '<span class="ico-scnu" aria-hidden="true"></span>' : ico("link")} <a href="${esc(l.url)}" target="_blank" rel="noopener">${T(l.label)}</a></li>`).join("")}
     </ul>
-    <a class="side-cta" href="index.html#join">Join the Lab</a>`;
+    <div class="side-ctas">
+      <a class="side-cta" href="index.html#join">Join the Lab</a>
+      <a class="side-cta" href="book.html">Lab Book</a>
+      <a class="side-cta" href="portfolio.html">Technology Portfolio</a>
+    </div>`;
   const mainEl = $("#main");
   const layout = document.createElement("div");
   layout.className = "layout";

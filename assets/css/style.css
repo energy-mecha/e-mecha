@@ -103,7 +103,8 @@ html[data-lang="en"] body { word-break: normal; overflow-wrap: break-word; }
 .author__urls svg { width: 15px; height: 15px; flex: none; color: var(--accent); }
 .ico-scnu { width: 15px; height: 15px; flex: none; background: var(--accent);
   -webkit-mask: url(../img/emblem.png) center / contain no-repeat; mask: url(../img/emblem.png) center / contain no-repeat; }
-.sidebar .side-cta { display: inline-block; margin-top: 16px; background: var(--ink); color: var(--accent-2); font: 700 13px var(--font-head); padding: 7px 14px; border-radius: 6px; }
+.sidebar .side-ctas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.sidebar .side-cta { display: inline-block;background: var(--ink); color: var(--accent-2); font: 700 13px var(--font-head); padding: 7px 14px; border-radius: 6px; }
 .sidebar .side-cta:hover { background: var(--accent); color: #fff; }
 
 /* ---------- page title (sub pages) ---------- */
@@ -418,9 +419,9 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
   .author__avatar { grid-row: span 2; max-width: 96px; }
   .author__name { margin-top: 0; }
   .author__bio { margin: 2px 0 0; }
-  .author__urls, .sidebar .side-cta { grid-column: 1 / -1; }
+  .author__urls, .sidebar .side-ctas { grid-column: 1 / -1; }
   .author__urls { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; }
-  .sidebar .side-cta { justify-self: start; margin-top: 6px; }
+  .sidebar .side-ctas { margin-top: 6px; }
   .profile, .ra-head, .footer-grid { grid-template-columns: 1fr; }
   .profile-photo { max-width: 240px; }
 }
