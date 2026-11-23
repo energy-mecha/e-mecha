@@ -490,9 +490,9 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
 .co-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .co-logo { display: flex; align-items: center; justify-content: center; height: 30px; margin-bottom: 6px; }
 .co-logo img { height: 24px; width: 100%; object-fit: contain; }
-.co-card { height: 138px; overflow: hidden; }
+.co-card { height: 152px; overflow: hidden; }
 .co-name, .co-sub { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.co-name { font-weight: 700; font-size: 11.5px; line-height: 1.3; }
+.co-name { font-weight: 700; font-size: 11.5px; line-height: 1.3; -webkit-line-clamp: 3; }
 .co-sub { font-size: 10.5px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
 .co-site { margin-top: auto; padding-top: 4px; font-size: 10.5px; color: var(--accent-ink); }
-@media (max-width: 600px) { .co-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .co-logo { height: 28px; } .co-logo img { height: 22px; } }
+@media (max-width: 600px) { .co-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .co-logo { height: 28px; } .co-logo img { height: 22px; } }

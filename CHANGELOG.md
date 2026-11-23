@@ -8,6 +8,7 @@
 
 | 버전 | 게시일 | 주요 변경 |
 |---|---|---|
+| v1.28 | 2026-11-23 | Sponsors & Partners에 국립군산대학교 Electro Magnetic Energy Conversion Lab.(Prof. Byung-Taek Kim, EMEC 로고) 추가 · 긴 이름이 잘리지 않도록 카드 높이 조정(모든 카드 동일), 휴대폰은 한 줄 2개 |
 | v1.27 | 2026-11-22 | 홈 「Co-Research」 제목을 「Sponsors & Partners」로 변경 · 카드 크기를 절반으로 줄이고(로고·글자·여백 축소, PC 한 줄 6개 / 휴대폰 3개) 기업·학교 카드를 모두 같은 크기로 통일 |
 | v1.26 | 2026-11-22 | 홈 「Latest News」 아래 「Co-Research」 추가 — 산업체 6곳(에니트·티엠씨솔루션즈·셀시스템·더블유피·에스알이엔지·엘시스)과 대학 연구실 4곳(Purdue POWER Lab., 전남대 EPSL, 상명대 FISL, 금오공대 EDS LAB)을 로고 카드로 표시, 누르면 각 홈페이지로 연결(로고: 각 홈페이지 로고, 없으면 학교 로고 — assets/img/partners) |
 | v1.25 | 2026-11-22 | 「Lab Book」 · 「Technology Portfolio」 뱃지를 누르면 3D 책이 사이드바 옆 본문 영역에 열리도록 변경(lab-book.html, tech-portfolio.html — 상단 메뉴 유지, 언어 전환 연동, 「전체 화면으로 보기」 링크) · 홈 「Lab Book」 버튼과 특허 탭 「전략기술포트폴리오 보기」도 같은 페이지로 연결 |

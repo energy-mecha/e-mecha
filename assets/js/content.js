@@ -278,6 +278,7 @@ window.LAB = {
     { group: "academia", name: "Electric Propulsion System Laboratory", sub: { ko: "전남대학교 · Prof. Yong-min You", en: "Chonnam National University · Prof. Yong-min You" }, logo: "assets/img/partners/jnu-epsl.png", url: "https://sites.google.com/view/epsl-jnu" },
     { group: "academia", name: "Future Intelligence System Lab.", sub: { ko: "상명대학교 · Prof. Soo-Whang Baek", en: "Sangmyung University · Prof. Soo-Whang Baek" }, logo: "assets/img/partners/smu.svg", url: "https://sites.google.com/view/smufisl/home" },
     { group: "academia", name: "Electric Driven System LAB", sub: { ko: "국립금오공과대학교 · Prof. Kyu-Yun Hwang", en: "Kumoh National Institute of Technology · Prof. Kyu-Yun Hwang" }, logo: "assets/img/partners/kit-edslab.png", url: "https://sites.google.com/view/edslab/home" },
+    { group: "academia", name: "Electro Magnetic Energy Conversion Lab.", sub: { ko: "국립군산대학교 · Prof. Byung-Taek Kim", en: "Kunsan National University · Prof. Byung-Taek Kim" }, logo: "assets/img/partners/kunsan-emec.png", url: "https://sites.google.com/view/ksnu-emec" },
   ],
 
   /* ---------------- 뉴스 ----------------
