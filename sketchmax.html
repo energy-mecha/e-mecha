@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/lang.js"></script>
+<title data-ko="SketchMax | 에너지메카트로닉스연구실">SketchMax | Energy Mechatronics Lab.</title>
+<meta name="description" content="SketchMax — 2D FEM analysis of electric machines from a hand-drawn cross-section sketch. Developed by the Energy Mechatronics Lab., Sunchon National University.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .skm-logo { width: min(340px, 80%); height: auto; display: block; margin: 0 0 18px; }
+  .skm-steps { list-style: none; margin: 0 0 22px; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; counter-reset: step; }
+  .skm-steps li { counter-increment: step; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .skm-steps li::before { content: counter(step); display: block; font: 800 13px var(--font-head); color: var(--accent); letter-spacing: .08em; margin-bottom: 4px; }
+  .skm-steps li b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 2px; }
+  .skm-figs4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .skm-wide img { aspect-ratio: auto; }
+  .skm-table td:first-child { font-weight: 600; width: 20%; }
+  .skm-table td:nth-child(2) { width: 22%; }
+  .skm-table td:nth-child(3) { width: 22%; }
+  .skm-cards .card .body ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+  .skm-note { font-size: 13px; color: var(--muted); margin-top: 8px; }
+  @media (max-width: 900px) {
+    .skm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skm-figs4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .skm-steps, .skm-figs4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-page="sketchmax" data-nav="research">
+<main id="main">
+  <div class="page-banner"><div class="container">
+    <div class="crumb"><a href="index.html">Home</a> / <a href="research.html">Research</a> / SketchMax</div>
+    <h1>SketchMax</h1>
+    <p><span lang="ko">손그림 단면 스케치 기반 전기기기 2D FEM 해석 프로그램</span><span lang="en">2D FEM analysis of electric machines from a hand-drawn cross-section sketch</span></p>
+  </div></div>
+
+  <!-- 개요 -->
+  <section class="block" style="padding-bottom:40px">
+    <div class="container">
+      <div class="grid c2" style="gap:44px;align-items:center">
+        <div>
+          <img class="skm-logo" src="assets/img/sketchmax/sketchmax-logo.svg" alt="SketchMax logo">
+          <h2 class="section-title">Overview</h2>
+          <p lang="ko">SketchMax는 종이에 손으로 그린 전기기기 단면 스케치 사진에서 <b>AI가 치수와 사양을 읽어</b>, 해석 모델 생성 · <b>2차원 유한요소(FEM) 해석</b> · 결과 정리까지 한 화면에서 이어 주는 교육 · 설계용 프로그램입니다. CAD 작도와 복잡한 해석 설정 없이 치수 변화와 성능 변화의 관계를 바로 확인할 수 있습니다.</p>
+          <p lang="en">SketchMax reads dimensions and specifications from a photo of a hand-drawn machine cross-section <b>with AI</b>, then builds the model, runs a <b>2D finite element (FEM) analysis</b>, and summarizes the results — all in one window. Students and designers can see how dimensions affect performance without CAD drawing or lengthy solver setup.</p>
+          <p lang="ko">이름의 <b>Max</b>는 해석의 바탕인 <b>맥스웰 방정식(Maxwell's equations)</b>에서 따왔습니다.</p>
+          <p lang="en">The <b>Max</b> in the name comes from <b>Maxwell's equations</b>, on which the field solver is built.</p>
+          <div class="research-nav">
+            <a class="chip" href="#workflow"><span lang="ko">처리 흐름</span><span lang="en">Workflow</span></a>
+            <a class="chip" href="#machines"><span lang="ko">대상 기기</span><span lang="en">Machines</span></a>
+            <a class="chip" href="#tech"><span lang="ko">핵심 기술</span><span lang="en">Technology</span></a>
+            <a class="chip" href="#example"><span lang="ko">해석 사례</span><span lang="en">Example</span></a>
+            <a class="chip" href="#validation"><span lang="ko">검증</span><span lang="en">Validation</span></a>
+            <a class="chip" href="#use"><span lang="ko">사용 환경</span><span lang="en">Availability</span></a>
+          </div>
+        </div>
+        <figure class="fig skm-wide"><img src="assets/img/sketchmax/hub.jpg" alt="SketchMax home screen with seven machine types"><figcaption><span lang="ko">SketchMax 홈 화면 — 7종 전기기기를 한 프로그램에서 해석</span><span lang="en">SketchMax home screen — seven machine types in one program</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div>
+    <!-- 처리 흐름 -->
+    <article class="research-area" id="workflow">
+      <div class="container">
+        <div class="ra-head" style="grid-template-columns:1fr;margin-bottom:16px">
+          <div>
+            <div class="num">WORKFLOW</div>
+            <h2><span lang="ko">사진 한 장에서 해석 결과까지 5단계</span><span lang="en">From one photo to analysis results in five steps</span></h2>
+          </div>
+        </div>
+        <ol class="skm-steps" lang="ko">
+          <li><b>스케치 사진</b>종이에 연필로 그린 단면과 치수 메모</li>
+          <li><b>AI 인식</b>치수 · 극수 · 슬롯 수 · 재질 · 권선 사양 읽기</li>
+          <li><b>값 확인 · 수정</b>값마다 출처 표시, 형상 자동 검사</li>
+          <li><b>2D FEM 해석</b>빠른 해석(약 15초) 또는 정밀 해석</li>
+          <li><b>결과 · 도면</b>핵심 지표 · 그래프, 치수 도면 PDF · DXF</li>
+        </ol>
+        <ol class="skm-steps" lang="en">
+          <li><b>Sketch photo</b>Cross-section drawn in pencil with dimension notes</li>
+          <li><b>AI recognition</b>Reads dimensions, poles, slots, materials and winding data</li>
+          <li><b>Review &amp; edit</b>Source shown for every value; geometry checked automatically</li>
+          <li><b>2D FEM</b>Quick analysis (about 15 s) or detailed analysis</li>
+          <li><b>Results &amp; drawings</b>Key metrics, plots, and dimension drawings (PDF · DXF)</li>
+        </ol>
+        <div class="figs skm-figs4">
+          <figure class="fig"><img src="assets/img/sketchmax/values.jpg" alt="Recognized values with source markers"><figcaption><span lang="ko">인식값과 출처 표시 (사진 · 추정 · 수정 · 기본값)</span><span lang="en">Recognized values with their sources (photo · estimated · edited · default)</span></figcaption></figure>
+          <figure class="fig"><img src="assets/img/sketchmax/dims.png" alt="Automatically generated dimension drawing"><figcaption><span lang="ko">자동 생성된 치수 도면 (글자 색 = 값의 출처)</span><span lang="en">Generated dimension drawing (text color = value source)</span></figcaption></figure>
+          <figure class="fig"><img src="assets/img/sketchmax/model.jpg" alt="FEM model with mesh"><figcaption><span lang="ko">FEM 모델 (철심 · 자석 · 코일 · 메시)</span><span lang="en">FEM model (core · magnets · coils · mesh)</span></figcaption></figure>
+          <figure class="fig"><img src="assets/img/sketchmax/field-load.jpg" alt="Flux density under load"><figcaption><span lang="ko">부하 시 자속밀도 분포와 자속선</span><span lang="en">Flux density and flux lines under load</span></figcaption></figure>
+        </div>
+        <p class="skm-note"><span lang="ko">예: 12슬롯 8극 IPM 전동기 (고정자 외경 152.8 mm, 적층 길이 72.1 mm)</span><span lang="en">Example: 12-slot 8-pole IPM motor (stator OD 152.8 mm, stack length 72.1 mm)</span></p>
+      </div>
+    </article>
+
+    <!-- 대상 기기 -->
+    <article class="research-area" id="machines">
+      <div class="container">
+        <div class="ra-head" style="grid-template-columns:1fr;margin-bottom:16px">
+          <div>
+            <div class="num">MACHINES</div>
+            <h2><span lang="ko">회전기 6종과 변압기 — 기기별 해석 방법과 결과</span><span lang="en">Six rotating machines and transformers — methods and outputs</span></h2>
+            <p lang="ko">학부 전기기기 과목에서 다루는 기기를 거의 모두 담았으며, 기기마다 교과서의 특성 곡선을 결과로 제공합니다.</p>
+            <p lang="en">Covers nearly every machine in an undergraduate electric machinery course, with the textbook characteristic curves as outputs.</p>
+          </div>
+        </div>
+        <table class="proj-table skm-table" lang="ko">
+          <thead><tr><th>기기</th><th>형식</th><th>해석 방법</th><th>주요 결과</th></tr></thead>
+          <tbody>
+            <tr><td>영구자석 동기전동기 (PMSM)</td><td>SPM, IPM (V형 · 일자형)</td><td>비선형 정자장, 회전자 회전</td><td>코깅 토크, 역기전력, MTPA, Ld · Lq, 철손 · 자석 와전류, 감자</td></tr>
+            <tr><td>직류전동기</td><td>분권 · 직권 · 복권 · 타여자 · 영구자석</td><td>비선형 정자장 (계자 + 전기자)</td><td>자화 곡선, 토크, 전기자 반작용, 속도-토크, 효율</td></tr>
+            <tr><td>동기전동기</td><td>돌극 · 원통형</td><td>비선형 정자장, 계자 전류 스윕</td><td>OCC, 역기전력, Xd · Xq, 토크-부하각, V 곡선, 효율</td></tr>
+            <tr><td>동기발전기</td><td>돌극 · 원통형</td><td>무부하 · 단락 해석</td><td>OCC · SCC · SCR, Xd · Xq, 외부 특성, P-Q 운전 한계</td></tr>
+            <tr><td>유도전동기</td><td>3상 농형</td><td>시간조화 FEM, 슬립 스윕</td><td>등가회로, 토크 · 전류-속도, 기동 · 최대 토크, 효율</td></tr>
+            <tr><td>변압기</td><td>단상 · 3상, 내철형 · 외철형</td><td>무부하 · 단락 FEM</td><td>여자 전류 · 철손, %임피던스, 누설 자계, 전압변동률</td></tr>
+            <tr><td>축방향 자속 전동기 (AFPM)</td><td>단면형 · YASA · 이중 고정자</td><td>멀티 슬라이스 2D FEM</td><td>역기전력, 코깅 · 토크 리플, 손실, 축방향 흡인력</td></tr>
+          </tbody>
+        </table>
+        <table class="proj-table skm-table" lang="en">
+          <thead><tr><th>Machine</th><th>Types</th><th>Method</th><th>Main outputs</th></tr></thead>
+          <tbody>
+            <tr><td>PM synchronous motor (PMSM)</td><td>SPM, IPM (V-shape · bar)</td><td>Nonlinear magnetostatic, rotor rotation</td><td>Cogging torque, back-EMF, MTPA, Ld · Lq, iron and magnet eddy losses, demagnetization</td></tr>
+            <tr><td>DC motor</td><td>Shunt · series · compound · separately excited · PM</td><td>Nonlinear magnetostatic (field + armature)</td><td>Magnetization curve, torque, armature reaction, speed-torque, efficiency</td></tr>
+            <tr><td>Synchronous motor</td><td>Salient · cylindrical</td><td>Nonlinear magnetostatic, field-current sweep</td><td>OCC, back-EMF, Xd · Xq, torque-load angle, V-curves, efficiency</td></tr>
+            <tr><td>Synchronous generator</td><td>Salient · cylindrical</td><td>Open- and short-circuit analysis</td><td>OCC · SCC · SCR, Xd · Xq, external characteristics, P-Q capability</td></tr>
+            <tr><td>Induction motor</td><td>3-phase squirrel cage</td><td>Time-harmonic FEM, slip sweep</td><td>Equivalent circuit, torque/current-speed, starting and breakdown torque, efficiency</td></tr>
+            <tr><td>Transformer</td><td>1- and 3-phase, core and shell type</td><td>Open- and short-circuit FEM</td><td>Magnetizing current, core loss, %impedance, leakage field, regulation</td></tr>
+            <tr><td>Axial-flux PM motor (AFPM)</td><td>Single-sided · YASA · double stator</td><td>Multi-slice 2D FEM</td><td>Back-EMF, cogging and torque ripple, losses, axial attraction force</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- 핵심 기술 -->
+    <article class="research-area" id="tech">
+      <div class="container">
+        <div class="ra-head" style="grid-template-columns:1fr;margin-bottom:16px">
+          <div>
+            <div class="num">TECHNOLOGY</div>
+            <h2><span lang="ko">핵심 기술</span><span lang="en">Key technologies</span></h2>
+          </div>
+        </div>
+        <div class="grid c3 skm-cards">
+          <div class="card"><div class="body">
+            <div class="num">01</div>
+            <h3><span lang="ko">AI 사진 인식</span><span lang="en">AI sketch recognition</span></h3>
+            <ul lang="ko">
+              <li>Claude AI(클라우드): 필기체 · 약어 · 단위까지 인식</li>
+              <li>로컬 AI(Ollama, 오프라인): 사진이 PC 밖으로 나가지 않음</li>
+              <li>AI 없이 수동 입력 · 기준 설계(JSON) 불러오기도 가능</li>
+            </ul>
+            <ul lang="en">
+              <li>Claude AI (cloud): reads handwriting, abbreviations and units</li>
+              <li>Local AI (Ollama, offline): the photo never leaves the PC</li>
+              <li>Manual entry or a reference design (JSON) without AI</li>
+            </ul>
+          </div></div>
+          <div class="card"><div class="body">
+            <div class="num">02</div>
+            <h3><span lang="ko">인식값 출처 관리</span><span lang="en">Value provenance</span></h3>
+            <ul lang="ko">
+              <li>값마다 출처 표시: 사진 · 그림 비율 추정 · 사용자 수정 · 기준 설계 · 기본값</li>
+              <li>애매하게 읽은 값은 경고로 알림</li>
+              <li>값을 고치면 형상 재검사, 오류가 있으면 해석 잠금</li>
+            </ul>
+            <ul lang="en">
+              <li>Every value tagged: photo · estimated from proportions · user edit · reference design · default</li>
+              <li>Warnings for uncertain readings</li>
+              <li>Geometry re-checked on every edit; analysis locked on errors</li>
+            </ul>
+          </div></div>
+          <div class="card"><div class="body">
+            <div class="num">03</div>
+            <h3><span lang="ko">자체 개발 2D FEM 엔진</span><span lang="en">In-house 2D FEM engine</span></h3>
+            <ul lang="ko">
+              <li>슬라이딩 밴드 회전: 리메싱 없이 회전, 코깅 토크에 메시 잡음 없음</li>
+              <li>뉴턴-랩슨 비선형 해석, Arkkio 법 토크 계산</li>
+              <li>star-of-slots 권선 자동 배치, d축 자동 검출 · MTPA 전류각 스윕</li>
+            </ul>
+            <ul lang="en">
+              <li>Sliding-band rotation: no remeshing, no mesh noise in cogging torque</li>
+              <li>Newton-Raphson nonlinear solver, Arkkio torque method</li>
+              <li>Automatic star-of-slots winding, d-axis detection and MTPA sweep</li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 해석 사례 -->
+    <article class="research-area" id="example">
+      <div class="container">
+        <div class="ra-head">
+          <div>
+            <div class="num">EXAMPLE</div>
+            <div lang="ko">
+              <h2>해석 사례 — 12슬롯 8극 IPM 전동기</h2>
+              <p>손그림 스케치를 정밀 해석한 결과 화면입니다. 핵심 지표와 함께 형상 · 무부하/부하 자계 · 코깅 · 역기전력 · 토크 · MTPA · 철손 · 감자 여유도 그래프를 한 화면에 보여 줍니다.</p>
+              <ul>
+                <li>평균 토크 <b>13.87 Nm</b>, 토크 리플 16.9 %, 상 역기전력 107.4 V(peak)</li>
+                <li>MTPA 전류각 12.1°, 고정자 철손 22.1 W</li>
+                <li>120 °C 감자 검사에서 <b>감자 위험</b> 판정 → 설계 수정 필요를 바로 확인</li>
+              </ul>
+              <p class="skm-note">정밀 해석, 전류 15.51 A(peak), 1800 rpm, 계산 시간 257 s</p>
+            </div>
+            <div lang="en">
+              <h2>Example — 12-slot 8-pole IPM motor</h2>
+              <p>Detailed-analysis results for a hand-drawn sketch. Key metrics appear together with plots of geometry, no-load and load fields, cogging, back-EMF, torque, MTPA, iron loss, and demagnetization margin.</p>
+              <ul>
+                <li>Average torque <b>13.87 Nm</b>, torque ripple 16.9 %, phase back-EMF 107.4 V (peak)</li>
+                <li>MTPA current angle 12.1°, stator iron loss 22.1 W</li>
+                <li>Flagged <b>demagnetization risk</b> at 120 °C — the design needs revision</li>
+              </ul>
+              <p class="skm-note">Detailed analysis, 15.51 A (peak), 1800 rpm, 257 s computation time</p>
+            </div>
+          </div>
+          <figure class="ra-hero fig skm-wide"><img src="assets/img/sketchmax/results.jpg" alt="PMSM detailed analysis results screen"><figcaption><span lang="ko">PMSM 정밀 해석 결과 화면</span><span lang="en">PMSM detailed analysis results screen</span></figcaption></figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 검증 -->
+    <article class="research-area" id="validation">
+      <div class="container">
+        <div class="ra-head" style="grid-template-columns:1fr;margin-bottom:16px">
+          <div>
+            <div class="num">VALIDATION</div>
+            <div lang="ko">
+              <h2>독립 솔버(GetDP)와의 비교 검증</h2>
+              <p>같은 전동기를 오픈소스 FEM 솔버 GetDP로 따로 풀어 비교했습니다. 공유한 것은 치수 · B-H 곡선 · 권선 배치표뿐이며 메시와 비선형 반복은 서로 독립입니다. 쇄교자속과 평균 토크가 <b>0.1–0.6 % 이내</b>로 일치했습니다.</p>
+            </div>
+            <div lang="en">
+              <h2>Cross-check against an independent solver (GetDP)</h2>
+              <p>The same motors were solved separately with the open-source FEM solver GetDP, sharing only the dimensions, B-H data, and winding table — meshes and nonlinear iterations were independent. Flux linkage and average torque agree <b>within 0.1–0.6 %</b>.</p>
+            </div>
+          </div>
+        </div>
+        <figure class="fig skm-wide" style="margin-bottom:16px"><img src="assets/img/sketchmax/getdp-compare.png" alt="SketchMax versus GetDP comparison"><figcaption><span lang="ko">IPM 48슬롯 8극 V형: 무부하 쇄교자속 · 코깅 토크 · 부하 토크 (실선 SketchMax, 기호 GetDP)</span><span lang="en">IPM 48-slot 8-pole V-shape: no-load flux linkage, cogging torque, load torque (lines: SketchMax, markers: GetDP)</span></figcaption></figure>
+        <table class="proj-table" lang="ko">
+          <thead><tr><th>항목</th><th>SPM 12슬롯 10극</th><th>IPM 48슬롯 8극 V형</th></tr></thead>
+          <tbody>
+            <tr><td>무부하 쇄교자속 최대 오차 (피크 대비)</td><td>0.12 %</td><td>0.64 %</td></tr>
+            <tr><td>부하 평균 토크 (SketchMax / GetDP)</td><td>5.042 / 5.039 Nm (+0.06 %)</td><td>57.78 / 57.83 Nm (−0.09 %)</td></tr>
+          </tbody>
+        </table>
+        <table class="proj-table" lang="en">
+          <thead><tr><th>Item</th><th>SPM 12-slot 10-pole</th><th>IPM 48-slot 8-pole V-shape</th></tr></thead>
+          <tbody>
+            <tr><td>No-load flux linkage, max error (of peak)</td><td>0.12 %</td><td>0.64 %</td></tr>
+            <tr><td>Average load torque (SketchMax / GetDP)</td><td>5.042 / 5.039 Nm (+0.06 %)</td><td>57.78 / 57.83 Nm (−0.09 %)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- 사용 환경 -->
+    <article class="research-area" id="use">
+      <div class="container">
+        <div class="ra-head" style="grid-template-columns:1fr;margin-bottom:16px">
+          <div>
+            <div class="num">AVAILABILITY</div>
+            <h2><span lang="ko">사용 환경 및 문의</span><span lang="en">Availability and contact</span></h2>
+          </div>
+        </div>
+        <div class="grid c3 skm-cards">
+          <div class="card"><div class="body">
+            <h3><span lang="ko">Windows 설치 프로그램</span><span lang="en">Windows installer</span></h3>
+            <ul lang="ko">
+              <li>통합 프로그램 1개 + 기기별 프로그램 7개</li>
+              <li>파이썬 · 라이브러리 내장, 설치 후 바로 실행</li>
+              <li>한국어 / English 화면 전환</li>
+            </ul>
+            <ul lang="en">
+              <li>One integrated program plus seven machine-specific programs</li>
+              <li>Python and libraries bundled; runs right after install</li>
+              <li>Korean / English interface</li>
+            </ul>
+          </div></div>
+          <div class="card"><div class="body">
+            <h3><span lang="ko">오프라인 라이선스</span><span lang="en">Offline licensing</span></h3>
+            <ul lang="ko">
+              <li>빠른 해석은 제품 키 없이 사용 (체험판)</li>
+              <li>정밀 해석은 제품 키 필요</li>
+              <li>제품 키는 인터넷 연결 없이 확인</li>
+            </ul>
+            <ul lang="en">
+              <li>Quick analysis works without a product key (trial)</li>
+              <li>Detailed analysis requires a product key</li>
+              <li>Keys are verified without an internet connection</li>
+            </ul>
+          </div></div>
+          <div class="card"><div class="body">
+            <h3><span lang="ko">교육 · 공동연구 문의</span><span lang="en">Education and collaboration</span></h3>
+            <ul lang="ko">
+              <li>전기기기 수업 · 실습용 도입</li>
+              <li>교육 효과 평가(사전 · 사후 설계) 진행 예정</li>
+              <li>사용 · 공동연구 문의: <a href="members.html#contact">연구실 연락처</a></li>
+            </ul>
+            <ul lang="en">
+              <li>Adoption for electric machinery courses and labs</li>
+              <li>Pre/post educational-effect study planned</li>
+              <li>Inquiries: see the <a href="members.html#contact">lab contact</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</main>
+<script src="assets/js/content.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
