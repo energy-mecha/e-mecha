@@ -160,6 +160,16 @@ section.block.soft { background: none; }
 .grid.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid.c4 { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+/* 홈 Research Areas: 카드 5개를 한 줄로 (좁은 화면: 3개 → 2개) */
+.grid.c5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.areas .card .thumb { aspect-ratio: 4 / 3; }
+.areas .card .thumb img { padding: 6px; }
+.areas .card .body { padding: 12px 13px 14px; }
+.areas .card h3 { font-size: 14.5px; line-height: 1.35; }
+.areas .card p { font-size: 13px; line-height: 1.55; margin-bottom: 8px; }
+.areas .card .more-link { font-size: 13px; }
+@media (max-width: 1000px) { .grid.c5 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .grid.c5 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .card { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .15s ease, box-shadow .15s ease, border-top-color .15s ease; }
 .card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(27,27,25,.1); border-top-color: var(--ink); }
 .card .thumb { aspect-ratio: 16 / 10; background: #fff; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -404,6 +414,11 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
   .brand-sub { display: none; }
 }
 @media (min-width: 641px) { .brand { flex: none; } }
+/* 메뉴 8개(SketchMax 포함)가 ☰ 메뉴로 바뀌기 전 폭에서도 한 줄에 들어가도록 간격 축소 */
+@media (min-width: 1181px) and (max-width: 1420px) {
+  .site-header .container { gap: 14px; }
+  .main-nav a { padding: 8px 9px; font-size: 14.5px; }
+}
 @media (max-width: 1180px) {
   .nav-toggle { display: block; }
   .main-nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--ink); display: none; border-top: 1px solid #333; }
