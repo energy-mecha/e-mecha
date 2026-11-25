@@ -11,6 +11,7 @@
 | `publications.html` | 국제/국내 저널, 국제/국내 학술대회, 특허 (탭 · 검색 · 연도 필터) — 특허 탭: 대표 특허기술 카드 · 연도별/기술분야별 보기(분류는 `content.js` 의 `patentFields`) · 협력 안내 |
 | `projects.html` | 진행/완료 연구과제 |
 | `teaching.html` | 담당 교과목 (목록은 `content.js` 의 `teaching`) |
+| `sketchmax.html` | 연구실 개발 프로그램 SketchMax 소개 (그림: `assets/img/sketchmax/`) |
 | `capstone.html` | 종합설계(캡스톤디자인) 과제 — 영상·수상 (`content.js` 의 `capstone`) |
 | `awards.html` | 교수 및 지도학생 수상 |
 | `assets/js/content.js` | **직접 수정**: 뉴스, 구성원, 수상, 연락처, 통계 |

@@ -8,6 +8,7 @@
 
 | 버전 | 게시일 | 주요 변경 |
 |---|---|---|
+| v1.32 | 2026-11-26 | 상단 메뉴 Teaching과 Awards 사이에 「SketchMax」 추가(모든 페이지 공통, 푸터 링크 포함) · SketchMax 페이지 경로 표시를 Home / SketchMax로 변경 |
 | v1.31 | 2026-11-26 | 연구실 개발 프로그램 「SketchMax」 소개 페이지(sketchmax.html) 추가 — 개요(이름의 Max = 맥스웰 방정식), 5단계 처리 흐름, 대상 기기 7종별 해석 방법·결과 표, 핵심 기술(AI 사진 인식·인식값 출처 관리·자체 2D FEM 엔진), 12슬롯 8극 IPM 해석 사례, GetDP 비교 검증, 사용 환경·문의 (한/영, 그림: assets/img/sketchmax, 손그림 사진은 넣지 않음) · 홈 Research Areas에 「05 SketchMax」 카드, Research 상단에 「SketchMax ↗」 바로가기, Latest News에 소개 소식 추가 |
 | v1.30 | 2026-11-23 | Sponsors & Partners: 국립부경대학교 Electric Machines Lab. 링크를 학교 홈페이지에서 연구실 페이지(electric-eng.pknu.ac.kr/electric-eng/4092)로 변경 |
 | v1.29 | 2026-11-23 | Sponsors & Partners에 국립부경대학교 Electric Machines Lab.(Prof. Kyung-il Woo) 추가 — 연구실 사이트가 없어 학교 로고 사용, 학교 홈페이지로 연결 |

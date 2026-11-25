@@ -14,6 +14,7 @@
     ["publications.html", "Publications", "publications"],
     ["projects.html", "Projects", "projects"],
     ["teaching.html", "Teaching", "teaching"],
+    ["sketchmax.html", "SketchMax", "sketchmax"],
     ["awards.html", "Awards", "awards"],
   ];
 
