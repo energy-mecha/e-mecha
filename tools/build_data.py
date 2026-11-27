@@ -214,12 +214,21 @@ for r in rows(find("특허등록")):
     })
 
 # ---------------- 연구과제 (연차별 과제를 하나로 병합) ----------------
+def period(v):
+    """datetime / 2025.05 (숫자) / 2026 (연도만) → '2025.05' / '2026'"""
+    if isinstance(v, (int, float)):
+        return str(int(v)) if v == int(v) else f"{v:.2f}"  # 2026.10 이 2026.1 로 읽히는 것 방지
+    return ym(v) or None
+
+
+# 연구과제참여_*.xlsx(연차별) + 수행연구과제_*.xlsx(과제별)를 함께 읽어 병합
 proj = {}
-for r in rows(find("연구과제")):
+for r in (r for f in find_all("연구과제") for r in rows(f)):
     title = re.sub(r"^\((교내|사업)\)\s*", "", clean(r.get("연구과제명")))
     key = re.sub(r"[\s·]", "", title).replace("kAV", "kVA")
-    vals = list(r.values())
-    start, end = r.get("연구기간"), vals[6] if len(vals) > 6 else None
+    keys = list(r)
+    i = keys.index("연구기간")  # 종료일은 '~' 다음 칸
+    start, end = period(r.get("연구기간")), period(r[keys[i + 2]]) if len(keys) > i + 2 else None
     p = proj.setdefault(key, {
         "title": title.replace("50kAV", "50kVA"),
         "agency": clean(r.get("연구비지원기관")),
@@ -238,8 +247,8 @@ projects = []
 for p in proj.values():
     projects.append({
         "title": p["title"], "agency": p["agency"], "type": p["type"], "role": p["role"],
-        "start": ym(p["start"]), "end": ym(p["end"]),
-        "ongoing": bool(p["end"] and p["end"] >= today),
+        "start": p["start"], "end": p["end"],
+        "ongoing": bool(p["end"] and p["end"] >= today.strftime("%Y.%m")),
     })
 projects.sort(key=lambda x: (x["end"], x["start"]), reverse=True)
 

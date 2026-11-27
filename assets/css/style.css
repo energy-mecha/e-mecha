@@ -397,6 +397,7 @@ main ol li.pub .pub-title a, main ol li.pub a.badge { border-bottom: 0; text-dec
 .proj-table tr:hover td { background: var(--surface); }
 .proj-table .period { white-space: nowrap; font: 600 13.5px var(--font-head); color: var(--muted); }
 .proj-table .t { font-weight: 600; }
+.proj-table .sp { font-size: 12.5px; line-height: 1.45; }
 
 /* awards */
 .award-list { list-style: none; padding: 0; margin: 0; border-top: 0 !important; }

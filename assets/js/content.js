@@ -330,6 +330,12 @@ window.LAB = {
      data.js(엑셀 자동 생성)의 과제명/기관명은 한국어입니다.
      영어 화면에서 보여줄 이름을 "한국어 이름": "English name" 으로 추가하세요. 없으면 한국어 그대로 표시됩니다. */
   projectsEn: {
+    "AI중심대학": "AI-Centered University Program",
+    "글로벌 협력을 통한 이차전지 및 에너지 전력변환 연구 기반 구축": "Building a Research Base for Secondary Batteries and Energy Power Conversion through Global Cooperation",
+    "드론향 배터리 스왑 스테이션(BSS)의 배터리 충전제어 기술개발": "Battery Charging Control for Drone Battery Swap Stations (BSS)",
+    "스마트팜 단지 내 e-DAS 송전선로 모니터링 시스템 기술개발": "e-DAS Power Line Monitoring System for Smart Farm Complexes",
+    "드론 배터리 스왑 스테이션(BSS) 및 CSMS 기반 드론 운용 인프라 개발": "Drone Operation Infrastructure Based on Battery Swap Stations (BSS) and CSMS",
+    "풀브릿지 DC-DC 컨버터 경부하 효율 개선을 위한 제어 기술 개발": "Control Techniques for Improving Light-Load Efficiency of Full-Bridge DC-DC Converters",
     "스마트 전력시스템 연계 에너지기술공유 교육 플랫폼 구축을 통한 고급인력 양성": "Advanced Workforce Training through an Energy-Technology Sharing Education Platform Linked to Smart Power Systems",
     "SW중심대학(국립순천대학교)": "Software-Centered University Program (Sunchon National University)",
     "광주·전남지역에너지 클러스터 인재양성": "Gwangju–Jeonnam Regional Energy Cluster Workforce Development",
@@ -356,6 +362,10 @@ window.LAB = {
     "전동식 공기압축기용 모터제어기에 관한 기초연구": "Basic Study on Motor Controllers for Electric Air Compressors",
   },
   agencyEn: {
+    "과기정통부": "MSIT",
+    "국립대학육성사업(국립순천대학교)": "National University Development Project (Sunchon National University)",
+    "글로컬대학30사업(국립순천대학교)": "Glocal University 30 (Sunchon National University)",
+    "앵커사업(국립순천대학교)": "Anchor Project (Sunchon National University)",
     "한국에너지기술평가원": "KETEP",
     "정보통신기획평가원": "IITP",
     "순천대학교": "Sunchon National University",

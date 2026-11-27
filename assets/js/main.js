@@ -496,7 +496,7 @@ function mergeEdu(list) {
     const PEN = L.projectsEn || {}, AEN = L.agencyEn || {};
     const row = (p) => `<tr><td class="period">${esc(p.start)} – ${esc(p.end)}</td>
       <td class="t">${bi(esc(p.title), esc(PEN[p.title] || p.title))}${p.ongoing ? ` <span class="badge solid">${bi("진행중", "Ongoing")}</span>` : ""}</td>
-      <td>${bi(esc(p.agency), esc(AEN[p.agency] || p.agency))}</td><td>${bi(esc(p.role), esc(ROLE[p.role] || p.role))}</td></tr>`;
+      <td class="sp">${bi(esc(p.agency), esc(AEN[p.agency] || p.agency))}</td><td>${bi(esc(p.role), esc(ROLE[p.role] || p.role))}</td></tr>`;
     const on = D.projects.filter((p) => p.ongoing), done = D.projects.filter((p) => !p.ongoing);
     $("#proj-on").innerHTML = on.map(row).join("") || `<tr><td colspan="4">—</td></tr>`;
     $("#proj-done").innerHTML = done.map(row).join("");
