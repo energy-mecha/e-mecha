@@ -288,6 +288,7 @@ a.card, a.card:hover { color: inherit; }
 .timeline { list-style: none; margin: 0 0 20px; padding: 0 !important; }
 .timeline li { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--line-2); font-size: 14.5px; }
 .timeline .when { font: 700 13.5px var(--font-head); color: var(--accent-ink); }
+.timeline .tl-note { display: block; margin-top: 3px; font-size: 13px; line-height: 1.5; color: var(--muted); }
 .subhead { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
 .subhead:first-child { margin-top: 0; }
 .person { text-align: center; padding: 22px 16px 16px; }

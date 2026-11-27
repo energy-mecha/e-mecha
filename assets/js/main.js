@@ -261,7 +261,7 @@
   /* ---------- MEMBERS ---------- */
   if (page === "members") {
     const p = L.pi;
-    const tl = (arr) => arr.map((x) => `<li><span class="when">${T(x.when)}</span><span>${T(x.what)}</span></li>`).join("");
+    const tl = (arr) => arr.map((x) => `<li><span class="when">${T(x.when)}</span><span>${T(x.what)}${x.note ? `<span class="tl-note">${T(x.note)}</span>` : ""}</span></li>`).join("");
     $("#pi").innerHTML = `
       <div><img class="profile-photo" src="${esc(p.photo)}" alt="Prof. ${esc(nameEnShort)}">
         <ul class="contact-list">
@@ -274,6 +274,8 @@
         <div class="role">${T(p.title).replace(/Senior Member of the IEEE/g, "<em>$&</em>")}</div>
         <h3 class="subhead">Research Interests</h3>
         <ul>${p.interests.map((i) => `<li>${T(i)}</li>`).join("")}</ul>
+        ${p.education ? `<h3 class="subhead">Education</h3>
+        <ul class="timeline">${tl(p.education)}</ul>` : ""}
         <h3 class="subhead">Career</h3>
         <ul class="timeline">${tl(p.career)}</ul>
         <h3 class="subhead">Professional Service</h3>

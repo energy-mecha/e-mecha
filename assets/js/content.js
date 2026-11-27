@@ -52,6 +52,14 @@ window.LAB = {
       { ko: "P2H(Power-to-Heat) 성능 향상 및 AI 예측 기술", en: "Performance enhancement and AI-based prediction for P2H (Power-to-Heat)" },
       { ko: "고주파 변압기 · 전기기기 설계 및 해석", en: "Design and analysis of high-frequency transformers and electric machines" },
     ],
+    /* note: 학위논문 제목 등 둘째 줄(작은 글씨) */
+    education: [
+      { when: "2001.03 – 2007.08", what: { ko: "한양대학교 전자전기제어계측공학과 공학박사", en: "Ph.D. in Electronic, Electrical, Control and Instrumentation Engineering, Hanyang University, Seoul, Korea" },
+        note: { ko: "박사학위논문 “Starting Performance Improvement and Torque Ripple Reduction of Brushless DC Motor for Compressor” (지도교수: 권병일 교수)", en: "Doctoral dissertation: “Starting Performance Improvement and Torque Ripple Reduction of Brushless DC Motor for Compressor” (Advisor: Prof. Byung-Il Kwon)" } },
+      { when: "1999.03 – 2001.02", what: { ko: "한양대학교 전기공학과 공학석사", en: "M.S. in Electrical Engineering, Hanyang University, Seoul, Korea" },
+        note: { ko: "석사학위논문 “The Characteristic Analysis of Vector Control in Linear Induction Motor Considering Static and Dynamic End Effects” (지도교수: 권병일 교수)", en: "Thesis: “The Characteristic Analysis of Vector Control in Linear Induction Motor Considering Static and Dynamic End Effects” (Advisor: Prof. Byung-Il Kwon)" } },
+      { when: "1991.03 – 1999.02", what: { ko: "국립순천대학교 전기제어공학과 공학사", en: "B.S. in Electrical Control Engineering, Sunchon National University, Suncheon, Korea" } },
+    ],
     career: [
       { when: { ko: "2011 – 현재", en: "2011 – Present" }, what: { ko: "국립순천대학교 전기공학과 교수", en: "Professor, Dept. of Electrical Engineering, Sunchon National University" } },
       { when: "2005 – 2011", what: { ko: "한국전자기술연구원(KETI) 디지털컨버전스연구센터 센터장", en: "Director, Digital Convergence Research Center, Korea Electronics Technology Institute (KETI)" } },
