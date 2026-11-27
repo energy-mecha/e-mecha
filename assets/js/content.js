@@ -9,7 +9,7 @@
 /* 구성원 정보에 반복해서 쓰는 값 */
 const SCNU_EE = { ko: "국립순천대학교 전기공학과", en: "Electrical Engineering, Sunchon National University" };
 const SCNU_EE_STUDENT = { ko: "재학 : 국립순천대학교 전기공학과", en: "Electrical Engineering, Sunchon National University" };
-const EDU = (ko, en, school) => ({ ko: `${ko} : ${school.ko}`, en: `${en}, ${school.en}` });
+const EDU = (ko, en, school) => ({ ko: `${ko} : ${school.ko}`, en: `${en}, ${school.en}`, deg: { ko, en }, school });
 const POS = {
   phd: { ko: "박사과정", en: "Ph.D. Student" },
   int: { ko: "석·박사 통합과정", en: "Integrated M.S. & Ph.D. Student" },
@@ -86,7 +86,7 @@ window.LAB = {
       { name: { ko: "정태규", en: "Tae-Gyu Jung" }, pos: POS.int, photo: "assets/img/members/jung-taegyu.jpg",
         edu: [EDU("공학사", "B.S.", SCNU_EE)], topic: TOPIC.pe },
       { name: { ko: "이환수", en: "Hwan-Su Lee" }, pos: POS.phd, photo: "assets/img/members/lee-hwansu.jpg",
-        edu: [EDU("공학사", "B.S.", { ko: "국립순천대학교 전기제어공학과", en: "Electrical Control Engineering, Sunchon National University" }), EDU("공학석사", "M.S.", SCNU_EE)],
+        edu: [EDU("공학사", "B.S.", SCNU_EE), EDU("공학석사", "M.S.", SCNU_EE)],
         work: { ko: "㈜에니트", en: "ENIT Co., Ltd." },
         topic: { ko: "고주파 변압기, 리액터", en: "High-frequency transformers, reactors" } },
       { name: { ko: "박정희", en: "Jeong-Hee Park" }, pos: POS.int, photo: "assets/img/members/park-jeonghee.jpg",

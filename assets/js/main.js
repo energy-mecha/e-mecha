@@ -1,6 +1,22 @@
 /* 공통 레이아웃(헤더/사이드바/푸터) + 페이지별 렌더링 + 언어 전환(EN/KO)
    - 번역할 글은 <span lang="ko">…</span><span lang="en">…</span> 쌍으로 렌더링하고,
      CSS 가 현재 언어(html[data-lang])가 아닌 쪽을 숨깁니다. */
+// Member and alumni cards: degrees from the same school are shown on one line:
+// "B.S., M.S. and Ph.D., Electrical Engineering, Sunchon National University"
+function mergeEdu(list) {
+  const out = [];
+  for (const e of list) {
+    const last = out[out.length - 1];
+    if (e.deg && last?.degs && last.school.en === e.school.en && last.school.ko === e.school.ko) last.degs.push(e.deg);
+    else out.push(e.deg ? { school: e.school, degs: [e.deg] } : e);
+  }
+  const andJoin = (a) => a.length < 2 ? a[0] : `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}`;
+  return out.map((g) => !g.degs ? g : {
+    ko: `${g.degs.map((d) => d.ko).join(" · ")} : ${g.school.ko}`,
+    en: `${andJoin(g.degs.map((d) => d.en))}, ${g.school.en}`,
+  });
+}
+
 (function () {
   const L = window.LAB;
   const D = window.LAB_DATA || {};
@@ -297,7 +313,7 @@
           ${nameHTML(m.name)}
           <div class="pos">${T(m.pos)}</div>
           ${BADGE[m.badge] ? `<div class="member-badge-row"><span class="member-badge ${m.badge}">${BADGE[m.badge]}</span></div>` : ""}
-          ${m.edu?.length ? `<ul class="edu">${m.edu.map((e) => `<li>${T(e)}</li>`).join("")}</ul>` : ""}
+          ${m.edu?.length ? `<ul class="edu">${mergeEdu(m.edu).map((e) => `<li>${T(e)}</li>`).join("")}</ul>` : ""}
           ${m.work ? `<div class="work">${T(m.work)}</div>` : ""}
           ${m.topic ? `<div class="topic">${T(m.topic)}</div>` : ""}</div>`).join("")}</div>`
       : `<div class="empty-note">${bi("구성원 정보 업데이트 예정", "Member information coming soon")}</div>`;
