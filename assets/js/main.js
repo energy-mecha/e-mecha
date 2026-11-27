@@ -290,7 +290,7 @@
     // 구성원 뱃지(직위 아래 표시): content.js 의 badge 값
     const BADGE = { startup: bi("연구실 창업", "Lab Startup"), professor: bi("교수채용", "Faculty Appointment") };
     const people = (list) => list.length
-      ? `<div class="grid c4">${list.map((m) => `<div class="card person">
+      ? `<div class="grid c4 people-grid">${list.map((m) => `<div class="card person">
           ${m.photo
             ? `<div class="avatar"><img src="${esc(m.photo)}" alt="${esc(plain(m.name))}" loading="lazy"></div>`
             : `<div class="avatar no-photo" role="img" aria-label="${esc(L.name)}"><img src="assets/img/emblem.png" alt=""><b>${esc(L.name)}</b></div>`}
