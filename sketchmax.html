@@ -19,9 +19,33 @@
   .skm-steps li b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 2px; }
   .skm-figs4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .skm-wide img { aspect-ratio: auto; }
-  .skm-table td:first-child { font-weight: 600; width: 20%; }
-  .skm-table td:nth-child(2) { width: 22%; }
-  .skm-table td:nth-child(3) { width: 22%; }
+  .skm-table td:first-child { font-weight: 600; }
+  @media (min-width: 641px) {
+    .skm-table td:first-child { width: 20%; }
+    .skm-table td:nth-child(2) { width: 22%; }
+    .skm-table td:nth-child(3) { width: 22%; }
+  }
+  /* 휴대폰: 줄 단위 카드로 쌓일 때 각 칸 앞에 항목 이름 표시 */
+  @media (max-width: 640px) {
+    .skm-table tr { padding: 12px 0; }
+    .skm-table td { padding: 3px 14px; font-size: 14px; line-height: 1.5; }
+    .skm-table td:first-child { font-size: 15.5px; color: var(--ink); padding-bottom: 6px; }
+    .skm-table td:not(:first-child)::before { display: block; font: 700 11.5px var(--font-head); letter-spacing: .04em; color: var(--accent-ink); margin-bottom: 1px; }
+    .skm-table[lang="ko"] td:nth-child(2)::before { content: "형식"; }
+    .skm-table[lang="ko"] td:nth-child(3)::before { content: "해석 방법"; }
+    .skm-table[lang="ko"] td:nth-child(4)::before { content: "주요 결과"; }
+    .skm-table[lang="en"] td:nth-child(2)::before { content: "Types"; }
+    .skm-table[lang="en"] td:nth-child(3)::before { content: "Method"; }
+    .skm-table[lang="en"] td:nth-child(4)::before { content: "Main outputs"; }
+    .skm-table td + td { margin-top: 6px; }
+    .skm-cmp td { padding: 3px 14px; }
+    .skm-cmp td:first-child { font-weight: 600; padding-bottom: 6px; }
+    .skm-cmp td:not(:first-child)::before { font: 700 11.5px var(--font-head); color: var(--accent-ink); margin-right: 6px; }
+    .skm-cmp[lang="ko"] td:nth-child(2)::before { content: "SPM 12슬롯 10극"; }
+    .skm-cmp[lang="ko"] td:nth-child(3)::before { content: "IPM 48슬롯 8극 V형"; }
+    .skm-cmp[lang="en"] td:nth-child(2)::before { content: "SPM 12-slot 10-pole"; }
+    .skm-cmp[lang="en"] td:nth-child(3)::before { content: "IPM 48-slot 8-pole V"; }
+  }
   .skm-cards .card .body ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
   .skm-note { font-size: 13px; color: var(--muted); margin-top: 8px; }
   @media (max-width: 900px) {
@@ -245,14 +269,14 @@
           </div>
         </div>
         <figure class="fig skm-wide" style="margin-bottom:16px"><img src="assets/img/sketchmax/getdp-compare.png" alt="SketchMax versus GetDP comparison"><figcaption><span lang="ko">IPM 48슬롯 8극 V형: 무부하 쇄교자속 · 코깅 토크 · 부하 토크 (실선 SketchMax, 기호 GetDP)</span><span lang="en">IPM 48-slot 8-pole V-shape: no-load flux linkage, cogging torque, load torque (lines: SketchMax, markers: GetDP)</span></figcaption></figure>
-        <table class="proj-table" lang="ko">
+        <table class="proj-table skm-cmp" lang="ko">
           <thead><tr><th>항목</th><th>SPM 12슬롯 10극</th><th>IPM 48슬롯 8극 V형</th></tr></thead>
           <tbody>
             <tr><td>무부하 쇄교자속 최대 오차 (피크 대비)</td><td>0.12 %</td><td>0.64 %</td></tr>
             <tr><td>부하 평균 토크 (SketchMax / GetDP)</td><td>5.042 / 5.039 Nm (+0.06 %)</td><td>57.78 / 57.83 Nm (−0.09 %)</td></tr>
           </tbody>
         </table>
-        <table class="proj-table" lang="en">
+        <table class="proj-table skm-cmp" lang="en">
           <thead><tr><th>Item</th><th>SPM 12-slot 10-pole</th><th>IPM 48-slot 8-pole V-shape</th></tr></thead>
           <tbody>
             <tr><td>No-load flux linkage, max error (of peak)</td><td>0.12 %</td><td>0.64 %</td></tr>
